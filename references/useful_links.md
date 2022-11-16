@@ -15,6 +15,8 @@
   - https://issuu.com/hyunchulkwon/docs/curvoxels_final_portfolio_issuu
 
   - https://chanyenfen.com/portfolio/hop_n_weave/
-  ![](useful_links/useful_links_2022-11-16-15-41-60.png)
+
+  http://www.rolandsnooks.com/sensilab
+  ![](useful_links/useful_links_2022-11-16-15-41-61.png)
 
   
