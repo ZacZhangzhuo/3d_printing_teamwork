@@ -1,3 +1,4 @@
+import math
 import socket
 from struct import *
 
@@ -89,10 +90,10 @@ def read(HOST, PORT):
     s.settimeout(1)
     try:
         s.connect((HOST, PORT))
-        print "connected"
+        print ("connected")
     except:
         traceback.print_exc()
-        print "Cannot connect to ",HOST,PORT
+        print ("Cannot connect to "),HOST,PORT
     s.settimeout(None)
     data = s.recv(1024)
     s.close()

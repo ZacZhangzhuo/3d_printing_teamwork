@@ -10,6 +10,7 @@ import Rhino.Geometry as rg
 MAX_ACCEL = 1.5
 MAX_VELOCITY = 2
 
+
 def move_l(plane_to, accel, vel):
     """
     Function that returns UR script for linear movement in tool-space.
@@ -38,7 +39,7 @@ def move_l(plane_to, accel, vel):
     return script
 
 
-def move_l_blend(plane_to, accel, vel, blend_radius = 0):
+def move_l_blend(plane_to, vel, blend_radius):
     """
     Function that returns UR script for linear movement in tool-space.
 
@@ -50,6 +51,7 @@ def move_l_blend(plane_to, accel, vel, blend_radius = 0):
     Returns:
         script: UR script
     """
+    accel = 1
 
     # Check acceleration and velocity are non-negative and below a set limit
     accel = MAX_ACCEL if (abs(accel) >MAX_ACCEL) else abs(accel)
@@ -64,7 +66,7 @@ def move_l_blend(plane_to, accel, vel, blend_radius = 0):
     _pose_fmt = "p[" + ("%.4f,"*6)[:-1]+"]"
     _pose_fmt = _pose_fmt%tuple(_pose)
     # Format UR script
-    script = "movel(%s, a = %.2f, v = %.2f, r = %.4f)\n"%(_pose_fmt, accel, vel, blend_radius)
+    script = "movel(%s, a = %.3f, v = %.3f, r = %.4f)\n"%(_pose_fmt, accel, vel, blend_radius)
     return script
 
 def move_j(joints, accel, vel):
@@ -118,7 +120,7 @@ def set_tcp_by_plane(x_offset, y_offset, z_offset, ref_plane=rg.Plane.WorldXY):
 
 def set_tcp_by_angles(x_offset, y_offset, z_offset, x_rotate, y_rotate, z_rotate):
     """
-
+    Function that returns UR script for setting tool center point
 
     Args:
         x_offset: float. tooltip offset in mm
@@ -189,4 +191,12 @@ def set_digital_out(id, signal):
 
     # Format UR script
     script = "set_digital_out(%s,%s)\n"%(id,signal)
+    return script
+
+def textmsg(s1):
+    """
+    Send text message to log
+    """
+    # Format UR script
+    script = 'textmsg("%s") \n' %(s1)
     return script
