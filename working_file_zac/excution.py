@@ -29,24 +29,17 @@ def send(script):
     return script
 
 
-def tcp(script):
-    script += ur.set_tcp_by_angles(TCP[0], TCP[1], TCP[2], TCP[3], TCP[4], TCP[5])
-    return script
-
-
-# JSON
-def UpdateNavigation(script):
-    data = []
-    with open(NAVIGATION_JSON, "r") as f:
-        data = json.load(f)
-    TCP = data["tcp"]
-    ROBOT_IP = data["ip"]
-    ROBOT_BASE = set_robot_base()
-    return script 
 
 
 script = ""
+data = []
+with open(NAVIGATION_JSON, "r") as f:
+    data = json.load(f)
+TCP = data["tcp"]
+ROBOT_IP = data["ip"]
+ROBOT_BASE = set_robot_base()
+script += ur.set_tcp_by_angles(TCP[0], TCP[1], TCP[2], TCP[3], TCP[4], TCP[5])
+
 if send_debug_plane:
-    script = UpdateNavigation(script)
     script += ur.move_l(rhino_to_robot_space(debug_plane), DEBUG_ROBOT_ACC, DEBUG_ROBOT_VEL)
     send(script)
