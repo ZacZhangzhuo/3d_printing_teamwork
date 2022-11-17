@@ -1,0 +1,79 @@
+<mxfile host="65bd71144e">
+    <diagram id="WgfV75f-mAaQH7_W98QW" name="Page-1">
+        <mxGraphModel dx="2111" dy="789" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3" value="Design" style="swimlane;fontSize=15;startSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="-199" y="50" width="333" height="426" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value=".ghx" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;verticalAlign=top;" vertex="1" parent="3">
+                    <mxGeometry x="86" y="60" width="168" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value=".ghx" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;verticalAlign=top;" vertex="1" parent="3">
+                    <mxGeometry x="87" y="132" width="167" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value=".ghx" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="3">
+                    <mxGeometry x="136" y="222" width="61" height="34" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value=".ghx" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="3">
+                    <mxGeometry x="136" y="278" width="61" height="34" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value=".ghx" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="3">
+                    <mxGeometry x="136" y="336" width="61" height="34" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="plugin" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="3">
+                    <mxGeometry x="94" y="67" width="50" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="plugin" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="3">
+                    <mxGeometry x="193" y="67" width="50" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="hand-made lines" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="3">
+                    <mxGeometry x="101.5" y="169" width="138" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Fabrication" style="swimlane;fontSize=15;startSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="416" y="52" width="333" height="426" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="excution.ghx" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="4">
+                    <mxGeometry x="70.5" y="281" width="192" height="88" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="JSON&lt;br&gt;master_navigation_data.json&lt;br&gt;----------&lt;br&gt;&lt;div&gt;&amp;nbsp; &quot;ip&quot;: &quot; &quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;tcp&quot;: [ ],&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;origin&quot;: [ ],&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;origin_x&quot;: [ ],&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;origin_y&quot;: [ ],&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;safe_point&quot;: [ ]&lt;/div&gt;" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="4">
+                    <mxGeometry x="66.00174839411767" y="144.99708850118878" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;strokeColor=default;shape=connector;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="4">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="140" y="194" as="sourcePoint"/>
+                        <mxPoint x="467" y="194" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="JSON&lt;br&gt;----------&lt;br&gt;'planes' = {} (as master)&lt;br&gt;&lt;br&gt;'v&lt;span style=&quot;font-size: 16px&quot;&gt;elocity' = {}&lt;br&gt;&lt;/span&gt;&lt;br&gt;'acceleration' = {}&lt;br&gt;&lt;br&gt;'di_01' = {}&lt;br&gt;&lt;br&gt;'di_02' = {}&lt;br&gt;&lt;br&gt;'di_03' = {}&lt;br&gt;&lt;br&gt;'di_04' = {}&lt;br&gt;&lt;br&gt;...." style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="24">
+                    <mxGeometry x="-0.2118" y="-5" relative="1" as="geometry">
+                        <mxPoint x="-62" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;strokeColor=default;shape=connector;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="40">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="704" y="238" as="sourcePoint"/>
+                        <mxPoint x="826" y="265" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="UR script" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="38">
+                    <mxGeometry x="-0.2118" y="-5" relative="1" as="geometry">
+                        <mxPoint x="-25" y="10" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" value="Robot" style="swimlane;fontSize=15;startSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="848" y="217.5" width="158" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="Do her magic work" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="40">
+                    <mxGeometry x="66.00174839411767" y="144.99708850118878" as="geometry">
+                        <mxPoint x="-53" y="-89" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="&lt;span id=&quot;docs-internal-guid-44bf1ab8-7fff-a539-eaf1-ce4f033776e8&quot;&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2 ; margin-top: 0pt ; margin-bottom: 0pt&quot;&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;Can be written in gh python code or changed manually:&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2 ; text-indent: 36pt ; margin-top: 0pt ; margin-bottom: 0pt&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Set &lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Digital IO 4&lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt; on to stop the heater&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2 ; text-indent: 36pt ; margin-top: 0pt ; margin-bottom: 0pt&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Set &lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Digital IO 5&lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt; on to stop all motion of the extruder(manually turn it on if you want to stop printing)&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2 ; text-indent: 36pt ; margin-top: 0pt ; margin-bottom: 0pt&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Set &lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Digital IO 6&lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt; on (5 should be off) to use speed 1 (&lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;aspeed 0&lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt; in Arduino, 2mm/sec as default)&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2 ; text-indent: 36pt ; margin-top: 0pt ; margin-bottom: 0pt&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Set &lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Digital IO 7&lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt; on (5 should be off) to use speed 2 (&lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;aspeed 1&lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt; in Arduino, 2mm/sec as default)&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;p dir=&quot;ltr&quot; style=&quot;line-height: 1.2 ; text-indent: 36pt ; margin-top: 0pt ; margin-bottom: 0pt&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Set &lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt;Digital IO 6+7&lt;/span&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; vertical-align: baseline&quot;&gt; on (5 should be off) to retract&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12pt ; font-family: &amp;#34;roboto&amp;#34; , sans-serif ; color: rgb(29 , 28 , 29) ; background-color: rgb(248 , 248 , 248) ; vertical-align: baseline&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="-153" y="612" width="829" height="182" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
