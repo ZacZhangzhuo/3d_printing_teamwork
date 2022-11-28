@@ -3,17 +3,26 @@ import rtde_wrapper as rtde
 #standard imports
 import os
 import json
-import sys
+# import sys
 #import compas geometry dependencies
 from compas.geometry import Frame, Vector, Point, Transformation, Translation
 
+with open(r'simulation_visualization_fabrication\master_navigation_data.json', "r") as f:
+    data = json.load(f)
+
+origin = data["origin"]
+origin_x = data["origin_x"]
+origin_y = data["origin_y"]
+tcp = data["tcp"]
+
+    
 
 #########################################################
 # Define constant parameters
 MAX_SPEED = 50.00 #mm/s float
 MAX_ACCEL = 100.00 #mm/s2 float
 
-IP_ADDRESS = "192.168.10.10" #string with IP Address
+IP_ADDRESS = data["ip"]#string with IP Address
 ##########################################################
 
 # Define location of print data
@@ -53,12 +62,12 @@ for item in data:
 # Use the data to execute the printpath
 if __name__ == "__main__":
     # Create base frame with measured points
-    ORIGIN = Point(500,500,0)
-    XAXIS_PT = Point(500,500,0)
-    YAXIS_PT = Point(500,500,0)
+    ORIGIN = Point(origin[0],origin[1],origin[2])
+    XAXIS_PT = Point(origin_x[0],origin_x[1],origin_x[2])
+    YAXIS_PT = Point(origin_y[0],origin_y[1],origin_y[2])
     #Create a compas Frame
-    # base_frame = Frame.from_points(ORIGIN, XAXIS_PT, YAXIS_PT)
-    base_frame = Frame(Point(548.032, 552.647, -2.884), Vector(-1.000, -0.013, 0.002), Vector(0.013, -1.000, 0.003))
+    base_frame = Frame.from_points(ORIGIN, XAXIS_PT, YAXIS_PT)
+    # base_frame = Frame(Point(548.032, 552.647, -2.884), Vector(-1.000, -0.013, 0.002), Vector(0.013, -1.000, 0.003))
 
     # Transform all frames from slicing location to robot coordinate system
     T =  Transformation.from_frame_to_frame(Frame.worldXY(), base_frame)
@@ -69,7 +78,7 @@ if __name__ == "__main__":
     T =  Translation.from_vector([0,0,Z_OFFSET])
     frames = [f.transformed(T) for f in frames]
 
-    IP_ADDRESS = "127.0.0.1"
+    # IP_ADDRESS = "127.0.0.1"
     # Send all points using send_printpath function implemented in the RTDE Wrapper
     print(frames[0], radii[0])
     rtde.send_printpath(frames, velocities, MAX_ACCEL , radii, toggles, ip=IP_ADDRESS)

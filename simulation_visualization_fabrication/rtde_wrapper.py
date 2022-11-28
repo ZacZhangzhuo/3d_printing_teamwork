@@ -7,7 +7,7 @@ import threading
 from compas.geometry import Frame, Transformation, Translation, Vector, Point
 from compas.robots import Configuration
 import compas
-import psutil, sys, os
+# import psutil, sys, os
 
 
 def get_config(ip="127.0.0.1"):
