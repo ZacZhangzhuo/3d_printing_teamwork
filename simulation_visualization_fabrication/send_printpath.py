@@ -14,6 +14,7 @@ origin = data["origin"]
 origin_x = data["origin_x"]
 origin_y = data["origin_y"]
 tcp = data["tcp"]
+Z_OFFSET = data["offset_z"]
 
     
 
@@ -74,7 +75,6 @@ if __name__ == "__main__":
     frames = [f.transformed(T) for f in frames]
 
     # Move frames by a Z fine tuning parameter as required
-    Z_OFFSET = 0.75
     T =  Translation.from_vector([0,0,Z_OFFSET])
     frames = [f.transformed(T) for f in frames]
 
