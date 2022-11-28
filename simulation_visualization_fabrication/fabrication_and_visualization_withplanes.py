@@ -43,8 +43,8 @@ IO = data["io"]
 script += ur.set_tcp_by_angles(TCP[0], TCP[1], TCP[2], TCP[3], TCP[4], TCP[5])
 
 if send_debug_plane:
-    script += ur.set_digital_out(IO, True)
+    script += ur.set_digital_out(IO, False)
     for debug_plane in debug_planes:
         script += ur.move_l(rhino_to_robot_space(debug_plane+rg.Vector3d(0,0,Z_OFFSET)), DEBUG_ROBOT_ACC, DEBUG_ROBOT_VEL)
-    script += ur.set_digital_out(IO, False)
+    script += ur.set_digital_out(IO,True)
     send(script)
