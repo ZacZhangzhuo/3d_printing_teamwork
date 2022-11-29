@@ -52,7 +52,7 @@ def main():
     #          'cgal':    Very fast. Only for closed paths.
     #                     Requires additional installation (compas_cgal).
     # ==========================================================================
-    slicer = PlanarSlicer(compas_mesh, slicer_type="cgal", layer_height=5)
+    slicer = PlanarSlicer(compas_mesh, slicer_type="cgal", layer_height=1)
     slicer.slice_model()
 
     # ==========================================================================
@@ -100,8 +100,8 @@ def main():
     # Set fabrication-related parameters
     # ==========================================================================
     set_extruder_toggle(print_organizer, slicer)
-    add_safety_printpoints(print_organizer, z_hop=10.0)
-    set_linear_velocity_constant(print_organizer, v=10.0)
+    add_safety_printpoints(print_organizer, z_hop=100.0)
+    set_linear_velocity_constant(print_organizer, v=50.0)
     set_blend_radius(print_organizer, d_fillet=10)
 
     # ==========================================================================

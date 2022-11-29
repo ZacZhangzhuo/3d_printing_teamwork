@@ -1,6 +1,5 @@
-
+from compas.geometry import Frame
 planes = """
-
 O(1.00,0.00,0.00) Z(0.00,0.00,1.00)
 O(0.81,0.59,0.00) Z(0.00,0.00,1.00)
 O(0.31,0.95,0.00) Z(0.00,0.00,1.00)
@@ -13,10 +12,18 @@ O(0.31,-0.95,0.00) Z(0.00,0.00,1.00)
 O(0.81,-0.59,0.00) Z(0.00,0.00,1.00)
 
 """
+planes= planes.replace(" ","").replace("\n","")
+planes = planes.replace(")Z(", ",")
+# planes = planes.split("O(")
 
-planes = planes.split(")")
+print(planes)
 
-print(planes[4])
+locations = []
+for p in planes:  
+    if len(p)>1:
+        locations.append(Frame())
+        
+
 
 
 # for plane in planes:
