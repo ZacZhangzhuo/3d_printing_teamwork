@@ -20,8 +20,8 @@ Z_OFFSET = data["offset_z"]
 
 #########################################################
 # Define constant parameters
-MAX_SPEED = 50.00 #mm/s float
-MAX_ACCEL = 100.00 #mm/s2 float
+MAX_SPEED = 300.00 #mm/s float
+MAX_ACCEL = 300.00 #mm/s2 float
 
 IP_ADDRESS = data["ip"]#string with IP Address
 ##########################################################
