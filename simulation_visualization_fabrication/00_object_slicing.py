@@ -6,6 +6,9 @@ from compas_slicer.pre_processing import move_mesh_to_point
 from compas_slicer.slicers import PlanarSlicer
 from compas_slicer.post_processing import generate_brim
 from compas_slicer.post_processing import generate_raft
+
+
+
 from compas_slicer.post_processing import simplify_paths_rdp
 from compas_slicer.post_processing import seams_smooth
 from compas_slicer.print_organization import PlanarPrintOrganizer
