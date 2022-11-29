@@ -96,6 +96,9 @@ def main():
     print_organizer = PlanarPrintOrganizer(slicer)
     print_organizer.create_printpoints()
 
+
+    
+
     # ==========================================================================
     # Set fabrication-related parameters
     # ==========================================================================
