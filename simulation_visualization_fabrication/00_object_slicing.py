@@ -15,6 +15,7 @@ from compas_slicer.print_organization import PlanarPrintOrganizer
 from compas_slicer.print_organization import set_extruder_toggle
 from compas_slicer.print_organization import add_safety_printpoints
 from compas_slicer.print_organization import set_linear_velocity_constant
+from compas_slicer.print_organization import set_linear_velocity_per_layer
 from compas_slicer.print_organization import set_blend_radius
 from compas_slicer.utilities import save_to_json
 from compas_view2.app import App
@@ -106,9 +107,20 @@ def main():
     # ==========================================================================
     # Set fabrication-related parameters
     # ==========================================================================
+    
+    velocities = []
+
+    for i in range((slicer.number_of_layers)):
+        if i < 3:
+            velocities.append(10)
+        else:
+            velocities.append(200)
+
+    
     set_extruder_toggle(print_organizer, slicer)
     add_safety_printpoints(print_organizer, z_hop=100.0)
-    set_linear_velocity_constant(print_organizer, v=200.0)
+    # set_linear_velocity_constant(print_organizer, v=200.0)
+    set_linear_velocity_per_layer(print_organizer, velocities)
     set_blend_radius(print_organizer, d_fillet=10)
 
     # ==========================================================================
