@@ -31,7 +31,7 @@ logging.basicConfig(format='%(levelname)s-%(message)s', level=logging.INFO)
 # ==============================================================================
 DATA = os.path.join(os.path.dirname(__file__), 'data')
 OUTPUT_DIR = utils.get_output_directory(DATA)  # creates 'output' folder if it doesn't already exist
-MODEL = 'simple_vase_open_low_res.obj'
+MODEL = 'test-prints-axolotol.obj'
 
 
 def main():
@@ -61,7 +61,7 @@ def main():
     # ==========================================================================
     # NOTE: Typically you would want to use either a brim OR a raft,
     # however, in this example both are used to explain the functionality
-    generate_brim(slicer, layer_width=3.0, number_of_brim_offsets=4)
+    # generate_brim(slicer, layer_width=3.0, number_of_brim_offsets=4)
     # generate_raft(slicer,
     #               raft_offset=20,
     #               distance_between_paths=5,
