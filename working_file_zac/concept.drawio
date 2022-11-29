@@ -1,0 +1,124 @@
+<mxfile host="65bd71144e">
+    <diagram id="2RB3oQl5gByrssMU-2BE" name="Page-1">
+        <mxGraphModel dx="6616" dy="3084" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="2" target="4">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-57" y="66"/>
+                            <mxPoint x="153" y="66"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="&lt;font color=&quot;#d4d4d4&quot;&gt;&lt;span style=&quot;font-size: 18px&quot;&gt;Winding Geometry&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="-176" y="-59" width="238" height="76" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="3" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="3" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&#10;&#10;&lt;span style=&quot;color: rgb(212, 212, 212); font-size: 18px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; display: inline; float: none;&quot;&gt;Internal structure as bones&lt;/span&gt;&#10;&#10;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="-316" y="113" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="4" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="4" target="13">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="163" y="227"/>
+                            <mxPoint x="308" y="227"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="4" target="14">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="163" y="225"/>
+                            <mxPoint x="502" y="225"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="4" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&#10;&#10;&lt;span style=&quot;color: rgb(212, 212, 212); font-size: 18px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; display: inline; float: none;&quot;&gt;external welding surface as skins&lt;/span&gt;&#10;&#10;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="83" y="113" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="24">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1544.5" y="221" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="&lt;span style=&quot;color: rgb(212 , 212 , 212) ; font-family: , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;segoe wpc&amp;#34; , &amp;#34;segoe ui&amp;#34; , , &amp;#34;ubuntu&amp;#34; , &amp;#34;droid sans&amp;#34; , sans-serif ; font-size: 18px&quot;&gt;Demo1&lt;br&gt;&lt;br&gt;&amp;nbsp;flat surface with internal and external (Dim: 200mm&lt;/span&gt;&lt;em style=&quot;color: rgb(212 , 212 , 212) ; font-family: , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;segoe wpc&amp;#34; , &amp;#34;segoe ui&amp;#34; , , &amp;#34;ubuntu&amp;#34; , &amp;#34;droid sans&amp;#34; , sans-serif ; font-size: 18px&quot;&gt;200mm)&amp;nbsp;&lt;/em&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="1404.5" y="-59" width="280" height="169" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&#10;&#10;&lt;span style=&quot;color: rgb(212, 212, 212); font-size: 18px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; display: inline; float: none;&quot;&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;bar bones&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&#10;&#10;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="-469" y="258" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&#10;&#10;&lt;span style=&quot;color: rgb(212, 212, 212); font-size: 18px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; display: inline; float: none;&quot;&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;mesh formwork&lt;/span&gt;&#10;&#10;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="-271" y="261" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&#10;&#10;&lt;span style=&quot;color: rgb(212, 212, 212); font-size: 18px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; display: inline; float: none;&quot;&gt;cotton winding patterns&lt;/span&gt;&#10;&#10;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="34" y="258" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;span style=&quot;color: rgb(212 , 212 , 212) ; font-family: , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;segoe wpc&amp;#34; , &amp;#34;segoe ui&amp;#34; , , &amp;#34;ubuntu&amp;#34; , &amp;#34;droid sans&amp;#34; , sans-serif ; font-size: 18px&quot;&gt;voronoi&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="228" y="261" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&#10;&#10;&lt;span style=&quot;color: rgb(212, 212, 212); font-size: 18px; font-style: normal; font-weight: 400; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; display: inline; float: none;&quot;&gt;chainmail&lt;/span&gt;&#10;&#10;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="422" y="258" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Design" style="text;strokeColor=none;fillColor=none;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=15;fontColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="-82" y="-113" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Logic" style="text;strokeColor=none;fillColor=none;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=15;fontColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1502" y="-113" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="24" target="26">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1545.5" y="550"/>
+                            <mxPoint x="1327.5" y="550"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="24" target="28">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1545.5" y="550"/>
+                            <mxPoint x="1823.5" y="550"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="&lt;span&gt;&#9;&lt;/span&gt;&lt;br&gt;&lt;em style=&quot;text-align: center ; color: rgb(212 , 212 , 212) ; font-size: 18px&quot;&gt;Demo2&lt;br&gt;&lt;/em&gt;&lt;br&gt;Try:&lt;br&gt;&lt;span&gt;&#9;&lt;/span&gt;&lt;em style=&quot;color: rgb(212 , 212 , 212) ; font-size: 18px&quot;&gt;&lt;span&gt;&#9;&lt;/span&gt;Three bar bones with simple surface pattern&lt;br&gt;&lt;span&gt;&#9;&lt;/span&gt;or&lt;br&gt;&lt;/em&gt;&lt;span style=&quot;color: rgb(212 , 212 , 212) ; font-size: 18px&quot;&gt;&lt;span&gt;&#9;&lt;/span&gt;Mesh formwork&amp;nbsp;&lt;/span&gt;&lt;em style=&quot;color: rgb(212 , 212 , 212) ; font-size: 18px&quot;&gt;with simple surface pattern&lt;/em&gt;&lt;br&gt;&lt;em style=&quot;color: rgb(212 , 212 , 212) ; font-size: 18px&quot;&gt;&lt;br&gt;&lt;/em&gt;&lt;em style=&quot;text-align: center ; color: rgb(212 , 212 , 212) ; font-size: 18px&quot;&gt;&amp;nbsp;(Dim: 200mm&lt;/em&gt;&lt;span style=&quot;text-align: center ; color: rgb(212 , 212 , 212) ; font-size: 18px&quot;&gt;200mm, Height: 200mm)&lt;/span&gt;&lt;em style=&quot;color: rgb(212 , 212 , 212) ; font-size: 18px&quot;&gt;&lt;br&gt;&lt;/em&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1402.5" y="170" width="283" height="263" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="26" target="31">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="&lt;em&gt;&lt;font color=&quot;#d4d4d4&quot;&gt;&lt;span style=&quot;font-size: 18px&quot;&gt;Does the robot collide?&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/em&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;align=left;fontFamily=Helvetica;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1178.5" y="537" width="283" height="77" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;html=1;labelBackgroundColor=default;fontFamily=Helvetica;fontSize=15;fontColor=default;endArrow=open;endFill=0;strokeColor=default;" edge="1" parent="1" source="28" target="32">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="&lt;em&gt;&lt;font color=&quot;#d4d4d4&quot;&gt;&lt;span style=&quot;font-size: 18px&quot;&gt;Does the material stick on the surface?&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/em&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;align=left;fontFamily=Helvetica;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1674.5" y="544" width="283" height="77" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Think about path planing" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1145" y="678" width="350" height="63" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Think about arduino / Robotic rotating platform&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=15;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="1641" y="678" width="350" height="63" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
