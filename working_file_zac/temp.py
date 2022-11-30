@@ -5,10 +5,12 @@ from mola import module_rhino
 from ghpythonlib import treehelpers
 import csv
 
-with open(r'C:\Users\zac\Desktop\positions.csv')as f:
-    tValues = list(csv.reader(f))
-
-Values = tValues
+Values = []
+out=open(r"C:\Users\zac\Desktop\positions.csv",'r')
+read_csv=csv.reader(out,dialect='excel')
+for line in read_csv:     #循环输出csv中的所有数据
+    Values.append(int(line[0]))
+out.close()
 
 
 dim = int(math.floor(len(Values) ** (1 / 3) + 0.0001))

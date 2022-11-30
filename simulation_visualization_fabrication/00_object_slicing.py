@@ -110,17 +110,17 @@ def main():
     
     velocities = []
 
-    for i in range((slicer.number_of_layers)):
-        if i < 3:
-            velocities.append(10)
-        else:
-            velocities.append(200)
+    # for i in range((slicer.number_of_layers)):
+    #     if i < 3:
+    #         velocities.append(10)
+    #     else:
+    #         velocities.append(200)
 
     
     set_extruder_toggle(print_organizer, slicer)
-    add_safety_printpoints(print_organizer, z_hop=100.0)
-    # set_linear_velocity_constant(print_organizer, v=200.0)
-    set_linear_velocity_per_layer(print_organizer, velocities)
+    add_safety_printpoints(print_organizer, z_hop=50.0)
+    set_linear_velocity_constant(print_organizer, v=50.0)
+    # set_linear_velocity_per_layer(print_organizer, velocities)
     set_blend_radius(print_organizer, d_fillet=10)
 
     # ==========================================================================
