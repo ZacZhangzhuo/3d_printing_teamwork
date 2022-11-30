@@ -64,7 +64,7 @@ def main():
     # ==========================================================================
     # NOTE: Typically you would want to use either a brim OR a raft,
     # however, in this example both are used to explain the functionality
-    # generate_brim(slicer, layer_width=3.0, number_of_brim_offsets=4)
+    generate_brim(slicer, layer_width=3.0, number_of_brim_offsets=4)
     # generate_raft(slicer,
     #               raft_offset=20,
     #               distance_between_paths=5,
@@ -93,7 +93,7 @@ def main():
     # ==========================================================================
     # Save slicer data to JSON
     # ==========================================================================
-    save_to_json(slicer.to_data(), OUTPUT_DIR, 'slicer_data.json')
+    # save_to_json(slicer.to_data(), OUTPUT_DIR, 'slicer_data.json')
 
     # ==========================================================================
     # Initializes the PlanarPrintOrganizer and creates PrintPoints
@@ -108,7 +108,7 @@ def main():
     # Set fabrication-related parameters
     # ==========================================================================
     
-    velocities = []
+    # velocities = []
 
     # for i in range((slicer.number_of_layers)):
     #     if i < 3:
@@ -118,8 +118,8 @@ def main():
 
     
     set_extruder_toggle(print_organizer, slicer)
-    add_safety_printpoints(print_organizer, z_hop=50.0)
-    set_linear_velocity_constant(print_organizer, v=50.0)
+    add_safety_printpoints(print_organizer, z_hop=5.0)
+    set_linear_velocity_constant(print_organizer, v=100.0)
     # set_linear_velocity_per_layer(print_organizer, velocities)
     set_blend_radius(print_organizer, d_fillet=10)
 
