@@ -1,5 +1,6 @@
 import Rhino.Geometry as rg
 import ghpythonlib
+import math
 
 
 layer_cnt = int(brep_height/layer_thickness)
@@ -10,6 +11,8 @@ for i, value in enumerate(graph_val):
     #use the rg.vector to create the world xy origin, but not have it exist relation to the origin
     center_plane = rg.Plane(center_pt, rg.Vector3d.XAxis, rg.Vector3d.YAxis)
     contour = rg.Circle(center_plane, radius*graph_val[i])
+    if i %2 == 0:
+        contour.Rotate(math.radians(i*rotation_angle),rg.Vector3d.ZAxis)
     contours.append(contour)
 
 pts= []
@@ -24,16 +27,6 @@ for c in contours:
         cont_pts.append(pt)
     pts.append(cont_pts)
 
-if shift:
-    new_pts = []
-    k = 0
-    for list in pts:
-        k += 1
-        if k > len(list):
-            k = j - (len(list))
-        list = list[k:] + list[:k]
-        new_pts.append(list)
-    pts=new_pts
 poles = []
 
 for i in range(pole_count):
@@ -43,7 +36,7 @@ for i in range(pole_count):
         pole_rad= rg.Circle(pole_center_plane, pole_rad_val*(0.5*pole_graph[j]))
         joe = rg.ArcCurve(pole_rad)
         temp.append(joe)
-    pole = rg.Brep.CreateFromLoft(temp, rg.Point3d.Unset,rg.Point3d.Unset,rg.LoftType(0),False)
+    pole = rg.Brep.CreateFromLoft(temp, rg.Point3d.Unset,rg.Point3d.Unset,rg.LoftType(1),False)
     poles.append(pole)
 
 # # str_planes = []
