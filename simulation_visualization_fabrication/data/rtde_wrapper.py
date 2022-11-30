@@ -127,8 +127,10 @@ def send_printpath(frames, velocities, accelerations, radii, toggles, ip = '127.
                         set_digital_io(5, True, ip)
                     cur_time = time.time()
         print('done')
+        ur_c.moveJ([1.213, -0.814, -1.809, -2.038, 1.584, -0.602], 0.1, 0.1, 0)
         set_digital_io(5, True, ip)
     except KeyboardInterrupt:
+        ur_c.moveJ([1.213, -0.814, -1.809, -2.038, 1.584, -0.602], 0.1, 0.1, 0)
         safe_acc = 0.1
         ur_c.stopL(safe_acc)
         set_digital_io(5, True, ip)
