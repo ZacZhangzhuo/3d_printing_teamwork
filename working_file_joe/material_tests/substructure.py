@@ -24,7 +24,16 @@ for c in contours:
         cont_pts.append(pt)
     pts.append(cont_pts)
 
-
+if shift:
+    new_pts = []
+    k = 0
+    for list in pts:
+        k += 1
+        if k > len(list):
+            k = j - (len(list))
+        list = list[k:] + list[:k]
+        new_pts.append(list)
+    pts=new_pts
 poles = []
 
 for i in range(pole_count):
