@@ -1,0 +1,18 @@
+[
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "3ad0fe4e-cb3a-40e2-a5b8-241c4fa4a427", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                0.0, 
+                0.0, 
+                0.0
+            ]
+        }
+    }
+]

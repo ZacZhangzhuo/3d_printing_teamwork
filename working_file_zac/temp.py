@@ -1,5 +1,6 @@
 
 import math
+from compas_slicer import PrintPoint
 import mola
 from mola import module_rhino
 from ghpythonlib import treehelpers
