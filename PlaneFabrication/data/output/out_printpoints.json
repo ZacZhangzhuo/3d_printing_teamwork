@@ -1,0 +1,162 @@
+[
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "eb209b62-009d-4deb-826e-c1c3bdfd6a2c", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                16.922076427049024, 
+                -78.415590475990882, 
+                0.0
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "9b9b6de6-54ed-4b10-b722-14eafe62717c", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                58.779398003969568, 
+                -45.615616432376747, 
+                0.0
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "fba068c8-2393-47a2-84a4-66692f33a509", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                73.363341282622841, 
+                5.5232393031493228, 
+                0.0
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "9a7d15cf-17c5-4c2b-b833-135937b447b5", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                55.103336584761855, 
+                55.467663195880171, 
+                0.0
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "123295c4-32d7-4b03-8d58-fe7a6465fee7", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                10.97408317736685, 
+                85.140592856254329, 
+                0.0
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "7933d115-fdb7-45f7-902f-60af71c9892d", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                -42.168541828717331, 
+                83.20797271089134, 
+                0.0
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "512de9e6-bee6-42db-936a-68260f589b41", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                -84.025863405637864, 
+                50.407998667277255, 
+                0.0
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "7588c7d7-d830-4e69-aecb-bfbd600a9a67", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                -98.609806684291115, 
+                -0.7308570682487936, 
+                0.0
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "7b56ca77-141c-4fdd-8712-0f6bef7fd671", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                -80.349801986430265, 
+                -50.675280960979613, 
+                0.0
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "1d5c8c7a-bcd8-40a9-ac4a-70425ea541f4", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                -36.220548579035196, 
+                -80.348210621353871, 
+                0.0
+            ]
+        }
+    }
+]
