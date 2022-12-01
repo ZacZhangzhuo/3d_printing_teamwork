@@ -22,13 +22,13 @@ Z_OFFSET = data["offset_z"]
 
 #########################################################
 # Define constant parameters
-MAX_SPEED = 300.00  # mm/s float
+MAX_SPEED = 50.00  # mm/s float
 MAX_ACCEL = 50.00  # mm/s2 float
 IP_ADDRESS = data["ip"]  # string with IP Address
 ##########################################################
 
 # Define location of print data
-# change .json file path and name as required
+# change .json file path and name as required   
 DATA_OUTPUT_FOLDER = os.path.join(os.path.dirname(__file__), "data", "output")
 PRINT_FILE_NAME = "out_printpoints.json"
 
@@ -45,10 +45,9 @@ for p in planes:
     frames.append(Frame.from_plane(p))
 
 
-velocities = [10] * (len(frames)+1)
-radii = [10] * (len(frames)+1)
-toggles = [True] *( len(frames)+1)
-
+velocities = [300] *len(frames)
+radii = [10] * len(frames)
+toggles = [True]*(len(frames))
 # Go through JSON and copy data to lists
 # for item in data:
 # Read frame data
@@ -84,5 +83,4 @@ if __name__ == "__main__":
 
     # IP_ADDRESS = "127.0.0.1"
     # Send all points using send_printpath function implemented in the RTDE Wrapper
-    print(frames[0], radii[0])
     rtde.send_printpath(frames, velocities, MAX_ACCEL, radii, toggles, ip=IP_ADDRESS)
