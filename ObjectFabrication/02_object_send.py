@@ -7,7 +7,7 @@ import json
 #import compas geometry dependencies
 from compas.geometry import Frame, Vector, Point, Transformation, Translation
 
-with open(r'simulation_visualization_fabrication\data\master_navigation_data.json', "r") as f:
+with open(r'ObjectFabrication\data\master_navigation_data.json', "r") as f:
     data = json.load(f)
 
 origin = data["origin"]

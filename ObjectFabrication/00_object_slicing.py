@@ -114,15 +114,9 @@ def main():
     #     else:
     #         velocities.append(200)
 
-    
     set_extruder_toggle(print_organizer, slicer)
-<<<<<<< HEAD
     # add_safety_printpoints(print_organizer, z_hop=50.0)
     set_linear_velocity_constant(print_organizer, v=50.0)
-=======
-    add_safety_printpoints(print_organizer, z_hop=5.0)
-    set_linear_velocity_constant(print_organizer, v=100.0)
->>>>>>> 4eb5ae0993802ce34bb2bfff0974f0415c4fbd67
     # set_linear_velocity_per_layer(print_organizer, velocities)
     set_blend_radius(print_organizer, d_fillet=10)
 
