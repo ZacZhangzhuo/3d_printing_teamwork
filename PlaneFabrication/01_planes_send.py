@@ -43,9 +43,11 @@ planes = json_load(r"PlaneFabrication\data\output\out_printpoints.json")
 frames = []
 for p in planes:
     frames.append(Frame.from_plane(p))
-velocities = [10] * len(frames)
-radii = [10] * len(frames)
-toggles = [True] * len(frames)
+
+
+velocities = [10] * (len(frames)+1)
+radii = [10] * (len(frames)+1)
+toggles = [True] *( len(frames)+1)
 
 # Go through JSON and copy data to lists
 # for item in data:
