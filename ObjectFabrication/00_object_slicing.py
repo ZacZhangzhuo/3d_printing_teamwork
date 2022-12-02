@@ -32,7 +32,7 @@ logging.basicConfig(format='%(levelname)s-%(message)s', level=logging.INFO)
 # ==============================================================================
 DATA = os.path.join(os.path.dirname(__file__), 'data')
 OUTPUT_DIR = utils.get_output_directory(DATA)  # creates 'output' folder if it doesn't already exist
-MODEL = 'slicing.obj'
+MODEL = 'substructure_test2.obj'
 
 
 def main():
@@ -62,7 +62,7 @@ def main():
     # ==========================================================================
     # NOTE: Typically you would want to use either a brim OR a raft,
     # however, in this example both are used to explain the functionality
-    generate_brim(slicer, layer_width=3.0, number_of_brim_offsets=4)
+    # generate_brim(slicer, layer_width=3.0, number_of_brim_offsets=4)
     # generate_raft(slicer,
     #               raft_offset=20,
     #               distance_between_paths=5,
@@ -116,7 +116,7 @@ def main():
 
     set_extruder_toggle(print_organizer, slicer)
     # add_safety_printpoints(print_organizer, z_hop=50.0)
-    set_linear_velocity_constant(print_organizer, v=50.0)
+    set_linear_velocity_constant(print_organizer, v=100.0)
     # set_linear_velocity_per_layer(print_organizer, velocities)
     set_blend_radius(print_organizer, d_fillet=10)
 
