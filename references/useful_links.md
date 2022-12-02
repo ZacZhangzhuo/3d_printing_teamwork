@@ -31,6 +31,32 @@ https://oxman.com/
 https://glform.com/exhibits/expanding-the-gap/
 ![](useful_links/useful_links_2022-11-16-15-41-64.png)
 
+![](useful_links/useful_links_2022-12-02-09-41-39.png)
 
+![](useful_links/useful_links_2022-12-02-09-41-58.png)
 
+![](useful_links/useful_links_2022-12-02-09-42-04.png)
 
+![](useful_links/useful_links_2022-12-02-09-42-38.png)
+
+![](useful_links/useful_links_2022-12-02-09-42-45.png)
+
+![](useful_links/useful_links_2022-12-02-09-42-49.png)
+
+![](useful_links/useful_links_2022-12-02-09-42-57.png)
+
+![](useful_links/useful_links_2022-12-02-09-43-02.png)
+
+![](useful_links/useful_links_2022-12-02-09-43-13.png)
+
+![](useful_links/useful_links_2022-12-02-09-43-18.png)
+
+![](useful_links/useful_links_2022-12-02-09-43-23.png)
+
+![](useful_links/useful_links_2022-12-02-09-43-45.png)
+
+![](useful_links/useful_links_2022-12-02-09-44-58.png)
+
+![](useful_links/useful_links_2022-12-02-09-45-01.png)
+
+![](useful_links/useful_links_2022-12-02-09-45-53.png)
