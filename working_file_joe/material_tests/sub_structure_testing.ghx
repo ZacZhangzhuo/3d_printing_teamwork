@@ -48,10 +48,10 @@
             <chunk name="Projection">
               <items count="2">
                 <item name="Target" type_name="gh_drawing_point" type_code="30">
-                  <X>-1923</X>
-                  <Y>-2842</Y>
+                  <X>-6596</X>
+                  <Y>-7965</Y>
                 </item>
-                <item name="Zoom" type_name="gh_single" type_code="5">0.7676572</item>
+                <item name="Zoom" type_name="gh_single" type_code="5">2.394607</item>
               </items>
             </chunk>
             <chunk name="Views">
@@ -27414,9 +27414,8 @@ for list in pole_crvs:
               </items>
               <chunks count="1">
                 <chunk name="Container">
-                  <items count="8">
+                  <items count="7">
                     <item name="Description" type_name="gh_string" type_code="10">Contains a collection of generic geometry</item>
-                    <item name="Hidden" type_name="gh_bool" type_code="1">true</item>
                     <item name="InstanceGuid" type_name="gh_guid" type_code="9">9b38a6b6-63d5-44f4-bae8-eea1e8b67da1</item>
                     <item name="Name" type_name="gh_string" type_code="10">Geometry</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Geometry</item>
@@ -28043,7 +28042,7 @@ Parabolic distribution</item>
                         <item name="Max" type_name="gh_double" type_code="6">200</item>
                         <item name="Min" type_name="gh_double" type_code="6">0</item>
                         <item name="SnapCount" type_name="gh_int32" type_code="3">0</item>
-                        <item name="Value" type_name="gh_double" type_code="6">15</item>
+                        <item name="Value" type_name="gh_double" type_code="6">12</item>
                       </items>
                     </chunk>
                   </chunks>
@@ -28290,6 +28289,7 @@ Perlin noise distribution
 Perlin noise distribution
 Perlin noise distribution
 Perlin noise distribution
+Perlin noise distribution
 Perlin noise distribution</item>
                     <item name="InstanceGuid" type_name="gh_guid" type_code="9">dd781343-43dc-4243-a1fa-75992561186d</item>
                     <item name="Name" type_name="gh_string" type_code="10">Graph Mapper</item>
@@ -28328,7 +28328,7 @@ Perlin noise distribution</item>
                         </chunk>
                         <chunk name="Graph">
                           <items count="7">
-                            <item name="amplitude" type_name="gh_double" type_code="6">0.49954319000244141</item>
+                            <item name="amplitude" type_name="gh_double" type_code="6">0.19510722160339355</item>
                             <item name="container_id" type_name="gh_guid" type_code="9">3507a8f5-041d-4e91-94d1-2c309efc6450</item>
                             <item name="container_name" type_name="gh_string" type_code="10">Perlin</item>
                             <item name="decay" type_name="gh_double" type_code="6">0.093239545822143555</item>
@@ -29115,7 +29115,7 @@ Perlin noise distribution</item>
                         <item name="Max" type_name="gh_double" type_code="6">20</item>
                         <item name="Min" type_name="gh_double" type_code="6">0</item>
                         <item name="SnapCount" type_name="gh_int32" type_code="3">0</item>
-                        <item name="Value" type_name="gh_double" type_code="6">0</item>
+                        <item name="Value" type_name="gh_double" type_code="6">5</item>
                       </items>
                     </chunk>
                   </chunks>
@@ -30729,8 +30729,9 @@ for list in edge_pts:
               </items>
               <chunks count="1">
                 <chunk name="Container">
-                  <items count="7">
+                  <items count="8">
                     <item name="Description" type_name="gh_string" type_code="10">Contains a collection of generic geometry</item>
+                    <item name="Hidden" type_name="gh_bool" type_code="1">true</item>
                     <item name="InstanceGuid" type_name="gh_guid" type_code="9">706cb6e1-5e17-4344-bb17-075e923e7cbd</item>
                     <item name="Name" type_name="gh_string" type_code="10">Geometry</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Geometry</item>
