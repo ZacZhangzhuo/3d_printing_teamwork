@@ -46,7 +46,7 @@ for p in planes:
 
 
 velocities = [300] *len(frames)
-radii = [10] * len(frames)
+radii = [0] * len(frames)
 toggles = [True]*(len(frames))
 # Go through JSON and copy data to lists
 # for item in data:
