@@ -84,3 +84,10 @@ if __name__ == "__main__":
     # IP_ADDRESS = "127.0.0.1"
     # Send all points using send_printpath function implemented in the RTDE Wrapper
     rtde.send_printpath(frames, velocities, MAX_ACCEL, radii, toggles, ip=IP_ADDRESS)
+
+
+
+
+
+
+
