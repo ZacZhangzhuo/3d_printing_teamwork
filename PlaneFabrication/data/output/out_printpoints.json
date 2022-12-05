@@ -1,1 +1,130 @@
-[]
+[
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "13613c1e-e4bb-4160-a0a8-ef5e24c0164c", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                106.0, 
+                33.0, 
+                -0.25
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "b745e848-ad4b-4c03-a8c5-a21c41487c28", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                106.0, 
+                -33.0, 
+                -0.25
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "a967cde5-6547-47ed-86f8-214feca9c4dc", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                40.0, 
+                -33.0, 
+                -0.25
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "d8c8d7e7-40fa-422c-8b15-63b843444be0", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                40.0, 
+                33.0, 
+                -0.25
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "d3b3963e-688b-4ea7-a25e-0bdb1b266d80", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                -48.0, 
+                33.0, 
+                -0.25
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "7cfdf7f1-725c-4d33-85b6-e930fa8d9e70", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                -114.0, 
+                33.0, 
+                -0.25
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "52229eb4-984c-436f-92fe-1bf417147758", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                -114.0, 
+                -33.0, 
+                -0.25
+            ]
+        }
+    }, 
+    {
+        "dtype": "compas.geometry/Plane", 
+        "guid": "f2671923-2abb-4da4-a8c3-4869b3b948a9", 
+        "value": {
+            "normal": [
+                0.0, 
+                0.0, 
+                1.0
+            ], 
+            "point": [
+                -48.0, 
+                -33.0, 
+                -0.25
+            ]
+        }
+    }
+]

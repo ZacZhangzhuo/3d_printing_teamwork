@@ -49,12 +49,12 @@ for p in planes:
 velocities = [100] *len(frames)
 radii = [0] * len(frames)
 toggles = []
-# for t in range(len(frames)):
-#     if t % 11 == 0:
-#         toggles.append(1)
-#     else:
-#         toggles.append(0)
-toggles = [0,0,0,2,0,0,0,0]
+for t in range(len(frames)):
+    if t % 11 == 0:
+        toggles.append(1)
+    else:
+        toggles.append(0)
+#toggles = [0,0,0,2,0,0,0,0]
 #toggles = [True]*(len(frames))
 # Go through JSON and copy data to lists
 # for item in data:
