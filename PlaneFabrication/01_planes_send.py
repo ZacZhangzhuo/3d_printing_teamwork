@@ -1,5 +1,6 @@
 # import rtde wrapper from current directory
-from data import rtde_wrapper as rtde
+from data import rtde_wrapper_2 as rtde
+#from data import rtde_wrapper as rtde
 
 # standard imports
 import os
@@ -45,9 +46,16 @@ for p in planes:
     frames.append(Frame.from_plane(p))
 
 
-velocities = [300] *len(frames)
+velocities = [100] *len(frames)
 radii = [0] * len(frames)
-toggles = [True]*(len(frames))
+toggles = []
+# for t in range(len(frames)):
+#     if t % 11 == 0:
+#         toggles.append(1)
+#     else:
+#         toggles.append(0)
+toggles = [0,0,0,2,0,0,0,0]
+#toggles = [True]*(len(frames))
 # Go through JSON and copy data to lists
 # for item in data:
 # Read frame data
