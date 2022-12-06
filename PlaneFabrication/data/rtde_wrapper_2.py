@@ -28,7 +28,7 @@ def set_tcp_offset(pose, ip = "127.0.0.1"):
 def move_to_joints(config, speed, accel, nowait, ip="127.0.0.1"):
     # speed rad/s, accel rad/s^2, nowait bool
     ur_c = RTDEControl(ip)
-    ur_c.moveJ(config.joint_values, speed, accel, nowait)
+    ur_c.moveJ(config, speed, accel, nowait)
 
 def movel_to_joints(config, speed, accel, nowait, ip="127.0.0.1"):
     # speed rad/s, accel rad/s^2, nowait bool
@@ -167,12 +167,14 @@ def get_tcp_frame(ip="127.0.0.1"):
     frame = Frame.from_axis_angle_vector(tcp[3:], point=tcp[0:3])
     return frame
 
-def move_trajectory(configurations, speed, accel, blend, ur_c):
+def move_trajectory(configurations, speed, accel, blend,ip):
+    ur_c = RTDEControl(ip)
+    print('hi')
     path = []
     for config in configurations:
-        path.append(config.joint_values + [speed, accel, blend])
+        path.append(config + [speed, accel, blend])
     if len(path):
-        ur_c.moveJ(path)
+        ur_c.moveJ(path, True)
 
 def start_teach_mode(ip="127.0.0.1"):
     ur_c = RTDEControl(ip)

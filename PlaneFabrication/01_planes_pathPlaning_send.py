@@ -1,4 +1,4 @@
-from data import rtde_wrapper_2 as rtde
+from data import rtde_wrapper as rtde
 import os
 import json
 from compas.geometry import Frame, Vector, Point, Transformation, Translation
@@ -37,9 +37,24 @@ configs = json_load(r"PlaneFabrication\data\output\out_printpoints.json")
 velocities = [0.01] * len(configs)
 acc = [0.01] * len(configs)
 wait = [2] * len(configs)
+blend = [0] * len(configs)
 
+
+c = []
 for i in range(len(configs)):
-    rtde.move_to_joints(configs[i], velocities[i], acc[i], wait[i], IP_ADDRESS)
+    # Configuration.joint_dict
+    c.append(
+        [
+            configs[i].joint_dict["shoulder_pan_joint"],
+            configs[i].joint_dict["shoulder_lift_joint"],
+            configs[i].joint_dict["elbow_joint"],
+            configs[i].joint_dict["wrist_1_joint"],
+            configs[i].joint_dict["wrist_2_joint"],
+            configs[i].joint_dict["wrist_3_joint"],
+        ]
+    )
+trajectory = rtde.send_configs(c, .01, .01, 0.05,toggles= False , ip = IP_ADDRESS)
+# rtde.move_to_joints(c, velocities[i], acc[i], False, IP_ADDRESS)
 
 
 # toggles = []

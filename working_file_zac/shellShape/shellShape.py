@@ -4,26 +4,32 @@ import math
 # Curves = [rg.Curve()]
 # Variables = [10]
 
-
 def OrientPlane(plane):
-    xAxis = copy.copy(plane.XAxis)
-    xAxis.Transform(rg.Transform.ProjectAlong(rg.Plane.WorldXY, plane.YAxis))
-    plane.Transform(rg.Transform.Rotation(plane.XAxis, xAxis, plane.Origin))
-    if plane.YAxis.Z < 0:
-        plane = rg.Plane(plane.Origin, -plane.XAxis, -plane.YAxis)
-    return plane
+    zAxis = plane.ZAxis
+    if zAxis.Z < 0: zAxis = -zAxis
+    outPlane = rg.Plane(plane.Origin, zAxis)
+    xAxis = copy.copy(outPlane.XAxis)
+    xAxis.Transform(rg.Transform.ProjectAlong(rg.Plane.WorldXY, outPlane.YAxis))
+    outPlane.Transform(rg.Transform.Rotation(outPlane.XAxis, xAxis, outPlane.Origin))
+    if outPlane.YAxis.Z <0 : outPlane = rg.Plane(outPlane.Origin, -outPlane.XAxis, -outPlane.YAxis)
+    return outPlane
+
 
 layerHight = 1
-divideLength = 5
+divideLength = 20
+
 
 #Get layer number
 sliceNumbers = []
 greatestNumber=0
 for i,c in enumerate(Curves):
-    pt1 = c.PointAt(0)
-    pt0 = copy.copy(pt1)
-    scale = rg.Transform.Scale(rg.Point3d.Origin, Variables[i])
-    pt1.Transform(scale)
+        
+    pt0 = c.PointAt(0)
+    pt1 = copy.copy(c)
+    # scale = rg.Transform.Scale(rg.Point3d.Origin, )
+    pt1.Scale(Variables[i])
+    pt1 =pt1.PointAt(0)
+
     layerNumber = math.ceil(pt0.DistanceTo(pt1)/layerHight)
     sliceNumbers.append(layerNumber)
 
@@ -48,8 +54,12 @@ for i in range(int(greatestNumber)):
                 plane.Transform(move)
                 planes.append(plane)
 
+# planes = [planes[0]]
 
+outPlanes = []
 for p in planes: 
-    p = OrientPlane(p)
+    
+    outPlanes.append( OrientPlane(p))
+    print(p.ZAxis.Z)
 
-outTemp = planes
+Planes = outPlanes
