@@ -5,6 +5,8 @@ from compas.geometry import Frame, Vector, Point, Transformation, Translation
 from compas.data import json_load
 from compas.robots import Configuration
 import math
+from rtde_control import RTDEControlInterface as RTDEControl
+
 
 with open(r"PlaneFabrication\data\master_navigation_data.json", "r") as f:
     data = json.load(f)
@@ -34,8 +36,8 @@ print("Print data loaded :", os.path.join(DATA_OUTPUT_FOLDER, PRINT_FILE_NAME))
 # Define print data containers as empty lists
 configs = json_load(r"PlaneFabrication\data\output\out_printpoints.json")
 
-velocities = [0.01] * len(configs)
-acc = [0.01] * len(configs)
+velocities = [0.1] * len(configs)
+acc = [0.1] * len(configs)
 wait = [2] * len(configs)
 blend = [0] * len(configs)
 
@@ -53,8 +55,12 @@ for i in range(len(configs)):
             configs[i].joint_dict["wrist_3_joint"],
         ]
     )
-trajectory = rtde.send_configs(c, .01, .01, 0.05,toggles= False , ip = IP_ADDRESS)
-# rtde.move_to_joints(c, velocities[i], acc[i], False, IP_ADDRESS)
+    # print(c)
+# rtde.send_configs(c, .1, .1, 0.001,toggles= False , ip = IP_ADDRESS)
+
+
+ur_c = RTDEControl(IP_ADDRESS)
+ur_c.moveJ([0.85,-1.5,-2.5,0.7,1.5,3], 0.1, 0.1, 0) #! Configuration_2
 
 
 # toggles = []
