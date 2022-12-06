@@ -128,53 +128,15 @@ def send_printpath(frames, velocities, accelerations, radii, toggles, ip = '127.
                     cur_time = time.time()
         print('done')
         set_digital_io(5, True, ip)
-        ur_c.moveJ([1, -0.5, -1.5, -2, 1.5, 0], 0.1, 0.1, 0)
+        ur_c.moveJ([1.213, -0.814, -1.809, -2.038, 1.584, -0.602], 0.1, 0.1, 0)
     except KeyboardInterrupt:
         set_digital_io(5, True, ip)
-        ur_c.moveJ([1, -0.5, -1.5, -2, 1.5, 0], 0.1, 0.1, 0)
+        ur_c.moveJ([1.213, -0.814, -1.809, -2.038, 1.584, -0.602], 0.1, 0.1, 0)
         safe_acc = 0.1
         ur_c.stopL(safe_acc)
         ur_c.stopScript()
         exit()
 
-def send_configs(configs, velocities, accelerations, radii, toggles, ip = '127.0.0.1'):
-    #if no list for accel provided, create a list for it with values repeated
-    # if isinstance(accelerations,float):
-    #     accelerations = [accelerations]*len(configs)
-    # if isinstance(velocities,float):
-    #     velocities = [velocities]*len(configs)
-    if isinstance(toggles,bool):
-        toggles = [toggles]*len(configs)
-    ur_c = RTDEControl(ip)
-    exec = move_trajectory(configs, velocities, accelerations, radii, ur_c= ur_c)
-    waypoint = -1 #initial waypoint
-    cur_time = time.time()
-    change_toggle = False
-    try:
-        while ur_c.getAsyncOperationProgress() >= 0:
-            new_waypoint = ur_c.getAsyncOperationProgress() #counter index
-            if new_waypoint != waypoint:
-                counter = new_waypoint-1
-                if toggles[counter] != toggles[counter-1] or counter == 0:
-                    change_toggle = True
-                waypoint = new_waypoint
-                print(str(counter/len(configs)) + "%")
-                if  change_toggle:
-                    if toggles[counter]:
-                        turn_extrusion_on(speed = 0,ip= ip)
-                    else:
-                        set_digital_io(5, True, ip)
-                    cur_time = time.time()
-        print('done')
-        set_digital_io(5, True, ip)
-        ur_c.moveJ([1, -0.5, -1.5, -2, 1.5, 0], 0.1, 0.1, 0)
-    except KeyboardInterrupt:
-        set_digital_io(5, True, ip)
-        ur_c.moveJ([1, -0.5, -1.5, -2, 1.5, 0], 0.1, 0.1, 0)
-        safe_acc = 0.1
-        ur_c.stopL(safe_acc)
-        ur_c.stopScript()
-        exit()
 
 def stopL(accel, ip = "127.0.0.1"):
     ur_c = RTDEControl(ip)
@@ -198,13 +160,12 @@ def get_tcp_frame(ip="127.0.0.1"):
     frame = Frame.from_axis_angle_vector(tcp[3:], point=tcp[0:3])
     return frame
 
-def move_trajectory(configurations, speed, accel, blend,ur_c):
+def move_trajectory(configurations, speed, accel, blend, ur_c):
     path = []
     for config in configurations:
-        path.append(config + [speed, accel, blend]) 
+        path.append(config.joint_values + [speed, accel, blend])
     if len(path):
-        ur_c.moveJ(path, True)
-
+        ur_c.moveJ(path)
 
 def start_teach_mode(ip="127.0.0.1"):
     ur_c = RTDEControl(ip)

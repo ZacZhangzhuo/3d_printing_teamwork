@@ -60,13 +60,3 @@ https://glform.com/exhibits/expanding-the-gap/
 ![](useful_links/useful_links_2022-12-02-09-45-01.png)
 
 ![](useful_links/useful_links_2022-12-02-09-45-53.png)
-
-
-![](useful_links/2022-12-02_11-51-19.jpg)
-![](useful_links/2022-12-02_11-51-23.jpg)
-![](useful_links/2022-12-02_11-55-24.jpg)
-![](useful_links/2022-12-02_11-55-29.jpg)
-![](useful_links/2022-12-02_11-55-37.jpg)
-![](useful_links/2022-12-04_18-49-44.jpg)
-![](useful_links/2022-12-04_18-49-55.jpg)
-![](susp.jpg)
