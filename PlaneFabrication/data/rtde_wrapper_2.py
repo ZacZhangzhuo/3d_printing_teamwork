@@ -109,50 +109,40 @@ def send_printpath(frames, velocities, accelerations, radii, toggles, ip = '127.
         accelerations = [accelerations]*len(frames)
     if isinstance(velocities,float):
         velocities = [velocities]*len(frames)
-    #move to the start point
-
-    #do smth with the extruder
-
-    #execute the path
-
-    #do smth with the extruder
-
-    #move to safe point
     
-    ur_c = RTDEControl(ip)
-    exec = move_to_path(frames, velocities, accelerations, radii, ur_c= ur_c)
     waypoint = -1 #initial waypoint
     cur_time = time.time()
     change_toggle = False
+
     try:
+        #move to the start point
+        #add a point at a slightly higher level 
+        start_frame = frames[0]
+        start_frame.point.z += safe_value
+        move_to_target(start_frame, velocities[0], accelerations[0], False, ip)
+
+        #do smth with the extruder and wait
+       
+        #if we are at this point 
+        turn_extrusion_on(speed = 0,ip= ip)
+        time.sleep(2)
+        #execute the path
+        ur_c = RTDEControl(ip)
+        exec = move_to_path(frames, velocities, accelerations, radii, ur_c= ur_c)
         while ur_c.getAsyncOperationProgress() >= 0:
             new_waypoint = ur_c.getAsyncOperationProgress() #counter index
             if new_waypoint != waypoint:
-                counter = new_waypoint-1
-                
+                counter = new_waypoint-1               
                 if counter ==0:
                     turn_extrusion_on(speed = 0,ip= ip)
                     time.sleep(2)
                 elif counter == (len(frames)-1):
                     turn_extrusion_on(speed = 2,ip= ip)
                     time.sleep(2)
-                # if toggles[counter] != toggles[counter-1] or counter == 0:
-                #     change_toggle = True
-                # waypoint = new_waypoint
-                # print(str(counter/len(frames)) + "%")
-                # if  change_toggle:
-                #     if toggles[counter] == 0:
-                #         turn_extrusion_on(speed = 0,ip= ip)
-                #     elif toggles[counter] == 1:
-                #         turn_extrusion_on(speed = 1,ip= ip)
-                #     elif toggles[counter] == 2:
-                #         turn_extrusion_on(speed = 2,ip= ip)
-                #     else:  #option no.3
-                #         set_digital_io(5, True, ip)
                 cur_time = time.time()
-        print('done')
-        set_digital_io(5, True, ip)
-        ur_c.moveJ([1, -0.5, -1.5, -2, 1.5,0], 0.1, 0.1, 0)
+        #do smth with the extruder
+
+        #move to safe point
     except KeyboardInterrupt:
         set_digital_io(5, True, ip)
         ur_c.moveJ([1, -0.5, -1.5, -2, 1.5, 0], 0.1, 0.1, 0)
@@ -160,6 +150,14 @@ def send_printpath(frames, velocities, accelerations, radii, toggles, ip = '127.
         ur_c.stopL(safe_acc)
         ur_c.stopScript()
         exit()
+    
+ 
+   
+        
+        print('done')
+        set_digital_io(5, True, ip)
+        ur_c.moveJ([1, -0.5, -1.5, -2, 1.5,0], 0.1, 0.1, 0)
+   
 
 
 def stopL(accel, ip = "127.0.0.1"):
