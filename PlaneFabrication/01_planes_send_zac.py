@@ -45,8 +45,8 @@ for p in planes:
     frames.append(Frame.from_plane(p))
 
 
-velocities = [100] *len(frames)
-radii = [0.001] * len(frames)
+velocities = [50] *len(frames)
+radii = [1] * len(frames)
 toggles = [True]*(len(frames))
 # Go through JSON and copy data to lists
 # for item in data:

@@ -116,9 +116,9 @@ def send_printpath(frames, velocities, accelerations, radii, toggles, ip = '127.
             new_waypoint = ur_c.getAsyncOperationProgress() #counter index
             if new_waypoint != waypoint:
                 counter = new_waypoint-1
-                if (counter > 0):
-                    if toggles[counter] != toggles[counter-1] or counter == 0:
-                        change_toggle = True
+                # if (counter > 0):
+                if toggles[counter] != toggles[counter-1] or counter == 0:
+                    change_toggle = True
                 waypoint = new_waypoint
                 print(str(counter/len(frames)) + "%, counter = "  + str(counter) )
                 if  change_toggle:

@@ -60,9 +60,9 @@ for i in range(len(configs)):
 
 
 
-ur_c = RTDEControl(IP_ADDRESS)
-ur_c.moveJ([0.873, -1.222, -2.793, 0.262, 1.571, -3.142], 0.8, 0.5, 0) #! Configuration_2
-rtde.send_configs(c, 0.3, 1.0,  0.001, toggles= False , ip = IP_ADDRESS)
+# ur_c = RTDEControl(IP_ADDRESS)
+# ur_c.moveJ([0.873, -1.222, -2.793, 0.262, 1.571, -3.142], 0.8, 0.5, 0) #! Configuration_2
+rtde.send_configs(c, 0.1, 0.1,  0.001, toggles= True , ip = IP_ADDRESS)
 
 
 
