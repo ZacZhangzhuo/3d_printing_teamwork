@@ -26,8 +26,9 @@ avas = []
 # Get layer number
 sliceNumbers = []
 greatestNumber = 0
-for i, c in enumerate(Curves):
 
+
+for i, c in enumerate(Curves):
     params = c.DivideByLength(divideLength, True, False)
     ava = [0, 0, 0]
     for p in params:
