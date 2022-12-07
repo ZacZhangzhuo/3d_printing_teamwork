@@ -29,7 +29,11 @@ greatestNumber = 0
 
 
 for i, c in enumerate(Curves):
-    params = c.DivideByLength(divideLength, True, False)
+    tParams = c.DivideByLength(divideLength, True, False)
+    params = []
+    for p in tParams: params.append(p)
+
+    params.append(tParams[0])
     ava = [0, 0, 0]
     for p in params:
         pt = c.PointAt(p)
@@ -57,7 +61,12 @@ for i in range(int(greatestNumber)):
     for j in range(len(Curves)):
 
         if sliceNumbers[j] > i:
-            params = Curves[j].DivideByLength(divideLength, False, False)
+            tParams = Curves[j].DivideByLength(divideLength, False, False)
+            params = []
+            for p in tParams: params.append(p)
+    
+            params.append(tParams[0])
+
 
             thePlanes = []
             for k,p in enumerate(params):
@@ -79,7 +88,7 @@ for i in range(int(greatestNumber)):
 
                 # testPlane = rg.Plane(plane.Origin, rg.Vector3d.XAxis, rg.Vector3d.YAxis)
             if flip: thePlanes.reverse()
-            # flip = not flip
+            flip = not flip
             planes.extend(thePlanes)
 
 # planes = [planes[0]]

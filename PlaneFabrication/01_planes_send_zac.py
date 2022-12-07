@@ -1,5 +1,5 @@
 # import rtde wrapper from current directory
-from data import rtde_wrapper as rtde
+from data import rtde_wrapper_zac as rtde
 
 # standard imports
 import os
@@ -45,8 +45,8 @@ for p in planes:
     frames.append(Frame.from_plane(p))
 
 
-velocities = [300] *len(frames)
-radii = [0] * len(frames)
+velocities = [100] *len(frames)
+radii = [0.001] * len(frames)
 toggles = [True]*(len(frames))
 # Go through JSON and copy data to lists
 # for item in data:
@@ -74,6 +74,7 @@ if __name__ == "__main__":
     # base_frame = Frame(Point(548.032, 552.647, -2.884), Vector(-1.000, -0.013, 0.002), Vector(0.013, -1.000, 0.003))
 
     # Transform all frames from slicing location to robot coordinate system
+
     T = Transformation.from_frame_to_frame(Frame.worldXY(), base_frame)
     frames = [f.transformed(T) for f in frames]
 
@@ -91,3 +92,12 @@ if __name__ == "__main__":
 
 
 
+# // {
+# //   "ip": "192.168.10.10",
+# //   "tcp": [15.76, -47.24, 143.54, 0, 3.1415926, 0],
+# //   "origin": [335.13, 243.40, -4.28],
+# //   "origin_x": [34.27, 246.90, -4.15],
+# //   "origin_y": [134.11, -57.52, -4.20],
+# //   "offset_z": 1,
+# //   "io": 5
+# // }

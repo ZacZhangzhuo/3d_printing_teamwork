@@ -116,10 +116,11 @@ def send_printpath(frames, velocities, accelerations, radii, toggles, ip = '127.
             new_waypoint = ur_c.getAsyncOperationProgress() #counter index
             if new_waypoint != waypoint:
                 counter = new_waypoint-1
-                if toggles[counter] != toggles[counter-1] or counter == 0:
-                    change_toggle = True
+                if (counter > 0):
+                    if toggles[counter] != toggles[counter-1] or counter == 0:
+                        change_toggle = True
                 waypoint = new_waypoint
-                print(str(counter/len(frames)) + "%")
+                print(str(counter/len(frames)) + "%, counter = "  + str(counter) )
                 if  change_toggle:
                     if toggles[counter]:
                         turn_extrusion_on(speed = 0,ip= ip)
@@ -128,10 +129,10 @@ def send_printpath(frames, velocities, accelerations, radii, toggles, ip = '127.
                     cur_time = time.time()
         print('done')
         set_digital_io(5, True, ip)
-        # ur_c.moveJ([0.85,-1.5,-2.5,0.7,1.5,-3], 0.8, 0.5, 0)
+        # ur_c.moveJ([0.873, -1.222, -2.793, 0.262, 1.571, -3.142], 0.8, 0.5, 0)
     except KeyboardInterrupt:
         set_digital_io(5, True, ip)
-        ur_c.moveJ([0.85,-1.5,-2.5,0.7,1.5,-3], 0.8, 0.5, 0)
+        ur_c.moveJ([0.873, -1.222, -2.793, 0.262, 1.571, -3.142], 0.8, 0.5, 0)
         safe_acc = 0.1
         ur_c.stopL(safe_acc)
         ur_c.stopScript()
@@ -167,10 +168,10 @@ def send_configs(configs, velocities, accelerations, radii, toggles, ip = '127.0
                     cur_time = time.time()
         print('done')
         set_digital_io(5, True, ip)
-        # ur_c.moveJ([0.85,-1.5,-2.5,0.7,1.5,-3], 0.8, 0.5, 0)
+        # ur_c.moveJ([0.873, -1.222, -2.793, 0.262, 1.571, -3.142], 0.8, 0.5, 0)
     except KeyboardInterrupt:
         set_digital_io(5, True, ip)
-        ur_c.moveJ([0.85,-1.5,-2.5,0.7,1.5,-3], 0.8, 0.5, 0)
+        ur_c.moveJ([0.873, -1.222, -2.793, 0.262, 1.571, -3.142], 0.8, 0.5, 0)
         safe_acc = 0.1
         ur_c.stopL(safe_acc)
         ur_c.stopScript()
