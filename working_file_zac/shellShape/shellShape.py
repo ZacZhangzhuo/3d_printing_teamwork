@@ -79,7 +79,7 @@ for i in range(int(greatestNumber)):
 
                 # testPlane = rg.Plane(plane.Origin, rg.Vector3d.XAxis, rg.Vector3d.YAxis)
             if flip: thePlanes.reverse()
-            flip = not flip
+            # flip = not flip
             planes.extend(thePlanes)
 
 # planes = [planes[0]]
