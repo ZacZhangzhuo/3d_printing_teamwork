@@ -1,4 +1,4 @@
-from data import rtde_wrapper as rtde
+from data import rtde_wrapper_zac as rtde
 import os
 import json
 from compas.geometry import Frame, Vector, Point, Transformation, Translation
@@ -56,11 +56,11 @@ for i in range(len(configs)):
         ]
     )
     # print(c)
-# rtde.send_configs(c, .1, .1, 0.001,toggles= False , ip = IP_ADDRESS)
+# rtde.send_configs(c, .8, .5, 0.001,toggles= False , ip = IP_ADDRESS)
 
 
 ur_c = RTDEControl(IP_ADDRESS)
-ur_c.moveJ([0.85,-1.5,-2.5,0.7,1.5,3], 0.1, 0.1, 0) #! Configuration_2
+ur_c.moveJ([0.85,-1.5,-2.5,0.7,1.5,-3], 0.8, 0.5, 0) #! Configuration_2
 
 
 # toggles = []

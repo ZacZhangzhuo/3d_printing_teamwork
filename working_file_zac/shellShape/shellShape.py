@@ -52,11 +52,14 @@ for i, c in enumerate(Curves):
 
 
 planes = []
+flip = False
 for i in range(int(greatestNumber)):
     for j in range(len(Curves)):
+
         if sliceNumbers[j] > i:
             params = Curves[j].DivideByLength(divideLength, False, False)
 
+            thePlanes = []
             for k,p in enumerate(params):
                 pt = Curves[j].PointAt(p)
                 factor = rg.Vector3d(pt-rg.Point3d(avas[j][0],avas[j][1],avas[j][2]))
@@ -68,12 +71,16 @@ for i in range(int(greatestNumber)):
                 plane.Transform(move)
                 x = OrientPlane(plane)
                 plane = copy.copy(x)
-                rotation = rg.Transform.Rotation((k*math.pi*2)/len(params), plane.Normal, plane.Origin)
-                plane.Transform(rotation)
-
+                halfLength = len(params)/2
+                rotation = rg.Transform.Rotation(-(k*math.pi*2)/len(params), plane.Normal, plane.Origin)
+                rotation2 = rg.Transform.Rotation((((halfLength - abs(halfLength-k))/halfLength)*-math.pi), plane.Normal, plane.Origin)
+                plane.Transform(rotation2)
+                thePlanes.append(plane)
 
                 # testPlane = rg.Plane(plane.Origin, rg.Vector3d.XAxis, rg.Vector3d.YAxis)
-                planes.append(plane)
+            if flip: thePlanes.reverse()
+            flip = not flip
+            planes.extend(thePlanes)
 
 # planes = [planes[0]]
 
