@@ -16,9 +16,14 @@ def OrientPlane(plane):
 
 
 planes = []
+flip = False
 for i in range(LayerNumber):
     for c in Curves:
-        params = c.DivideByCount(DivideCount, True)
+        theParams = c.DivideByCount(DivideCount-1, True)
+        params = []
+        for p in theParams: params.append(p)
+        params.append(params[0])
+        tempPlane = []
         for k,p in enumerate(params):
                 pt0 = c.PointAt(p)
                 pt1 = Brep.ClosestPoint(pt0)
@@ -32,10 +37,19 @@ for i in range(LayerNumber):
                 plane.Transform(move)
 
                 halfLength = len(params)/2
+
+                wave = rg.Transform.Translation(plane.YAxis * math.sin((100*k)/len(params))*i*0.5)
+                plane.Transform(wave)
+
                 rotation2 = rg.Transform.Rotation((((halfLength - abs(halfLength-k))/halfLength)*-math.pi), plane.Normal, plane.Origin)
                 plane.Transform(rotation2)
 
-                planes.append(plane)
+
+
+                tempPlane.append(plane)
+        if flip : tempPlane.reverse()
+        flip = not flip
+        planes.extend(tempPlane)
 
 
 for p in planes:

@@ -57,9 +57,15 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
 
     if (zReset)
     { zInteration = 0; }
+
+
     zInteration++;
+
+
+
     List<Circle> circles = new List<Circle>();
     List<Point3d> OutPoint = new List<Point3d>();
+
     for (int iteration = 0; iteration < zInteration; iteration++)
     {
       List<Vector3d> totalVector = new List<Vector3d>();
@@ -87,6 +93,9 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
 
           }
         }
+
+
+
       for (int k = 0; k < zPoints.Count; k++)
         if (counts[k] != 0)
         {
@@ -95,8 +104,10 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
             Vector3d move = totalVector[k] / counts[k];
             zPoints[k] += move;
           }
-
         }
+
+
+
       if (zPoints.Count < zMaxCounts)
       {
         List<int> Indices = new List<int>();
@@ -114,11 +125,17 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
       }
     }
 
+
     foreach (Point3d point in zPoints)
     {
       OutPoint.Add(point);
     }
     zOutPoints = OutPoint;
+
+
+
+
+
 
   }
   #endregion
