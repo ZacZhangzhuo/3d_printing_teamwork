@@ -21,7 +21,7 @@ for i in range(Iteration):
                 
                 subVec = Points[i] - Points[j]
                 subVec.Unitize()
-                subVec *= 0.5*((2*Radius)-distance)
+                subVec = 0.5*((2*Radius)-distance)*subVec
                 totalVec[i] += subVec
                 totalVec[j] -= subVec
                 counts[i] +=1
@@ -39,7 +39,7 @@ for i in range(Iteration):
 
             for i in range(Points.Count-1):
                 if Points[i].DistanceTo(Points[i + 1]) > Radius:
-                    indices.append(i+1+len(indices))
+                    indices.append(i+1)
 
             for j in indices:
                 addPoint = 0.5* (Points[j-1]+Points[j])
