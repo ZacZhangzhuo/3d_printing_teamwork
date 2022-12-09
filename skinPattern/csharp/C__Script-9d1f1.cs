@@ -115,7 +115,7 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
         for (int i = 0; i < zPoints.Count - 1; i++)
         {
           if (zPoints[i].DistanceTo(zPoints[i + 1]) > zRadius)
-          { Indices.Add(i + 1 + Indices.Count); }
+          { Indices.Add(i + 1); }
         }
         foreach (int Index in Indices)
         {
