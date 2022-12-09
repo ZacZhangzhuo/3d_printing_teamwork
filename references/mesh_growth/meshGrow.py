@@ -9,7 +9,7 @@ Iteration = Iteration+1
 circles = []
 OutPoints = []
 
-for i in Iteration:
+for i in range(Iteration):
 
     totalVec = [rg.Vector3d(0,0,0)]*len(Points)
     counts = [0]*len(Points)
@@ -28,17 +28,26 @@ for i in Iteration:
                 counts[j] +=1
 
 
-#! Bounding
-for k in Points:
-    if counts[k] != 0 and Edge.Contains(Points[k],0.01) == rg.PointContainment.Inside:
-        move = totalVector[k] / counts[k]
-        Points[k] += move
+    #! Bounding
+    for k in range(len(Points)):
+        if counts[k] != 0 and Edge.Contains(Points[k]) == rg.PointContainment.Inside:
+            move = totalVec[k] / counts[k]
+            Points[k] += move
 
-    if (Points.Count<MaxCounts):
-        indices = []
-        
+        if (Points.Count<MaxCounts):
+            indices = []
+
+            for i in range(Points.Count-1):
+                if Points[i].DistanceTo(Points[i + 1]) > Radius:
+                    indices.append(i+1+len(indices))
+
+            for j in indices:
+                addPoint = 0.5* (Points[j-1]+Points[j])
+                Points.Insert(j, addPoint)
 
 
+
+OutPoints = Points
 
 
 
