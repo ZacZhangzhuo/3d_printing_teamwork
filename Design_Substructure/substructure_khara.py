@@ -33,26 +33,48 @@ class Agent(object):
         self.dv = dv
         
 
+    def Coherence(self):
+        # fx for Coherence
+        """ 
+        --- within the specified radius we need to iterate over each agent apart from ours and do the following:
+        -> calculate the center (u,v) of the surrounding by 2 getting the average over all of the points 
+        -> this shall be the point to aim at from the agent position 
+        -> unitize the produced vector 
+        """
+        centerU=0
+        centerV=0
+        for agent in group_of_agents:
+            centerU += agent.u
+            centerV += agent.v
+        
+        centerU /= len(group_of_agents)
+        centerV /= len(group_of_agents)
 
-    # fx for Coherence
-    """ 
-    --- within the specified radius we need to iterate over each agent apart from ours and do the following:
-    -> calculate the center (u,v) of the surrounding by 2 getting the average over all of the points 
-    -> this shall be the point to aim at from the agent position 
-    -> unitize the produced vector 
+        self.du += (centerU-self.u)*coherence_factor
+        self.dv += (centerV-self.v)*coherence_factor
 
-    """
-    # fx for Alignment (match velocity)
-    """within the specified radius we need to iterate over each agent apart from ours and do the following:
-    -> calculate the average velocity [adding all the velocities and dividing the result with the total number of neighbors]
-    """
+    def Alignment(self):
+        # fx for Alignment (match velocity)
+        """within the specified radius we need to iterate over each agent apart from ours and do the following:
+        -> calculate the average velocity [adding all the velocities and dividing the result with the total number of neighbors]
+        """
+        alignment_distance = 10
+
+        for neighbor_agent in group_of_agents:
+            if not neighbor_agent == self:
+                dist = GivenSurface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
+                if dist<= alignment_distance:
+                    
+
+
+
     def Separation (self):
         # fx for Separation
         """within the specified radius we need to iterate over each agent apart from ours and do the following:
         -> define how close two agents can be [min distance before collision]
         -> define a new direction [maybe reversed]
         """
-            
+        seperation_distance = 10
         for neighbor_agent in group_of_agents:
             if not neighbor_agent == self:
                 dist = GivenSurface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
