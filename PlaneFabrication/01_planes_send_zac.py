@@ -1,12 +1,7 @@
-# import rtde wrapper from current directory
 from data import rtde_wrapper_zac as rtde
-
-# standard imports
+from rtde_control import RTDEControlInterface as RTDEControl
 import os
 import json
-
-# import sys
-# import compas geometry dependencies
 from compas.geometry import Frame, Vector, Point, Transformation, Translation
 from compas.data import json_load
 
@@ -39,15 +34,15 @@ print("Print data loaded :", os.path.join(DATA_OUTPUT_FOLDER, PRINT_FILE_NAME))
 
 ####################################################################
 # Define print data containers as empty lists
-planes = json_load(r"PlaneFabrication\data\output\out_printpoints.json")
-frames = []
-for p in planes:
-    frames.append(Frame.from_plane(p))
+frames = json_load(r"PlaneFabrication\data\output\out_printpoints.json")
+radii  = json_load(r"PlaneFabrication\data\output\out_printpoints_radii.json")
+# velocities = [15] *len(frames)
+# radii = [2] * len(frames)
 
-
+#! MoveP
 velocities = [10] *len(frames)
-radii = [1] * len(frames)
 toggles = [True]*(len(frames))
+acc = [30] *len(frames)
 # Go through JSON and copy data to lists
 # for item in data:
 # Read frame data
@@ -83,7 +78,11 @@ if __name__ == "__main__":
 
     # IP_ADDRESS = "127.0.0.1"
     # Send all points using send_printpath function implemented in the RTDE Wrapper
-    rtde.send_printpath(frames, velocities, MAX_ACCEL, radii, toggles, ip=IP_ADDRESS)
+    rtde.send_printpath(frames, velocities, acc, radii, toggles, ip=IP_ADDRESS)
+
+# ur_c = RTDEControl(IP_ADDRESS)
+
+# ur_c.moveJ([0.873, -1.222, -2.793, 0.262, 1.571, -3.142], 0.8, 0.5, 0) #! Configuration_2
 
 
 

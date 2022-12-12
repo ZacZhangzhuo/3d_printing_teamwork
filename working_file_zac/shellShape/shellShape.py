@@ -19,30 +19,36 @@ planes = []
 flip = False
 for i in range(LayerNumber):
     for c in Curves:
-        theParams = c.DivideByCount(DivideCount-1, True)
-        params = []
-        for p in theParams: params.append(p)
-        params.append(params[0])
+
+        params = c.DivideByCount(DivideCount, True)
+        # params = []
+        # for p in theParams: params.append(p)
+        # params.append(params[0])
+
         tempPlane = []
         for k,p in enumerate(params):
                 pt0 = c.PointAt(p)
                 pt1 = Brep.ClosestPoint(pt0)
-                temp = rg.Plane(pt1, rg.Vector3d(pt1-pt0))
+                temp = rg.Plane(pt1, rg.Vector3d(pt0-pt1))
+
                 plane = OrientPlane(temp)
+                # plane = temp
+
                 dir = rg.Vector3d(pt0-pt1)
                 dir.Unitize()
-
                 move = rg.Transform.Translation( dir*LayerHight*i)
-
                 plane.Transform(move)
 
-                halfLength = len(params)/2
+                if plane.ZAxis.X<0 or plane.ZAxis.Y<0: plane = rg.Plane(plane.Origin, -plane.XAxis, plane.YAxis)
+
 
                 wave = rg.Transform.Translation(plane.YAxis * math.sin((100*k)/len(params))*i*0.5)
                 plane.Transform(wave)
 
+
+                halfLength = len(params)/2
                 rotation2 = rg.Transform.Rotation((((halfLength - abs(halfLength-k))/halfLength)*-math.pi), plane.Normal, plane.Origin)
-                plane.Transform(rotation2)
+                # plane.Transform(rotation2)
 
 
 
@@ -50,7 +56,6 @@ for i in range(LayerNumber):
         if flip : tempPlane.reverse()
         flip = not flip
         planes.extend(tempPlane)
-
 
 for p in planes:
     z = p.ZAxis
@@ -60,7 +65,11 @@ for p in planes:
     p.Transform(rotation)
 
 
-
+for i,p in enumerate(planes):
+    temp = p.XAxis +p.YAxis
+    if temp.Z <0: 
+        planes[i] = rg.Plane(p.Origin, p.YAxis,-p.XAxis)
+        print(i)
 
 
 Planes = planes

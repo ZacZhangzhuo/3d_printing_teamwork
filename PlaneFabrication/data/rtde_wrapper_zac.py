@@ -46,7 +46,7 @@ def pick_and_place_async(pick_frames, place_frames, speed, accel, ip, vaccum_io,
     thread = threading.Thread(target=pick_and_place, args=(pick_frames, place_frames, speed, accel, ip, vaccum_io, safe_dist))
     thread.start()
 
-def pick_and_place(pick_frames, place_frames, speed, accel, ip, vaccum_io, safe_dist = 100):
+def pick_and_place(pick_frames, place_frames, speed, accel, ip, vaccum_io, safe_dist = 100): 
 #move to pick safety plane
     if isinstance(pick_frames,Frame):
         pick_frames = [pick_frames]*len(place_frames)
@@ -82,7 +82,7 @@ def create_path(frames, velocities, accelerations, radii):
         if i == 0 or i >= len(frames)-2:
             r = 0.0
         target = [*pose,v/1000,a/1000, r/1000]
-        path.addEntry(PathEntry(PathEntry.MoveL, PathEntry.PositionTcpPose,target))
+        path.addEntry(PathEntry(PathEntry.MoveP, PathEntry.PositionTcpPose,target))
     return path
 
 def move_to_path(frames, velocities, accelerations, radii, ip = "127.0.0.1", ur_c = None):
@@ -116,11 +116,10 @@ def send_printpath(frames, velocities, accelerations, radii, toggles, ip = '127.
             new_waypoint = ur_c.getAsyncOperationProgress() #counter index
             if new_waypoint != waypoint:
                 counter = new_waypoint-1
-                # if (counter > 0):
                 if toggles[counter] != toggles[counter-1] or counter == 0:
                     change_toggle = True
                 waypoint = new_waypoint
-                print(str(counter/len(frames)) + "%, counter = "  + str(counter) )
+                print(str(counter/len(frames)*100) + "%")
                 if  change_toggle:
                     if toggles[counter]:
                         turn_extrusion_on(speed = 0,ip= ip)
@@ -159,7 +158,7 @@ def send_configs(configs, velocities, accelerations, radii, toggles, ip = '127.0
                 if toggles[counter] != toggles[counter-1] or counter == 0:
                     change_toggle = True
                 waypoint = new_waypoint
-                print(str(counter/len(configs)) + "%")
+                print(str(counter/len(configs)*100) + "%")
                 if  change_toggle:
                     if toggles[counter]:
                         turn_extrusion_on(speed = 0,ip= ip)
@@ -214,39 +213,3 @@ def start_teach_mode(ip="127.0.0.1"):
 def stop_teach_mode(ip="127.0.0.1"):
     ur_c = RTDEControl(ip)
     ur_c.endTeachMode()
-
-
-
-if __name__ == "__main__":
-    pass
-    frames = [Frame(Point(300.000, 200.000, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000)),Frame(Point(280.902, 258.779, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(230.902, 295.106, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(169.098, 295.106, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(119.098, 258.779, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(100.000, 200.000, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(119.098, 141.221, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(169.098, 104.894, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(230.902, 104.894, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(280.902, 141.221, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(300.000, 200.000, 0.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))
-                ,Frame(Point(280.902, 141.221, 100.000), Vector(1.000, 0.000, 0.000), Vector(0.000, 1.000, 0.000))]
-
-    base_frame = Frame(Point(548.032, 552.647, -2.884), Vector(-1.000, -0.013, 0.002), Vector(0.013, -1.000, 0.003))
-
-    T =  Transformation.from_frame_to_frame(Frame.worldXY(), base_frame)
-
-    frames = [f.transformed(T) for f in frames]
-
-    T =  Translation.from_vector([0,-100,-0.75])
-
-    frames = [f.transformed(T) for f in frames]
-
-    velocities = [0.015]*12
-    accelerations = [0.015]*12
-    radii = [0.025]*12
-    toggles = [True,True,True,True,True,True,True,True,True, True, False, False]
-
-
-    ip_address = "192.168.10.10"
-    ip_address = "127.0.0.1"
-    send_printpath(frames, velocities, accelerations,radii, toggles, ip=ip_address)
