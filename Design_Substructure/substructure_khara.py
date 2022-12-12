@@ -13,7 +13,7 @@ class Environment(object):
         self.u_div = u_div
         self.v_div = v_div
         self.surface = surface
-
+        self.agents = []
         if len(agents_list) > 0:
             self.agents = agents_list
 
@@ -49,11 +49,13 @@ class Agent(object):
         self.u = u
         self.v = v
         self.surface = surface
-        self.position = self.surface.PointAt(self.u, self.v) ##for the surface
+        pos_3d = self.surface.PointAt(self.u, self.v)
+        self.position = rg.Point2d(pos_3d.X, pos_3d.Y) ##for the surface
 
         self.du = du
         self.dv = dv
-
+        self.pts = []
+        self.pts.append(self.u,self.v)
         self.arrived = False
         
 
@@ -169,7 +171,7 @@ class Agent(object):
     # --> this fx is called in each effect fx 
     def UnitizeEffect(self, u_div, v_div, vector_2b_unitised):           
         vector_2b_unitised.Unitize()
-        vector_2b_unitised = rg.Vector2d(vector_2b_unitised.x/u_div, vector_2b_unitised.y/v_div)
+        vector_2b_unitised = rg.Vector2d(vector_2b_unitised.X/u_div, vector_2b_unitised.Y/v_div)
         return vector_2b_unitised
 
     # adds the new velocty vector to the current velocity vector and unitizes it 
@@ -183,6 +185,7 @@ class Agent(object):
         self.dv = effects_vector.y
         self.u += self.du
         self.v += self.dv
+        self.pts.append(self.u,self.v)
 
     #hello Eleniiiii
     #hello Ahmed
@@ -194,7 +197,8 @@ class Agent(object):
 # afterwards instantiate a bigger environment containing all agents and giving it a certain value for all parameters.
 
 initial_env_list = []
-
+u_lists = th.tree_to_list(u_lists)
+target_factors = th.tree_to_list(target_factors)
 for u_list, t_factor in zip(u_lists, target_factors):
     #instantiate an instance of the environment:
     new_env = Environment(u_div, v_div, surface)
@@ -202,8 +206,7 @@ for u_list, t_factor in zip(u_lists, target_factors):
     initial_env_list.append(new_env)
 
 #depending on the input timestep we update the agents
-for t in time_1:
+for t in range(time_1):
     for env in initial_env_list:
         env.update_agents_pos(coherence_rad, coherence_fac)
-
 
