@@ -6,45 +6,59 @@ tolerance = Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance
 
 #this class is focused on the properties and methods of each instance MAS (multi agent system)
 
-class System(object):
+class Environment(object):
     
-    def __init__(self, num_agents, num_groups):
-        self.num_agents = num_agents    #total number of agents
-        self.num_groups = num_groups
-        self.agents=[]
+    def __init__(self, agents_list, u_div, v_div, surface):
+        #self.num_agents = 0    #total number of agents
+        self.u_div = u_div
+        self.v_div = v_div
+        self.surface = surface
 
-        if time==0:
-            #set starting positions
+        if len(agents_list) == 0:
+            self.agents = []
         else:
-            #update the position of each agent
-    
-    def starting_positions(self):
-        st_u= 1/ self.num_groups
-        st_v=0
+            self.agents = agents_list
 
-        
-        # generate the initial position of each agent
-        # call the agent class 
+    #this function takes the u values and transform them into agents
+    def populate_agents(self, u_vals, target_factors):
+        # instantiatie all agents
+        for u, t_fac in zip(u_vals,target_factors) :
+            self.agents.append(Agent(u, 0, 0, t_fac / self.v_div, self.surface)) 
 
-    def updated_positions (self):
-        # for each second (??) generate the new position of each agent by calculating their new direction and velocity
+    def update_agents_pos (self, coherence_rad, coherence_fac):
+        # generate the new position of each agent by calculating their new direction and velocity
+        #for each agent apply all the functions on it given the required factors for each parameter
+        #if the agent arrives we pop out this agent from the list and add it to the finished list 
+        # add a function that if everything is arrived just stop 
+        #list of all effects so as not to change the behaviour of the agents during update
+        effects_list = []
+        for agent in self.agents:
+            effects_vector = rg.Vector2d(0,0)
+            coherence_vector = agent.Coherence(coherence_rad, self.agents, self.u_div, self.v_div, coherence_fac)
+            effects_vector += coherence_vector
+            #sum all of the vectors + the actual du and dv of the agent + unitize --> do nothing but add them to the effects_list
+            agent.AddTotalEffect(self.u_div, self.v_div, effects_vector)
 
-
+        for agent, effect in zip(self.agents, effects_list):
+            agent.AgentStep(effect)
 
 class Agent(object):
 
 #the main parameters are poisiton on the surface, velocity in both directions 
-    def __init__(self, u, v, du, dv):
+    def __init__(self, u, v, du, dv, surface):
         self.u = u
         self.v = v
-
-        self.position = rg.Surface.PointAt(self.u, self.v)
+        self.surface = surface
+        self.position = self.surface.PointAt(self.u, self.v) ##for the surface
 
         self.du = du
         self.dv = dv
+
+        self.arrived = False
         
 
-    def Coherence(self):
+    def Coherence(self, radius, agents, u_div, v_div, coh_fac):
+        # agents : list of agents in the environment
         # fx for Coherence
         """ 
         --- within the specified radius we need to iterate over each agent apart from ours and do the following:
@@ -52,39 +66,47 @@ class Agent(object):
         -> this shall be the point to aim at from the agent position 
         -> unitize the produced vector 
         """
-        coherence_distance = 10
-        centerU=self.u
-        centerV= self.v
-        num_neighbors = 1
-        for agent in group_of_agents:
+        #coherence_distance = ra
+        centerU= 0
+        centerV= 0
+        num_neighbors = 0
+        for agent in agents:
             if not agent == self:
-                dist = GivenSurface.ShortPath(self.position, agent.position, tolerance).GetLength()
-                if dist<= coherence_distance:
+                dist = self.surface.ShortPath(self.position, agent.position, tolerance).GetLength()
+                if dist<= radius:
                     num_neighbors +=1
                     centerU += agent.u
                     centerV += agent.v
-        
-        centerU /= num_neighbors
-        centerV /= num_neighbors
 
-        self.du += (centerU-self.u)*coherence_factor
-        self.dv += (centerV-self.v)*coherence_factor
+        #get the average vector
+        if  num_neighbors > 0:
+            centerU /= num_neighbors
+            centerV /= num_neighbors
 
-    def Alignment(self):
+            #unitize the product vector of the coherence  
+            cohesion_unit_vect = rg.Vector2d(centerU-self.u, centerV-self.v)
+            cohesion_unit_vect = self.UnitizeEffect(u_div, v_div,cohesion_unit_vect) * coh_fac
+
+            return cohesion_unit_vect
+
+        else:
+            return rg.Vector2d(0,0)
+
+    def Alignment(self, radius, agents):
         # fx for Alignment (match velocity)
         """within the specified radius we need to iterate over each agent apart from ours and do the following:
         -> calculate the average velocity [adding all the velocities and dividing the result with the total number of neighbors]
         """
-        alignment_distance = 10
+        #radius = 10
 
-        average_du = self.du
-        average_dv = self.dv
-        num_neighbors = 1
+        average_du = 0
+        average_dv = 0
+        num_neighbors = 0
 
-        for neighbor_agent in group_of_agents:
+        for neighbor_agent in agents:
             if not neighbor_agent == self:
-                dist = GivenSurface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
-                if dist <= alignment_distance:
+                dist = self.surface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
+                if dist <= radius:
                     num_neighbors +=1
                     average_du += neighbor_agent.du
                     average_dv += neighbor_agent.dv
@@ -112,7 +134,6 @@ class Agent(object):
                     self.du *= -1
 
 
-    def 
     # fx for Target reach
     """
     -> adds an upward vector to the velocity based on a certain criteria 
@@ -144,14 +165,31 @@ class Agent(object):
     # --> multiply by the effect value 
     # --> add this value to sum of new velocity vector 
     # --> this fx is called in each effect fx 
-        def addSingleEffect(self):
-            pass
-    # adds the new velocty vector to the current vector and unitizes it 
-        def addTotalEffect(self):
-            pass
+    def UnitizeEffect(self, u_div, v_div, vector_2b_unitised):           
+        vector_2b_unitised.Unitize()
+        vector_2b_unitised = rg.Vector2d(vector_2b_unitised.x/u_div, vector_2b_unitised.y/v_div)
+        return vector_2b_unitised
+
+    # adds the new velocty vector to the current velocity vector and unitizes it 
+    def AddTotalEffect(self, u_div, v_div, effects_vector):
+        effects_vector += rg.Vector2d(self.du, self.dv)
+        return self.UnitizeEffect(u_div, v_div, effects_vector)
+
+    # update the agent's params and move it one step forward
+    def AgentStep(self, effects_vector):
+        self.du = effects_vector.x
+        self.dv = effects_vector.y
+        self.u += self.du
+        self.v += self.dv
 
     #hello Eleniiiii
     #hello Ahmed
+######################################################################################################################################
+    # the execution function:
+    # given the list of different points to initiate the agents do:
+    # a for loop iterating over the lists, instantiating each agent in the list then instantaiting an environment given all these agents
+    # afterwards, for each environment do some action till a certain time t
+    # afterwards instantiate a bigger environment containing all agents and giving it a certain value for all parameters.
 
 
 
