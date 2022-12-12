@@ -1,5 +1,6 @@
 import Rhino
 import Rhino.Geometry as rg
+import random
 
 tolerance = Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance
 
@@ -7,11 +8,18 @@ tolerance = Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance
 
 class System(object):
     
-    def __init__(self, num_agents):
-        self.num_agents = num_agents
+    def __init__(self, num_agents, num_groups):
+        self.num_agents = num_agents    #total number of agents
+        self.num_groups = num_groups
         self.agents=[]
+
+        if time==0:
     
     def starting_positions(self):
+        st_u= 1/ self.num_groups
+        st_v=0
+
+        
         # generate the initial position of each agent
         # call the agent class 
 
@@ -41,14 +49,20 @@ class Agent(object):
         -> this shall be the point to aim at from the agent position 
         -> unitize the produced vector 
         """
-        centerU=0
-        centerV=0
+        coherence_distance = 10
+        centerU=self.u
+        centerV= self.v
+        num_neighbors = 1
         for agent in group_of_agents:
-            centerU += agent.u
-            centerV += agent.v
+            if not agent == self:
+                dist = GivenSurface.ShortPath(self.position, agent.position, tolerance).GetLength()
+                if dist<= coherence_distance:
+                    num_neighbors +=1
+                    centerU += agent.u
+                    centerV += agent.v
         
-        centerU /= len(group_of_agents)
-        centerV /= len(group_of_agents)
+        centerU /= num_neighbors
+        centerV /= num_neighbors
 
         self.du += (centerU-self.u)*coherence_factor
         self.dv += (centerV-self.v)*coherence_factor
@@ -60,12 +74,23 @@ class Agent(object):
         """
         alignment_distance = 10
 
+        average_du = self.du
+        average_dv = self.dv
+        num_neighbors = 1
+
         for neighbor_agent in group_of_agents:
             if not neighbor_agent == self:
                 dist = GivenSurface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
-                if dist<= alignment_distance:
-                    
+                if dist <= alignment_distance:
+                    num_neighbors +=1
+                    average_du += neighbor_agent.du
+                    average_dv += neighbor_agent.dv
+        
+        average_du /= num_neighbors
+        average_dv /= num_neighbors
 
+        self.du += (average_du-self.u)*alignment_factor
+        self.dv += (average_du-self.v)*alignment_factor
 
 
     def Separation (self):
@@ -75,25 +100,35 @@ class Agent(object):
         -> define a new direction [maybe reversed]
         """
         seperation_distance = 10
+
+
         for neighbor_agent in group_of_agents:
             if not neighbor_agent == self:
                 dist = GivenSurface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
                 if dist<= seperation_distance:
-                    
+                    self.du *= -1
 
 
     # fx for Target reach
     """
     -> adds an upward vector to the velocity based on a certain criteria 
     """
-    # fx to keep with Bounds
-    """
-    ->check if (0<=u,v<=1)
-    ->if not mirror u (*-1)
-    ->
+
+    def withinBounds (self):
+        # fx to keep within Bounds
+        """
+        ->check if (0<=u,v<=1)
+        ->if not mirror u (*-1)
+        ->
+        """
+        if self.u <= 0 or self.u>=1:
+            self.du * = -1
+            
+        if self.v >=1:
+            arrived =True
 
 
-    """
+
 
     # fx for limiting speed?
 
