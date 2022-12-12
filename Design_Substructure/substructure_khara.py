@@ -1,8 +1,10 @@
-import Rhino
 import Rhino.Geometry as rg
-import random
+import ghpythonlib.treehelpers as th
 
-tolerance = Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance
+
+tolerance = 0.001
+
+
 
 #this class is focused on the properties and methods of each instance MAS (multi agent system)
 
@@ -210,3 +212,6 @@ for t in range(time_1):
     for env in initial_env_list:
         env.update_agents_pos(coherence_rad, coherence_fac)
 
+list_pts = []
+for env in initial_env_list:
+    list_pts.append([agent.pts for agent in env.agents])
