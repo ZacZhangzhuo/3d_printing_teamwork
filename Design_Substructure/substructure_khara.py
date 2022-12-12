@@ -8,15 +8,13 @@ tolerance = Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance
 
 class Environment(object):
     
-    def __init__(self, agents_list, u_div, v_div, surface):
+    def __init__(self, u_div, v_div, surface, agents_list = []):
         #self.num_agents = 0    #total number of agents
         self.u_div = u_div
         self.v_div = v_div
         self.surface = surface
 
-        if len(agents_list) == 0:
-            self.agents = []
-        else:
+        if len(agents_list) > 0:
             self.agents = agents_list
 
     #this function takes the u values and transform them into agents
@@ -41,6 +39,8 @@ class Environment(object):
 
         for agent, effect in zip(self.agents, effects_list):
             agent.AgentStep(effect)
+
+    #function that ensures the agent has reached the final destination
 
 class Agent(object):
 
@@ -146,16 +146,18 @@ class Agent(object):
         ->if not mirror u (*-1)
         ->
         """
+        #to be cheked!!
         if self.u <= 0 or self.u>=1:
-            self.du * = -1
-            
+            self.du *= -1
+        #pending: we need to rethink this point and check again!!!  
+
         if self.v >=1:
-            arrived =True
+            self.arrived =True
 
 
 
 
-    # fx for limiting speed?
+    # pending: fx for limiting speed?
 
     # helper fxs:7
 
@@ -185,11 +187,23 @@ class Agent(object):
     #hello Eleniiiii
     #hello Ahmed
 ######################################################################################################################################
-    # the execution function:
-    # given the list of different points to initiate the agents do:
-    # a for loop iterating over the lists, instantiating each agent in the list then instantaiting an environment given all these agents
-    # afterwards, for each environment do some action till a certain time t
-    # afterwards instantiate a bigger environment containing all agents and giving it a certain value for all parameters.
+# the execution function:
+# given the list of different points to initiate the agents do:
+# a for loop iterating over the lists, instantiating each agent in the list then instantaiting an environment given all these agents
+# afterwards, for each environment do some action till a certain time t
+# afterwards instantiate a bigger environment containing all agents and giving it a certain value for all parameters.
 
+initial_env_list = []
+
+for u_list, t_factor in zip(u_lists, target_factors):
+    #instantiate an instance of the environment:
+    new_env = Environment(u_div, v_div, surface)
+    new_env.populate_agents(u_list, t_factor)
+    initial_env_list.append(new_env)
+
+#depending on the input timestep we update the agents
+for t in time_1:
+    for env in initial_env_list:
+        env.update_agents_pos(coherence_rad, coherence_fac)
 
 
