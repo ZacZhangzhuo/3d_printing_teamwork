@@ -53,7 +53,7 @@ class Agent(object):
         self.du = du
         self.dv = dv
         self.pts = []
-        self.p ts.append(self.surface.PointAt(self.u, self.v))
+        self.pts.append(self.surface.PointAt(self.u, self.v))
         self.arrived = False
         
 
