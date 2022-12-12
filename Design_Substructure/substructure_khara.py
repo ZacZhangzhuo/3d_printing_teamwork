@@ -14,6 +14,9 @@ class System(object):
         self.agents=[]
 
         if time==0:
+            #set starting positions
+        else:
+            #update the position of each agent
     
     def starting_positions(self):
         st_u= 1/ self.num_groups
@@ -109,6 +112,7 @@ class Agent(object):
                     self.du *= -1
 
 
+    def 
     # fx for Target reach
     """
     -> adds an upward vector to the velocity based on a certain criteria 
