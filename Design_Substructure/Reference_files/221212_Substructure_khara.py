@@ -73,8 +73,6 @@ class Agent(object):
         for agent in agents:
             if not agent == self:
                 dist = self.surface.ShortPath(self.position, agent.position, tolerance).GetLength()
-                print dist
-                print radius
                 if dist<= radius:
                     num_neighbors +=1
                     centerU += agent.u
