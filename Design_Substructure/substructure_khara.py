@@ -57,7 +57,7 @@ class Agent(object):
         self.du = du
         self.dv = dv
         self.pts = []
-        self.pts.append(self.u,self.v)
+        self.pts.append(self.surface.PointAt(self.u, self.v))
         self.arrived = False
         
 
@@ -187,7 +187,8 @@ class Agent(object):
         self.dv = effects_vector.y
         self.u += self.du
         self.v += self.dv
-        self.pts.append(self.u,self.v)
+        self.pts.append(self.surface.PointAt(self.u, self.v))
+       
 
     #hello Eleniiiii
     #hello Ahmed
