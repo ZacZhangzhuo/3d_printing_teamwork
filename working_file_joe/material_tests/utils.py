@@ -7,6 +7,7 @@ This module contains utility functions:
 import Rhino.Geometry as rg
 import math
 
+
 # ----- Coordinate System conversions -----
 
 def rhino_to_robotbase(ref_plane, model_base):
