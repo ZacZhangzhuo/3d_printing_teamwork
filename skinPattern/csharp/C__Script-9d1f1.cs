@@ -52,20 +52,14 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
   /// they will have a default value.
   /// </summary>
   #region Runscript
-  private void RunScript(List<Point3d> zPoints, bool zReset, double zRadius, Curve zEdge, int zMaxCounts, ref object zOutPoints)
+  private void RunScript(List<Point3d> zPoints, bool zReset, double zRadius, Curve zEdge, int zMaxCounts, double FilletRatio, ref object zOutTemp)
   {
 
     if (zReset)
     { zInteration = 0; }
-
-
     zInteration++;
-
-
-
     List<Circle> circles = new List<Circle>();
     List<Point3d> OutPoint = new List<Point3d>();
-
     for (int iteration = 0; iteration < zInteration; iteration++)
     {
       List<Vector3d> totalVector = new List<Vector3d>();
@@ -93,9 +87,6 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
 
           }
         }
-
-
-
       for (int k = 0; k < zPoints.Count; k++)
         if (counts[k] != 0)
         {
@@ -104,10 +95,8 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
             Vector3d move = totalVector[k] / counts[k];
             zPoints[k] += move;
           }
+
         }
-
-
-
       if (zPoints.Count < zMaxCounts)
       {
         List<int> Indices = new List<int>();
@@ -115,7 +104,7 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
         for (int i = 0; i < zPoints.Count - 1; i++)
         {
           if (zPoints[i].DistanceTo(zPoints[i + 1]) > zRadius)
-          { Indices.Add(i + 1); }
+          { Indices.Add(i + 1 + Indices.Count); }
         }
         foreach (int Index in Indices)
         {
@@ -125,13 +114,18 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
       }
     }
 
+    // foreach (Point3d point in zPoints)
+    // {
+    //     OutPoint.Add(point);
+    // }
+    // zOutPoints = OutPoint;
 
-    foreach (Point3d point in zPoints)
+
+
+    for (int i = 1; i < zPoints.Count - 1; i++)
     {
-      OutPoint.Add(point);
+            Point3d po = new Point3d(zPo)
     }
-    zOutPoints = OutPoint;
-
 
 
 
