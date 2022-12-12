@@ -76,7 +76,7 @@ class Agent(object):
         num_neighbors = 0
         for agent in agents:
             if not agent == self:
-                dist = self.surface.ShortPath(self.position, agent.position, tolerance).GetLength()
+                dist = self.position.DistanceTo(agent.position)
                 if dist<= radius:
                     num_neighbors +=1
                     centerU += agent.u
@@ -96,7 +96,7 @@ class Agent(object):
         else:
             return rg.Vector2d(0,0)
 
-    def Alignment(self, radius, agents):
+    def Alignment(self, radius, agents, u_div, v_div, align_fac):
         # fx for Alignment (match velocity)
         """within the specified radius we need to iterate over each agent apart from ours and do the following:
         -> calculate the average velocity [adding all the velocities and dividing the result with the total number of neighbors]
@@ -107,22 +107,22 @@ class Agent(object):
         average_dv = 0
         num_neighbors = 0
 
-        for neighbor_agent in agents:
-            if not neighbor_agent == self:
-                dist = self.surface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
+        for agent in agents:
+            if not agent == self:
+                dist = self.position.DistanceTo(agent.position)
                 if dist <= radius:
                     num_neighbors +=1
-                    average_du += neighbor_agent.du
-                    average_dv += neighbor_agent.dv
+                    average_du += agent.du
+                    average_dv += agent.dv
         
         average_du /= num_neighbors
         average_dv /= num_neighbors
 
-        self.du += (average_du-self.u)*alignment_factor
-        self.dv += (average_du-self.v)*alignment_factor
+        align_unit_vect = rg.Vector2d(average_du, average_dv)
+        align_unit_vect = self.UnitizeEffect(u_div, v_div,align_unit_vect) * align_fac
 
 
-    def Separation (self):
+    def Separation (self, radius, agents, u_div, v_div, coh_fac):
         # fx for Separation
         """within the specified radius we need to iterate over each agent apart from ours and do the following:
         -> define how close two agents can be [min distance before collision]
@@ -131,10 +131,10 @@ class Agent(object):
         seperation_distance = 10
 
 
-        for neighbor_agent in group_of_agents:
-            if not neighbor_agent == self:
-                dist = GivenSurface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
-                if dist<= seperation_distance:
+        for agent in agents:
+            if not agent == self:
+                dist = self.position.DistanceTo(agent.position)
+                if dist<= radius:
                     self.du *= -1
 
 
