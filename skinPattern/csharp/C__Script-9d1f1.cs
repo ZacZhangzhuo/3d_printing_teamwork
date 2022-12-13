@@ -165,6 +165,7 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
 
     Vector3d v1 = new Vector3d(p1 - p0);
     Vector3d v2 = new Vector3d(p2 - p1);
+    
 
     double x = v1.X / v2.X;
 
