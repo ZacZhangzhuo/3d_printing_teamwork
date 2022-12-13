@@ -48,10 +48,10 @@
             <chunk name="Projection">
               <items count="2">
                 <item name="Target" type_name="gh_drawing_point" type_code="30">
-                  <X>-2213</X>
-                  <Y>-1139</Y>
+                  <X>-4913</X>
+                  <Y>-2244</Y>
                 </item>
-                <item name="Zoom" type_name="gh_single" type_code="5">1.25</item>
+                <item name="Zoom" type_name="gh_single" type_code="5">2.81718469</item>
               </items>
             </chunk>
             <chunk name="Views">
@@ -95,9 +95,9 @@
         </chunk>
         <chunk name="DefinitionObjects">
           <items count="1">
-            <item name="ObjectCount" type_name="gh_int32" type_code="3">49</item>
+            <item name="ObjectCount" type_name="gh_int32" type_code="3">55</item>
           </items>
-          <chunks count="49">
+          <chunks count="55">
             <chunk name="Object" index="0">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">c552a431-af5b-46a9-a8a4-0fcbc27ef596</item>
@@ -2249,7 +2249,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <item name="Name" type_name="gh_string" type_code="10">Plane</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Plane</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">f9e1e3d4-75fa-4cc5-9fee-3eb052053289</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">f0118aeb-9458-4b96-ad36-65e554072c8f</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="2">
@@ -2306,7 +2306,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <item name="Name" type_name="gh_string" type_code="10">Radius</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Radius</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">c6e1a069-f9fc-4b15-814f-c74c3705432c</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">b3622af9-e9c8-4939-8e54-6b068ef7bd7a</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="2">
@@ -2749,8 +2749,9 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
               </items>
               <chunks count="1">
                 <chunk name="Container">
-                  <items count="4">
+                  <items count="5">
                     <item name="Description" type_name="gh_string" type_code="10">Create external tangent lines between circles</item>
+                    <item name="Hidden" type_name="gh_bool" type_code="1">true</item>
                     <item name="InstanceGuid" type_name="gh_guid" type_code="9">a8f9b552-4b4f-482b-9839-e7babd441320</item>
                     <item name="Name" type_name="gh_string" type_code="10">Tangent Lines (Ex)</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Tangent Lines (Ex)</item>
@@ -2999,8 +3000,9 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
               </items>
               <chunks count="1">
                 <chunk name="Container">
-                  <items count="4">
+                  <items count="5">
                     <item name="Description" type_name="gh_string" type_code="10">Create internal tangent lines between circles</item>
+                    <item name="Hidden" type_name="gh_bool" type_code="1">true</item>
                     <item name="InstanceGuid" type_name="gh_guid" type_code="9">ca55ca33-f2cd-4b7d-ae5c-ed6d3f15d83c</item>
                     <item name="Name" type_name="gh_string" type_code="10">Tangent Lines (In)</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Tangent Lines (In)</item>
@@ -3009,14 +3011,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1737</X>
-                          <Y>532</Y>
+                          <X>1768</X>
+                          <Y>490</Y>
                           <W>129</W>
                           <H>44</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1795</X>
-                          <Y>554</Y>
+                          <X>1826</X>
+                          <Y>512</Y>
                         </item>
                       </items>
                     </chunk>
@@ -3034,14 +3036,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1739</X>
-                              <Y>534</Y>
+                              <X>1770</X>
+                              <Y>492</Y>
                               <W>41</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1761</X>
-                              <Y>544</Y>
+                              <X>1792</X>
+                              <Y>502</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3061,14 +3063,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1739</X>
-                              <Y>554</Y>
+                              <X>1770</X>
+                              <Y>512</Y>
                               <W>41</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1761</X>
-                              <Y>564</Y>
+                              <X>1792</X>
+                              <Y>522</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3087,14 +3089,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1810</X>
-                              <Y>534</Y>
+                              <X>1841</X>
+                              <Y>492</Y>
                               <W>54</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1837</X>
-                              <Y>544</Y>
+                              <X>1868</X>
+                              <Y>502</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3113,14 +3115,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1810</X>
-                              <Y>554</Y>
+                              <X>1841</X>
+                              <Y>512</Y>
                               <W>54</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1837</X>
-                              <Y>564</Y>
+                              <X>1868</X>
+                              <Y>522</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3131,237 +3133,6 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
               </chunks>
             </chunk>
             <chunk name="Object" index="31">
-              <items count="2">
-                <item name="GUID" type_name="gh_guid" type_code="9">2162e72e-72fc-4bf8-9459-d4d82fa8aa14</item>
-                <item name="Name" type_name="gh_string" type_code="10">Divide Curve</item>
-              </items>
-              <chunks count="1">
-                <chunk name="Container">
-                  <items count="4">
-                    <item name="Description" type_name="gh_string" type_code="10">Divide a curve into equal length segments</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">20ba5bfe-e2b3-48df-b300-0df384347822</item>
-                    <item name="Name" type_name="gh_string" type_code="10">Divide Curve</item>
-                    <item name="NickName" type_name="gh_string" type_code="10">Divide Curve</item>
-                  </items>
-                  <chunks count="7">
-                    <chunk name="Attributes">
-                      <items count="2">
-                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1639</X>
-                          <Y>601</Y>
-                          <W>129</W>
-                          <H>64</H>
-                        </item>
-                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1690</X>
-                          <Y>633</Y>
-                        </item>
-                      </items>
-                    </chunk>
-                    <chunk name="param_input" index="0">
-                      <items count="6">
-                        <item name="Description" type_name="gh_string" type_code="10">Curve to divide</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">fee85b05-9dc9-40fe-9b6e-0b43049b3c10</item>
-                        <item name="Name" type_name="gh_string" type_code="10">Curve</item>
-                        <item name="NickName" type_name="gh_string" type_code="10">Curve</item>
-                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
-                      </items>
-                      <chunks count="1">
-                        <chunk name="Attributes">
-                          <items count="2">
-                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1641</X>
-                              <Y>603</Y>
-                              <W>34</W>
-                              <H>20</H>
-                            </item>
-                            <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1659.5</X>
-                              <Y>613</Y>
-                            </item>
-                          </items>
-                        </chunk>
-                      </chunks>
-                    </chunk>
-                    <chunk name="param_input" index="1">
-                      <items count="6">
-                        <item name="Description" type_name="gh_string" type_code="10">Number of segments</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4eb68e00-ac7c-41e8-bc42-dcc1736b204b</item>
-                        <item name="Name" type_name="gh_string" type_code="10">Count</item>
-                        <item name="NickName" type_name="gh_string" type_code="10">Count</item>
-                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
-                      </items>
-                      <chunks count="2">
-                        <chunk name="Attributes">
-                          <items count="2">
-                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1641</X>
-                              <Y>623</Y>
-                              <W>34</W>
-                              <H>20</H>
-                            </item>
-                            <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1659.5</X>
-                              <Y>633</Y>
-                            </item>
-                          </items>
-                        </chunk>
-                        <chunk name="PersistentData">
-                          <items count="1">
-                            <item name="Count" type_name="gh_int32" type_code="3">1</item>
-                          </items>
-                          <chunks count="1">
-                            <chunk name="Branch" index="0">
-                              <items count="2">
-                                <item name="Count" type_name="gh_int32" type_code="3">1</item>
-                                <item name="Path" type_name="gh_string" type_code="10">{0}</item>
-                              </items>
-                              <chunks count="1">
-                                <chunk name="Item" index="0">
-                                  <items count="1">
-                                    <item name="number" type_name="gh_int32" type_code="3">10</item>
-                                  </items>
-                                </chunk>
-                              </chunks>
-                            </chunk>
-                          </chunks>
-                        </chunk>
-                      </chunks>
-                    </chunk>
-                    <chunk name="param_input" index="2">
-                      <items count="6">
-                        <item name="Description" type_name="gh_string" type_code="10">Split segments at kinks</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">faf20d2e-26f4-47de-a04c-b5baa56f412c</item>
-                        <item name="Name" type_name="gh_string" type_code="10">Kinks</item>
-                        <item name="NickName" type_name="gh_string" type_code="10">Kinks</item>
-                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
-                      </items>
-                      <chunks count="2">
-                        <chunk name="Attributes">
-                          <items count="2">
-                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1641</X>
-                              <Y>643</Y>
-                              <W>34</W>
-                              <H>20</H>
-                            </item>
-                            <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1659.5</X>
-                              <Y>653</Y>
-                            </item>
-                          </items>
-                        </chunk>
-                        <chunk name="PersistentData">
-                          <items count="1">
-                            <item name="Count" type_name="gh_int32" type_code="3">1</item>
-                          </items>
-                          <chunks count="1">
-                            <chunk name="Branch" index="0">
-                              <items count="2">
-                                <item name="Count" type_name="gh_int32" type_code="3">1</item>
-                                <item name="Path" type_name="gh_string" type_code="10">{0}</item>
-                              </items>
-                              <chunks count="1">
-                                <chunk name="Item" index="0">
-                                  <items count="1">
-                                    <item name="boolean" type_name="gh_bool" type_code="1">false</item>
-                                  </items>
-                                </chunk>
-                              </chunks>
-                            </chunk>
-                          </chunks>
-                        </chunk>
-                      </chunks>
-                    </chunk>
-                    <chunk name="param_output" index="0">
-                      <items count="7">
-                        <item name="Access" type_name="gh_int32" type_code="3">1</item>
-                        <item name="Description" type_name="gh_string" type_code="10">Division points</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5c40bc62-4e3b-43ae-b708-7fee519892cf</item>
-                        <item name="Name" type_name="gh_string" type_code="10">Points</item>
-                        <item name="NickName" type_name="gh_string" type_code="10">Points</item>
-                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
-                      </items>
-                      <chunks count="1">
-                        <chunk name="Attributes">
-                          <items count="2">
-                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1705</X>
-                              <Y>603</Y>
-                              <W>61</W>
-                              <H>20</H>
-                            </item>
-                            <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1735.5</X>
-                              <Y>613</Y>
-                            </item>
-                          </items>
-                        </chunk>
-                      </chunks>
-                    </chunk>
-                    <chunk name="param_output" index="1">
-                      <items count="7">
-                        <item name="Access" type_name="gh_int32" type_code="3">1</item>
-                        <item name="Description" type_name="gh_string" type_code="10">Tangent vectors at division points</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3bff37b3-a336-45c3-8004-d041a8bd1a76</item>
-                        <item name="Name" type_name="gh_string" type_code="10">Tangents</item>
-                        <item name="NickName" type_name="gh_string" type_code="10">Tangents</item>
-                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
-                      </items>
-                      <chunks count="1">
-                        <chunk name="Attributes">
-                          <items count="2">
-                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1705</X>
-                              <Y>623</Y>
-                              <W>61</W>
-                              <H>20</H>
-                            </item>
-                            <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1735.5</X>
-                              <Y>633</Y>
-                            </item>
-                          </items>
-                        </chunk>
-                      </chunks>
-                    </chunk>
-                    <chunk name="param_output" index="2">
-                      <items count="7">
-                        <item name="Access" type_name="gh_int32" type_code="3">1</item>
-                        <item name="Description" type_name="gh_string" type_code="10">Parameter values at division points</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6b4e6280-0828-4a24-83d5-10547bf95717</item>
-                        <item name="Name" type_name="gh_string" type_code="10">Parameters</item>
-                        <item name="NickName" type_name="gh_string" type_code="10">Parameters</item>
-                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
-                      </items>
-                      <chunks count="1">
-                        <chunk name="Attributes">
-                          <items count="2">
-                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1705</X>
-                              <Y>643</Y>
-                              <W>61</W>
-                              <H>20</H>
-                            </item>
-                            <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1735.5</X>
-                              <Y>653</Y>
-                            </item>
-                          </items>
-                        </chunk>
-                      </chunks>
-                    </chunk>
-                  </chunks>
-                </chunk>
-              </chunks>
-            </chunk>
-            <chunk name="Object" index="32">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">a9a8ebd2-fff5-4c44-a8f5-739736d129ba</item>
                 <item name="Name" type_name="gh_string" type_code="10">C# Script</item>
@@ -3470,197 +3241,71 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>2022</X>
-                          <Y>969</Y>
-                          <W>74</W>
-                          <H>124</H>
+                          <X>1896</X>
+                          <Y>892</Y>
+                          <W>96</W>
+                          <H>44</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>2054</X>
-                          <Y>1031</Y>
+                          <X>1950</X>
+                          <Y>914</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="ParameterData">
-                      <items count="10">
-                        <item name="InputCount" type_name="gh_int32" type_code="3">6</item>
+                      <items count="6">
+                        <item name="InputCount" type_name="gh_int32" type_code="3">2</item>
                         <item name="InputId" index="0" type_name="gh_guid" type_code="9">84fa917c-1ed8-4db3-8be1-7bdc4a6495a2</item>
                         <item name="InputId" index="1" type_name="gh_guid" type_code="9">84fa917c-1ed8-4db3-8be1-7bdc4a6495a2</item>
-                        <item name="InputId" index="2" type_name="gh_guid" type_code="9">84fa917c-1ed8-4db3-8be1-7bdc4a6495a2</item>
-                        <item name="InputId" index="3" type_name="gh_guid" type_code="9">84fa917c-1ed8-4db3-8be1-7bdc4a6495a2</item>
-                        <item name="InputId" index="4" type_name="gh_guid" type_code="9">84fa917c-1ed8-4db3-8be1-7bdc4a6495a2</item>
-                        <item name="InputId" index="5" type_name="gh_guid" type_code="9">84fa917c-1ed8-4db3-8be1-7bdc4a6495a2</item>
                         <item name="OutputCount" type_name="gh_int32" type_code="3">2</item>
                         <item name="OutputId" index="0" type_name="gh_guid" type_code="9">3ede854e-c753-40eb-84cb-b48008f14fd4</item>
                         <item name="OutputId" index="1" type_name="gh_guid" type_code="9">8ec86459-bf01-4409-baee-174d0d2b13d0</item>
                       </items>
-                      <chunks count="8">
+                      <chunks count="4">
                         <chunk name="InputParam" index="0">
-                          <items count="11">
+                          <items count="12">
+                            <item name="Access" type_name="gh_int32" type_code="3">1</item>
                             <item name="AllowTreeAccess" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Description" type_name="gh_string" type_code="10">Script Variable x</item>
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">f4d886de-1941-4442-bd4b-4d4a5cdc3a18</item>
-                            <item name="Name" type_name="gh_string" type_code="10">x</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">x</item>
+                            <item name="Description" type_name="gh_string" type_code="10">Script Variable v</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">3f19ed7b-2ae4-4516-bb07-ea740c24b089</item>
+                            <item name="Name" type_name="gh_string" type_code="10">v</item>
+                            <item name="NickName" type_name="gh_string" type_code="10">Circles</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">0</item>
+                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">1</item>
                             <item name="ShowTypeHints" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" index="0" type_name="gh_guid" type_code="9">901f9a21-760a-489f-8192-0d3cc4084e3f</item>
+                            <item name="Source" index="0" type_name="gh_guid" type_code="9">f0118aeb-9458-4b96-ad36-65e554072c8f</item>
                             <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
-                            <item name="TypeHintID" type_name="gh_guid" type_code="9">19ff81a2-dc4f-4035-8de9-26224c561321</item>
+                            <item name="TypeHintID" type_name="gh_guid" type_code="9">15a50725-e3d3-4075-9f7c-142ba5f40747</item>
                           </items>
                           <chunks count="1">
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2024</X>
-                                  <Y>971</Y>
-                                  <W>15</W>
+                                  <X>1898</X>
+                                  <Y>894</Y>
+                                  <W>37</W>
                                   <H>20</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2033</X>
-                                  <Y>981</Y>
+                                  <X>1918</X>
+                                  <Y>904</Y>
                                 </item>
                               </items>
                             </chunk>
                           </chunks>
                         </chunk>
                         <chunk name="InputParam" index="1">
-                          <items count="11">
-                            <item name="AllowTreeAccess" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Description" type_name="gh_string" type_code="10">Script Variable z</item>
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">60aa1e9f-593e-4c85-b698-17d5e0c2eaac</item>
-                            <item name="Name" type_name="gh_string" type_code="10">z</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">z</item>
-                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">0</item>
-                            <item name="ShowTypeHints" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" index="0" type_name="gh_guid" type_code="9">8adaa2c4-9f23-4b04-ab45-b742895593d5</item>
-                            <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
-                            <item name="TypeHintID" type_name="gh_guid" type_code="9">19ff81a2-dc4f-4035-8de9-26224c561321</item>
-                          </items>
-                          <chunks count="1">
-                            <chunk name="Attributes">
-                              <items count="2">
-                                <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2024</X>
-                                  <Y>991</Y>
-                                  <W>15</W>
-                                  <H>20</H>
-                                </item>
-                                <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2033</X>
-                                  <Y>1001</Y>
-                                </item>
-                              </items>
-                            </chunk>
-                          </chunks>
-                        </chunk>
-                        <chunk name="InputParam" index="2">
-                          <items count="11">
-                            <item name="AllowTreeAccess" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Description" type_name="gh_string" type_code="10">Script Variable y</item>
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">f96179f4-898d-4111-9d74-10328419344e</item>
-                            <item name="Name" type_name="gh_string" type_code="10">y</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">y</item>
-                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">0</item>
-                            <item name="ShowTypeHints" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" index="0" type_name="gh_guid" type_code="9">406bd572-8812-4b57-8696-196772f566c6</item>
-                            <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
-                            <item name="TypeHintID" type_name="gh_guid" type_code="9">19ff81a2-dc4f-4035-8de9-26224c561321</item>
-                          </items>
-                          <chunks count="1">
-                            <chunk name="Attributes">
-                              <items count="2">
-                                <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2024</X>
-                                  <Y>1011</Y>
-                                  <W>15</W>
-                                  <H>20</H>
-                                </item>
-                                <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2033</X>
-                                  <Y>1021</Y>
-                                </item>
-                              </items>
-                            </chunk>
-                          </chunks>
-                        </chunk>
-                        <chunk name="InputParam" index="3">
-                          <items count="11">
-                            <item name="AllowTreeAccess" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Description" type_name="gh_string" type_code="10">Script Variable u</item>
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">f361b598-9f1f-4389-9be3-02f7bd93f0a5</item>
-                            <item name="Name" type_name="gh_string" type_code="10">u</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">u</item>
-                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">0</item>
-                            <item name="ShowTypeHints" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" index="0" type_name="gh_guid" type_code="9">84aa9a4e-8aaa-403c-819a-c75a9470c287</item>
-                            <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
-                            <item name="TypeHintID" type_name="gh_guid" type_code="9">19ff81a2-dc4f-4035-8de9-26224c561321</item>
-                          </items>
-                          <chunks count="1">
-                            <chunk name="Attributes">
-                              <items count="2">
-                                <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2024</X>
-                                  <Y>1031</Y>
-                                  <W>15</W>
-                                  <H>20</H>
-                                </item>
-                                <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2033</X>
-                                  <Y>1041</Y>
-                                </item>
-                              </items>
-                            </chunk>
-                          </chunks>
-                        </chunk>
-                        <chunk name="InputParam" index="4">
-                          <items count="11">
-                            <item name="AllowTreeAccess" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Description" type_name="gh_string" type_code="10">Script Variable v</item>
-                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">3f19ed7b-2ae4-4516-bb07-ea740c24b089</item>
-                            <item name="Name" type_name="gh_string" type_code="10">v</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">v</item>
-                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">0</item>
-                            <item name="ShowTypeHints" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" index="0" type_name="gh_guid" type_code="9">f840f8a0-253e-4b24-872b-72b19e35be32</item>
-                            <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
-                            <item name="TypeHintID" type_name="gh_guid" type_code="9">19ff81a2-dc4f-4035-8de9-26224c561321</item>
-                          </items>
-                          <chunks count="1">
-                            <chunk name="Attributes">
-                              <items count="2">
-                                <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2024</X>
-                                  <Y>1051</Y>
-                                  <W>15</W>
-                                  <H>20</H>
-                                </item>
-                                <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2033</X>
-                                  <Y>1061</Y>
-                                </item>
-                              </items>
-                            </chunk>
-                          </chunks>
-                        </chunk>
-                        <chunk name="InputParam" index="5">
-                          <items count="11">
+                          <items count="12">
+                            <item name="Access" type_name="gh_int32" type_code="3">1</item>
                             <item name="AllowTreeAccess" type_name="gh_bool" type_code="1">true</item>
                             <item name="Description" type_name="gh_string" type_code="10">Script Variable w</item>
                             <item name="InstanceGuid" type_name="gh_guid" type_code="9">7077dd3b-9a97-4276-ab57-ae03b65eaf34</item>
                             <item name="Name" type_name="gh_string" type_code="10">w</item>
-                            <item name="NickName" type_name="gh_string" type_code="10">w</item>
+                            <item name="NickName" type_name="gh_string" type_code="10">Radius</item>
                             <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">0</item>
+                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">1</item>
                             <item name="ShowTypeHints" type_name="gh_bool" type_code="1">true</item>
-                            <item name="Source" index="0" type_name="gh_guid" type_code="9">e169830a-cf5f-4c01-a653-291b57ce0bc4</item>
+                            <item name="Source" index="0" type_name="gh_guid" type_code="9">b3622af9-e9c8-4939-8e54-6b068ef7bd7a</item>
                             <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                             <item name="TypeHintID" type_name="gh_guid" type_code="9">19ff81a2-dc4f-4035-8de9-26224c561321</item>
                           </items>
@@ -3668,14 +3313,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2024</X>
-                                  <Y>1071</Y>
-                                  <W>15</W>
+                                  <X>1898</X>
+                                  <Y>914</Y>
+                                  <W>37</W>
                                   <H>20</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2033</X>
-                                  <Y>1081</Y>
+                                  <X>1918</X>
+                                  <Y>924</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -3695,14 +3340,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2069</X>
-                                  <Y>971</Y>
+                                  <X>1965</X>
+                                  <Y>894</Y>
                                   <W>25</W>
-                                  <H>60</H>
+                                  <H>20</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2081.5</X>
-                                  <Y>1001</Y>
+                                  <X>1977.5</X>
+                                  <Y>904</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -3721,14 +3366,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2069</X>
-                                  <Y>1031</Y>
+                                  <X>1965</X>
+                                  <Y>914</Y>
                                   <W>25</W>
-                                  <H>60</H>
+                                  <H>20</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2081.5</X>
-                                  <Y>1061</Y>
+                                  <X>1977.5</X>
+                                  <Y>924</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -3740,7 +3385,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="33">
+            <chunk name="Object" index="32">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">807b86e3-be8d-4970-92b5-f8cdcb45b06b</item>
                 <item name="Name" type_name="gh_string" type_code="10">Circle</item>
@@ -3757,14 +3402,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1916</X>
-                          <Y>1113</Y>
+                          <X>1944</X>
+                          <Y>1010</Y>
                           <W>106</W>
                           <H>44</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1970</X>
-                          <Y>1135</Y>
+                          <X>1998</X>
+                          <Y>1032</Y>
                         </item>
                       </items>
                     </chunk>
@@ -3782,14 +3427,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1918</X>
-                              <Y>1115</Y>
+                              <X>1946</X>
+                              <Y>1012</Y>
                               <W>37</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1938</X>
-                              <Y>1125</Y>
+                              <X>1966</X>
+                              <Y>1022</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3839,14 +3484,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1918</X>
-                              <Y>1135</Y>
+                              <X>1946</X>
+                              <Y>1032</Y>
                               <W>37</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1938</X>
-                              <Y>1145</Y>
+                              <X>1966</X>
+                              <Y>1042</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3885,14 +3530,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1985</X>
-                              <Y>1115</Y>
+                              <X>2013</X>
+                              <Y>1012</Y>
                               <W>35</W>
                               <H>40</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>2002.5</X>
-                              <Y>1135</Y>
+                              <X>2030.5</X>
+                              <Y>1032</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3902,7 +3547,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="34">
+            <chunk name="Object" index="33">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">807b86e3-be8d-4970-92b5-f8cdcb45b06b</item>
                 <item name="Name" type_name="gh_string" type_code="10">Circle</item>
@@ -3919,14 +3564,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1826</X>
-                          <Y>1218</Y>
+                          <X>1854</X>
+                          <Y>1115</Y>
                           <W>106</W>
                           <H>44</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1880</X>
-                          <Y>1240</Y>
+                          <X>1908</X>
+                          <Y>1137</Y>
                         </item>
                       </items>
                     </chunk>
@@ -3944,14 +3589,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1828</X>
-                              <Y>1220</Y>
+                              <X>1856</X>
+                              <Y>1117</Y>
                               <W>37</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1848</X>
-                              <Y>1230</Y>
+                              <X>1876</X>
+                              <Y>1127</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4001,14 +3646,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1828</X>
-                              <Y>1240</Y>
+                              <X>1856</X>
+                              <Y>1137</Y>
                               <W>37</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1848</X>
-                              <Y>1250</Y>
+                              <X>1876</X>
+                              <Y>1147</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4047,14 +3692,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1895</X>
-                              <Y>1220</Y>
+                              <X>1923</X>
+                              <Y>1117</Y>
                               <W>35</W>
                               <H>40</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1912.5</X>
-                              <Y>1240</Y>
+                              <X>1940.5</X>
+                              <Y>1137</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4064,7 +3709,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="35">
+            <chunk name="Object" index="34">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">3581f42a-9592-4549-bd6b-1c0fc39d067b</item>
                 <item name="Name" type_name="gh_string" type_code="10">Construct Point</item>
@@ -4081,14 +3726,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1604</X>
-                          <Y>1230</Y>
+                          <X>1632</X>
+                          <Y>1127</Y>
                           <W>132</W>
                           <H>64</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1685</X>
-                          <Y>1262</Y>
+                          <X>1713</X>
+                          <Y>1159</Y>
                         </item>
                       </items>
                     </chunk>
@@ -4106,14 +3751,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1606</X>
-                              <Y>1232</Y>
+                              <X>1634</X>
+                              <Y>1129</Y>
                               <W>64</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1639.5</X>
-                              <Y>1242</Y>
+                              <X>1667.5</X>
+                              <Y>1139</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4153,14 +3798,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1606</X>
-                              <Y>1252</Y>
+                              <X>1634</X>
+                              <Y>1149</Y>
                               <W>64</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1639.5</X>
-                              <Y>1262</Y>
+                              <X>1667.5</X>
+                              <Y>1159</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4199,14 +3844,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1606</X>
-                              <Y>1272</Y>
+                              <X>1634</X>
+                              <Y>1169</Y>
                               <W>64</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1639.5</X>
-                              <Y>1282</Y>
+                              <X>1667.5</X>
+                              <Y>1179</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4245,14 +3890,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1700</X>
-                              <Y>1232</Y>
+                              <X>1728</X>
+                              <Y>1129</Y>
                               <W>34</W>
                               <H>60</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1717</X>
-                              <Y>1262</Y>
+                              <X>1745</X>
+                              <Y>1159</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4262,7 +3907,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="36">
+            <chunk name="Object" index="35">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">3581f42a-9592-4549-bd6b-1c0fc39d067b</item>
                 <item name="Name" type_name="gh_string" type_code="10">Construct Point</item>
@@ -4279,14 +3924,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1694</X>
-                          <Y>1093</Y>
+                          <X>1722</X>
+                          <Y>990</Y>
                           <W>132</W>
                           <H>64</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1775</X>
-                          <Y>1125</Y>
+                          <X>1803</X>
+                          <Y>1022</Y>
                         </item>
                       </items>
                     </chunk>
@@ -4304,14 +3949,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1696</X>
-                              <Y>1095</Y>
+                              <X>1724</X>
+                              <Y>992</Y>
                               <W>64</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1729.5</X>
-                              <Y>1105</Y>
+                              <X>1757.5</X>
+                              <Y>1002</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4351,14 +3996,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1696</X>
-                              <Y>1115</Y>
+                              <X>1724</X>
+                              <Y>1012</Y>
                               <W>64</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1729.5</X>
-                              <Y>1125</Y>
+                              <X>1757.5</X>
+                              <Y>1022</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4397,14 +4042,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1696</X>
-                              <Y>1135</Y>
+                              <X>1724</X>
+                              <Y>1032</Y>
                               <W>64</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1729.5</X>
-                              <Y>1145</Y>
+                              <X>1757.5</X>
+                              <Y>1042</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4443,14 +4088,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1790</X>
-                              <Y>1095</Y>
+                              <X>1818</X>
+                              <Y>992</Y>
                               <W>34</W>
                               <H>60</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1807</X>
-                              <Y>1125</Y>
+                              <X>1835</X>
+                              <Y>1022</Y>
                             </item>
                           </items>
                         </chunk>
@@ -4460,7 +4105,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="37">
+            <chunk name="Object" index="36">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
                 <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
@@ -4479,14 +4124,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1440</X>
-                          <Y>1094</Y>
+                          <X>1469</X>
+                          <Y>991</Y>
                           <W>197</W>
                           <H>20</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1440.907</X>
-                          <Y>1094.114</Y>
+                          <X>1469.755</X>
+                          <Y>991.3427</Y>
                         </item>
                       </items>
                     </chunk>
@@ -4505,7 +4150,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="38">
+            <chunk name="Object" index="37">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
                 <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
@@ -4524,14 +4169,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1447</X>
-                          <Y>1114</Y>
+                          <X>1476</X>
+                          <Y>1011</Y>
                           <W>197</W>
                           <H>20</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1447.507</X>
-                          <Y>1114.153</Y>
+                          <X>1476.355</X>
+                          <Y>1011.383</Y>
                         </item>
                       </items>
                     </chunk>
@@ -4550,7 +4195,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="39">
+            <chunk name="Object" index="38">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
                 <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
@@ -4569,14 +4214,59 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1368</X>
-                          <Y>1230</Y>
+                          <X>1397</X>
+                          <Y>1127</Y>
                           <W>197</W>
                           <H>20</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1368.712</X>
-                          <Y>1230.713</Y>
+                          <X>1397.56</X>
+                          <Y>1127.943</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="Slider">
+                      <items count="7">
+                        <item name="Digits" type_name="gh_int32" type_code="3">3</item>
+                        <item name="GripDisplay" type_name="gh_int32" type_code="3">1</item>
+                        <item name="Interval" type_name="gh_int32" type_code="3">1</item>
+                        <item name="Max" type_name="gh_double" type_code="6">100</item>
+                        <item name="Min" type_name="gh_double" type_code="6">0</item>
+                        <item name="SnapCount" type_name="gh_int32" type_code="3">0</item>
+                        <item name="Value" type_name="gh_double" type_code="6">0</item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="39">
+              <items count="2">
+                <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
+                <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="6">
+                    <item name="Description" type_name="gh_string" type_code="10">Numeric slider for single values</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">f840f8a0-253e-4b24-872b-72b19e35be32</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">Number Slider</item>
+                    <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                    <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                  </items>
+                  <chunks count="2">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>1397</X>
+                          <Y>1159</Y>
+                          <W>197</W>
+                          <H>20</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>1397.56</X>
+                          <Y>1159.229</Y>
                         </item>
                       </items>
                     </chunk>
@@ -4604,51 +4294,6 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 <chunk name="Container">
                   <items count="6">
                     <item name="Description" type_name="gh_string" type_code="10">Numeric slider for single values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">f840f8a0-253e-4b24-872b-72b19e35be32</item>
-                    <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
-                    <item name="NickName" type_name="gh_string" type_code="10">Number Slider</item>
-                    <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                    <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
-                  </items>
-                  <chunks count="2">
-                    <chunk name="Attributes">
-                      <items count="2">
-                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1368</X>
-                          <Y>1262</Y>
-                          <W>197</W>
-                          <H>20</H>
-                        </item>
-                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1368.712</X>
-                          <Y>1262</Y>
-                        </item>
-                      </items>
-                    </chunk>
-                    <chunk name="Slider">
-                      <items count="7">
-                        <item name="Digits" type_name="gh_int32" type_code="3">3</item>
-                        <item name="GripDisplay" type_name="gh_int32" type_code="3">1</item>
-                        <item name="Interval" type_name="gh_int32" type_code="3">1</item>
-                        <item name="Max" type_name="gh_double" type_code="6">100</item>
-                        <item name="Min" type_name="gh_double" type_code="6">0</item>
-                        <item name="SnapCount" type_name="gh_int32" type_code="3">0</item>
-                        <item name="Value" type_name="gh_double" type_code="6">0</item>
-                      </items>
-                    </chunk>
-                  </chunks>
-                </chunk>
-              </chunks>
-            </chunk>
-            <chunk name="Object" index="41">
-              <items count="2">
-                <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
-                <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
-              </items>
-              <chunks count="1">
-                <chunk name="Container">
-                  <items count="6">
-                    <item name="Description" type_name="gh_string" type_code="10">Numeric slider for single values</item>
                     <item name="InstanceGuid" type_name="gh_guid" type_code="9">406bd572-8812-4b57-8696-196772f566c6</item>
                     <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Number Slider</item>
@@ -4659,14 +4304,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1457</X>
-                          <Y>1157</Y>
+                          <X>1486</X>
+                          <Y>1054</Y>
                           <W>197</W>
                           <H>20</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1457.507</X>
-                          <Y>1157.541</Y>
+                          <X>1486.355</X>
+                          <Y>1054.77</Y>
                         </item>
                       </items>
                     </chunk>
@@ -4685,7 +4330,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="42">
+            <chunk name="Object" index="41">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
                 <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
@@ -4704,14 +4349,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1457</X>
-                          <Y>1294</Y>
+                          <X>1486</X>
+                          <Y>1192</Y>
                           <W>197</W>
                           <H>20</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1457.448</X>
-                          <Y>1294.835</Y>
+                          <X>1486.296</X>
+                          <Y>1192.064</Y>
                         </item>
                       </items>
                     </chunk>
@@ -4730,7 +4375,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="43">
+            <chunk name="Object" index="42">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">59e0b89a-e487-49f8-bab8-b5bab16be14c</item>
                 <item name="Name" type_name="gh_string" type_code="10">Panel</item>
@@ -4752,8 +4397,8 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="5">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>2235</X>
-                          <Y>882</Y>
+                          <X>2264</X>
+                          <Y>779</Y>
                           <W>315</W>
                           <H>211</H>
                         </item>
@@ -4761,8 +4406,8 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <item name="MarginRight" type_name="gh_int32" type_code="3">0</item>
                         <item name="MarginTop" type_name="gh_int32" type_code="3">0</item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>2235.744</X>
-                          <Y>882.6462</Y>
+                          <X>2264.592</X>
+                          <Y>779.8754</Y>
                         </item>
                       </items>
                     </chunk>
@@ -4791,7 +4436,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="44">
+            <chunk name="Object" index="43">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">59daf374-bc21-4a5e-8282-5504fb7ae9ae</item>
                 <item name="Name" type_name="gh_string" type_code="10">List Item</item>
@@ -4809,14 +4454,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>2119</X>
-                          <Y>1087</Y>
+                          <X>2147</X>
+                          <Y>984</Y>
                           <W>86</W>
                           <H>84</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>2167</X>
-                          <Y>1129</Y>
+                          <X>2195</X>
+                          <Y>1026</Y>
                         </item>
                       </items>
                     </chunk>
@@ -4848,14 +4493,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2121</X>
-                                  <Y>1089</Y>
+                                  <X>2149</X>
+                                  <Y>986</Y>
                                   <W>31</W>
                                   <H>26</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2138</X>
-                                  <Y>1102.333</Y>
+                                  <X>2166</X>
+                                  <Y>999.3333</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -4874,14 +4519,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2121</X>
-                                  <Y>1115</Y>
+                                  <X>2149</X>
+                                  <Y>1012</Y>
                                   <W>31</W>
                                   <H>27</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2138</X>
-                                  <Y>1129</Y>
+                                  <X>2166</X>
+                                  <Y>1026</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -4920,14 +4565,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2121</X>
-                                  <Y>1142</Y>
+                                  <X>2149</X>
+                                  <Y>1039</Y>
                                   <W>31</W>
                                   <H>27</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2138</X>
-                                  <Y>1155.667</Y>
+                                  <X>2166</X>
+                                  <Y>1052.667</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -4967,14 +4612,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2182</X>
-                                  <Y>1089</Y>
+                                  <X>2210</X>
+                                  <Y>986</Y>
                                   <W>21</W>
                                   <H>20</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2192.5</X>
-                                  <Y>1099</Y>
+                                  <X>2220.5</X>
+                                  <Y>996</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -4994,14 +4639,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2182</X>
-                                  <Y>1109</Y>
+                                  <X>2210</X>
+                                  <Y>1006</Y>
                                   <W>21</W>
                                   <H>20</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2192.5</X>
-                                  <Y>1119</Y>
+                                  <X>2220.5</X>
+                                  <Y>1016</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -5021,14 +4666,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2182</X>
-                                  <Y>1129</Y>
+                                  <X>2210</X>
+                                  <Y>1026</Y>
                                   <W>21</W>
                                   <H>20</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2192.5</X>
-                                  <Y>1139</Y>
+                                  <X>2220.5</X>
+                                  <Y>1036</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -5048,14 +4693,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                             <chunk name="Attributes">
                               <items count="2">
                                 <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                                  <X>2182</X>
-                                  <Y>1149</Y>
+                                  <X>2210</X>
+                                  <Y>1046</Y>
                                   <W>21</W>
                                   <H>20</H>
                                 </item>
                                 <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                                  <X>2192.5</X>
-                                  <Y>1159</Y>
+                                  <X>2220.5</X>
+                                  <Y>1056</Y>
                                 </item>
                               </items>
                             </chunk>
@@ -5067,7 +4712,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="45">
+            <chunk name="Object" index="44">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">4c4e56eb-2f04-43f9-95a3-cc46a14f495a</item>
                 <item name="Name" type_name="gh_string" type_code="10">Line</item>
@@ -5084,14 +4729,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>2235</X>
-                          <Y>1101</Y>
+                          <X>2263</X>
+                          <Y>998</Y>
                           <W>117</W>
                           <H>44</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>2306</X>
-                          <Y>1123</Y>
+                          <X>2334</X>
+                          <Y>1020</Y>
                         </item>
                       </items>
                     </chunk>
@@ -5109,14 +4754,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>2237</X>
-                              <Y>1103</Y>
+                              <X>2265</X>
+                              <Y>1000</Y>
                               <W>54</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>2265.5</X>
-                              <Y>1113</Y>
+                              <X>2293.5</X>
+                              <Y>1010</Y>
                             </item>
                           </items>
                         </chunk>
@@ -5136,14 +4781,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>2237</X>
-                              <Y>1123</Y>
+                              <X>2265</X>
+                              <Y>1020</Y>
                               <W>54</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>2265.5</X>
-                              <Y>1133</Y>
+                              <X>2293.5</X>
+                              <Y>1030</Y>
                             </item>
                           </items>
                         </chunk>
@@ -5162,14 +4807,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>2321</X>
-                              <Y>1103</Y>
+                              <X>2349</X>
+                              <Y>1000</Y>
                               <W>29</W>
                               <H>40</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>2335.5</X>
-                              <Y>1123</Y>
+                              <X>2363.5</X>
+                              <Y>1020</Y>
                             </item>
                           </items>
                         </chunk>
@@ -5179,7 +4824,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="46">
+            <chunk name="Object" index="45">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">f1c0783b-60e9-42a7-8081-925bc755494c</item>
                 <item name="Name" type_name="gh_string" type_code="10">Tangent Arcs</item>
@@ -5194,18 +4839,17 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                   </items>
                   <chunks count="6">
                     <chunk name="Attributes">
-                      <items count="3">
+                      <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>2224</X>
-                          <Y>1171</Y>
+                          <X>1650</X>
+                          <Y>291</Y>
                           <W>108</W>
                           <H>64</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>2282</X>
-                          <Y>1203</Y>
+                          <X>1708</X>
+                          <Y>323</Y>
                         </item>
-                        <item name="Selected" type_name="gh_bool" type_code="1">true</item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
@@ -5215,23 +4859,22 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <item name="Name" type_name="gh_string" type_code="10">Circle A</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Circle A</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">797d011b-4e73-4b9b-8604-33aa7072ca7f</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">9754c713-ea0f-4659-a749-e8eb404e2b33</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
-                          <items count="3">
+                          <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>2226</X>
-                              <Y>1173</Y>
+                              <X>1652</X>
+                              <Y>293</Y>
                               <W>41</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>2248</X>
-                              <Y>1183</Y>
+                              <X>1674</X>
+                              <Y>303</Y>
                             </item>
-                            <item name="Selected" type_name="gh_bool" type_code="1">true</item>
                           </items>
                         </chunk>
                       </chunks>
@@ -5243,23 +4886,22 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <item name="Name" type_name="gh_string" type_code="10">Circle B</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Circle B</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">54ded71a-013d-4713-8302-fb9b0d22d66a</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">bff93561-a3ce-40a5-b1f8-2cae5bf6ea35</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
-                          <items count="3">
+                          <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>2226</X>
-                              <Y>1193</Y>
+                              <X>1652</X>
+                              <Y>313</Y>
                               <W>41</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>2248</X>
-                              <Y>1203</Y>
+                              <X>1674</X>
+                              <Y>323</Y>
                             </item>
-                            <item name="Selected" type_name="gh_bool" type_code="1">true</item>
                           </items>
                         </chunk>
                       </chunks>
@@ -5276,18 +4918,17 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
-                          <items count="3">
+                          <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>2226</X>
-                              <Y>1213</Y>
+                              <X>1652</X>
+                              <Y>333</Y>
                               <W>41</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>2248</X>
-                              <Y>1223</Y>
+                              <X>1674</X>
+                              <Y>343</Y>
                             </item>
-                            <item name="Selected" type_name="gh_bool" type_code="1">true</item>
                           </items>
                         </chunk>
                       </chunks>
@@ -5303,18 +4944,17 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
-                          <items count="3">
+                          <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>2297</X>
-                              <Y>1173</Y>
+                              <X>1723</X>
+                              <Y>293</Y>
                               <W>33</W>
                               <H>30</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>2313.5</X>
-                              <Y>1188</Y>
+                              <X>1739.5</X>
+                              <Y>308</Y>
                             </item>
-                            <item name="Selected" type_name="gh_bool" type_code="1">true</item>
                           </items>
                         </chunk>
                       </chunks>
@@ -5330,18 +4970,17 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
-                          <items count="3">
+                          <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>2297</X>
-                              <Y>1203</Y>
+                              <X>1723</X>
+                              <Y>323</Y>
                               <W>33</W>
                               <H>30</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>2313.5</X>
-                              <Y>1218</Y>
+                              <X>1739.5</X>
+                              <Y>338</Y>
                             </item>
-                            <item name="Selected" type_name="gh_bool" type_code="1">true</item>
                           </items>
                         </chunk>
                       </chunks>
@@ -5350,7 +4989,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="47">
+            <chunk name="Object" index="46">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
                 <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
@@ -5369,14 +5008,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1982</X>
-                          <Y>1306</Y>
+                          <X>2010</X>
+                          <Y>1203</Y>
                           <W>197</W>
                           <H>20</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1982.053</X>
-                          <Y>1306.54</Y>
+                          <X>2010.901</X>
+                          <Y>1203.769</Y>
                         </item>
                       </items>
                     </chunk>
@@ -5395,7 +5034,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                 </chunk>
               </chunks>
             </chunk>
-            <chunk name="Object" index="48">
+            <chunk name="Object" index="47">
               <items count="2">
                 <item name="GUID" type_name="gh_guid" type_code="9">57da07bd-ecab-415d-9d86-af36d7073abc</item>
                 <item name="Name" type_name="gh_string" type_code="10">Number Slider</item>
@@ -5414,14 +5053,14 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1987</X>
-                          <Y>1258</Y>
+                          <X>1351</X>
+                          <Y>291</Y>
                           <W>197</W>
                           <H>20</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1987.74</X>
-                          <Y>1258.2</Y>
+                          <X>1351.312</X>
+                          <Y>291.0822</Y>
                         </item>
                       </items>
                     </chunk>
@@ -5433,7 +5072,488 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
                         <item name="Max" type_name="gh_double" type_code="6">100</item>
                         <item name="Min" type_name="gh_double" type_code="6">0</item>
                         <item name="SnapCount" type_name="gh_int32" type_code="3">0</item>
-                        <item name="Value" type_name="gh_double" type_code="6">73</item>
+                        <item name="Value" type_name="gh_double" type_code="6">2</item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="48">
+              <items count="2">
+                <item name="GUID" type_name="gh_guid" type_code="9">a9a8ebd2-fff5-4c44-a8f5-739736d129ba</item>
+                <item name="Name" type_name="gh_string" type_code="10">C# Script</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="7">
+                    <item name="CustomUsing" type_name="gh_bool" type_code="1">true</item>
+                    <item name="Description" type_name="gh_string" type_code="10">A C#.NET scriptable component</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">265d6b26-51d3-4fa3-b73a-0da393937cbb</item>
+                    <item name="Name" type_name="gh_string" type_code="10">C# Script</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">C# Script</item>
+                    <item name="OutParameter" type_name="gh_bool" type_code="1">true</item>
+                    <item name="ReferenceCount" type_name="gh_int32" type_code="3">0</item>
+                  </items>
+                  <chunks count="2">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>1697</X>
+                          <Y>534</Y>
+                          <W>71</W>
+                          <H>44</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>1726</X>
+                          <Y>556</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="ParameterData">
+                      <items count="6">
+                        <item name="InputCount" type_name="gh_int32" type_code="3">2</item>
+                        <item name="InputId" index="0" type_name="gh_guid" type_code="9">84fa917c-1ed8-4db3-8be1-7bdc4a6495a2</item>
+                        <item name="InputId" index="1" type_name="gh_guid" type_code="9">84fa917c-1ed8-4db3-8be1-7bdc4a6495a2</item>
+                        <item name="OutputCount" type_name="gh_int32" type_code="3">2</item>
+                        <item name="OutputId" index="0" type_name="gh_guid" type_code="9">3ede854e-c753-40eb-84cb-b48008f14fd4</item>
+                        <item name="OutputId" index="1" type_name="gh_guid" type_code="9">8ec86459-bf01-4409-baee-174d0d2b13d0</item>
+                      </items>
+                      <chunks count="4">
+                        <chunk name="InputParam" index="0">
+                          <items count="11">
+                            <item name="AllowTreeAccess" type_name="gh_bool" type_code="1">true</item>
+                            <item name="Description" type_name="gh_string" type_code="10">Script Variable x</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">1056cd52-2e60-485b-ac09-a11f06a326fb</item>
+                            <item name="Name" type_name="gh_string" type_code="10">x</item>
+                            <item name="NickName" type_name="gh_string" type_code="10">x</item>
+                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">0</item>
+                            <item name="ShowTypeHints" type_name="gh_bool" type_code="1">true</item>
+                            <item name="Source" index="0" type_name="gh_guid" type_code="9">9754c713-ea0f-4659-a749-e8eb404e2b33</item>
+                            <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                            <item name="TypeHintID" type_name="gh_guid" type_code="9">9ba89ec2-5315-435f-a621-b66c5fa2f301</item>
+                          </items>
+                          <chunks count="1">
+                            <chunk name="Attributes">
+                              <items count="2">
+                                <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                                  <X>1699</X>
+                                  <Y>536</Y>
+                                  <W>12</W>
+                                  <H>20</H>
+                                </item>
+                                <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                                  <X>1706.5</X>
+                                  <Y>546</Y>
+                                </item>
+                              </items>
+                            </chunk>
+                          </chunks>
+                        </chunk>
+                        <chunk name="InputParam" index="1">
+                          <items count="11">
+                            <item name="AllowTreeAccess" type_name="gh_bool" type_code="1">true</item>
+                            <item name="Description" type_name="gh_string" type_code="10">Script Variable y</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">3b00775c-0ce7-4425-acb4-8d30b747f183</item>
+                            <item name="Name" type_name="gh_string" type_code="10">y</item>
+                            <item name="NickName" type_name="gh_string" type_code="10">y</item>
+                            <item name="Optional" type_name="gh_bool" type_code="1">true</item>
+                            <item name="ScriptParamAccess" type_name="gh_int32" type_code="3">0</item>
+                            <item name="ShowTypeHints" type_name="gh_bool" type_code="1">true</item>
+                            <item name="Source" index="0" type_name="gh_guid" type_code="9">bff93561-a3ce-40a5-b1f8-2cae5bf6ea35</item>
+                            <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                            <item name="TypeHintID" type_name="gh_guid" type_code="9">9ba89ec2-5315-435f-a621-b66c5fa2f301</item>
+                          </items>
+                          <chunks count="1">
+                            <chunk name="Attributes">
+                              <items count="2">
+                                <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                                  <X>1699</X>
+                                  <Y>556</Y>
+                                  <W>12</W>
+                                  <H>20</H>
+                                </item>
+                                <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                                  <X>1706.5</X>
+                                  <Y>566</Y>
+                                </item>
+                              </items>
+                            </chunk>
+                          </chunks>
+                        </chunk>
+                        <chunk name="OutputParam" index="0">
+                          <items count="7">
+                            <item name="Access" type_name="gh_int32" type_code="3">1</item>
+                            <item name="Description" type_name="gh_string" type_code="10">Print, Reflect and Error streams</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">041caab2-17b7-483a-bd80-cff1a227f0e7</item>
+                            <item name="Name" type_name="gh_string" type_code="10">out</item>
+                            <item name="NickName" type_name="gh_string" type_code="10">out</item>
+                            <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                            <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                          </items>
+                          <chunks count="1">
+                            <chunk name="Attributes">
+                              <items count="2">
+                                <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                                  <X>1741</X>
+                                  <Y>536</Y>
+                                  <W>25</W>
+                                  <H>20</H>
+                                </item>
+                                <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                                  <X>1753.5</X>
+                                  <Y>546</Y>
+                                </item>
+                              </items>
+                            </chunk>
+                          </chunks>
+                        </chunk>
+                        <chunk name="OutputParam" index="1">
+                          <items count="6">
+                            <item name="Description" type_name="gh_string" type_code="10">Output parameter A</item>
+                            <item name="InstanceGuid" type_name="gh_guid" type_code="9">f0ed77f5-2bb0-44f6-936d-1a40a41da5a6</item>
+                            <item name="Name" type_name="gh_string" type_code="10">A</item>
+                            <item name="NickName" type_name="gh_string" type_code="10">A</item>
+                            <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                            <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                          </items>
+                          <chunks count="1">
+                            <chunk name="Attributes">
+                              <items count="2">
+                                <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                                  <X>1741</X>
+                                  <Y>556</Y>
+                                  <W>25</W>
+                                  <H>20</H>
+                                </item>
+                                <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                                  <X>1753.5</X>
+                                  <Y>566</Y>
+                                </item>
+                              </items>
+                            </chunk>
+                          </chunks>
+                        </chunk>
+                      </chunks>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="49">
+              <items count="3">
+                <item name="GUID" type_name="gh_guid" type_code="9">8fcbdf63-7922-4b7d-9c9d-17e7f58ae23a</item>
+                <item name="Lib" type_name="gh_guid" type_code="9">0f9371a5-9665-47f6-b40b-40f7fe835d68</item>
+                <item name="Name" type_name="gh_string" type_code="10">Script Parasite</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="4">
+                    <item name="Description" type_name="gh_string" type_code="10">Allow C# scripts to be edited in an external editor. Will recompile when the exported file changes, and will write parameter and code changes back to the C# script automatically.
+
+Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\circleTangent</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">2b1bb4e3-ad54-46ee-be61-1a96b24e78d1</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Script Parasite</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">Script Parasite</item>
+                  </items>
+                  <chunks count="3">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>1930</X>
+                          <Y>759</Y>
+                          <W>69</W>
+                          <H>44</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>1985</X>
+                          <Y>781</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="param_input" index="0">
+                      <items count="7">
+                        <item name="Description" type_name="gh_string" type_code="10">Enable listening for changes for the current file?</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">34351f0b-9a37-46a0-8e2c-40376f34c53d</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Enable</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">Enable</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">24263292-0198-4067-aee3-a2561f5b3a13</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                      <chunks count="2">
+                        <chunk name="Attributes">
+                          <items count="2">
+                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                              <X>1932</X>
+                              <Y>761</Y>
+                              <W>38</W>
+                              <H>20</H>
+                            </item>
+                            <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                              <X>1952.5</X>
+                              <Y>771</Y>
+                            </item>
+                          </items>
+                        </chunk>
+                        <chunk name="PersistentData">
+                          <items count="1">
+                            <item name="Count" type_name="gh_int32" type_code="3">1</item>
+                          </items>
+                          <chunks count="1">
+                            <chunk name="Branch" index="0">
+                              <items count="2">
+                                <item name="Count" type_name="gh_int32" type_code="3">1</item>
+                                <item name="Path" type_name="gh_string" type_code="10">{0}</item>
+                              </items>
+                              <chunks count="1">
+                                <chunk name="Item" index="0">
+                                  <items count="1">
+                                    <item name="boolean" type_name="gh_bool" type_code="1">false</item>
+                                  </items>
+                                </chunk>
+                              </chunks>
+                            </chunk>
+                          </chunks>
+                        </chunk>
+                      </chunks>
+                    </chunk>
+                    <chunk name="param_input" index="1">
+                      <items count="7">
+                        <item name="Description" type_name="gh_string" type_code="10">Folder to write scripts to</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b3ccf00b-5cb1-4ce4-943d-613fa01fce9d</item>
+                        <item name="Name" type_name="gh_string" type_code="10">Folder</item>
+                        <item name="NickName" type_name="gh_string" type_code="10">Folder</item>
+                        <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">b743e8d3-d550-47e6-9410-3e9be22201a2</item>
+                        <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                      </items>
+                      <chunks count="2">
+                        <chunk name="Attributes">
+                          <items count="2">
+                            <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                              <X>1932</X>
+                              <Y>781</Y>
+                              <W>38</W>
+                              <H>20</H>
+                            </item>
+                            <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                              <X>1952.5</X>
+                              <Y>791</Y>
+                            </item>
+                          </items>
+                        </chunk>
+                        <chunk name="PersistentData">
+                          <items count="1">
+                            <item name="Count" type_name="gh_int32" type_code="3">1</item>
+                          </items>
+                          <chunks count="1">
+                            <chunk name="Branch" index="0">
+                              <items count="2">
+                                <item name="Count" type_name="gh_int32" type_code="3">1</item>
+                                <item name="Path" type_name="gh_string" type_code="10">{0}</item>
+                              </items>
+                              <chunks count="1">
+                                <chunk name="Item" index="0">
+                                  <items count="2">
+                                    <item name="null_string" type_name="gh_bool" type_code="1">false</item>
+                                    <item name="string" type_name="gh_string" type_code="10">C:\Zac\GitHub\3d_printing_teamwork\references\mesh_growth\mesh_growth_studies</item>
+                                  </items>
+                                </chunk>
+                              </chunks>
+                            </chunk>
+                          </chunks>
+                        </chunk>
+                      </chunks>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="50">
+              <items count="2">
+                <item name="GUID" type_name="gh_guid" type_code="9">59e0b89a-e487-49f8-bab8-b5bab16be14c</item>
+                <item name="Name" type_name="gh_string" type_code="10">Panel</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="8">
+                    <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">b743e8d3-d550-47e6-9410-3e9be22201a2</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Panel</item>
+                    <item name="NickName" type_name="gh_string" type_code="10"></item>
+                    <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                    <item name="ScrollRatio" type_name="gh_double" type_code="6">0</item>
+                    <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                    <item name="UserText" type_name="gh_string" type_code="10">C:\Zac\GitHub\3d_printing_teamwork\skinPattern\circleTangent</item>
+                  </items>
+                  <chunks count="2">
+                    <chunk name="Attributes">
+                      <items count="5">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>1610</X>
+                          <Y>775</Y>
+                          <W>279</W>
+                          <H>37</H>
+                        </item>
+                        <item name="MarginLeft" type_name="gh_int32" type_code="3">0</item>
+                        <item name="MarginRight" type_name="gh_int32" type_code="3">0</item>
+                        <item name="MarginTop" type_name="gh_int32" type_code="3">0</item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>1610.267</X>
+                          <Y>775.2978</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                    <chunk name="PanelProperties">
+                      <items count="7">
+                        <item name="Colour" type_name="gh_drawing_color" type_code="36">
+                          <ARGB>200;255;255;255</ARGB>
+                        </item>
+                        <item name="DrawIndices" type_name="gh_bool" type_code="1">true</item>
+                        <item name="DrawPaths" type_name="gh_bool" type_code="1">true</item>
+                        <item name="Multiline" type_name="gh_bool" type_code="1">true</item>
+                        <item name="SpecialCodes" type_name="gh_bool" type_code="1">false</item>
+                        <item name="Stream" type_name="gh_bool" type_code="1">false</item>
+                        <item name="Wrap" type_name="gh_bool" type_code="1">true</item>
+                      </items>
+                      <chunks count="1">
+                        <chunk name="Font">
+                          <items count="2">
+                            <item name="Family" type_name="gh_string" type_code="10">Source Sans Pro ExtraLight</item>
+                            <item name="Size" type_name="gh_single" type_code="5">6.4</item>
+                          </items>
+                        </chunk>
+                      </chunks>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="51">
+              <items count="2">
+                <item name="GUID" type_name="gh_guid" type_code="9">2e78987b-9dfb-42a2-8b76-3923ac8bd91a</item>
+                <item name="Name" type_name="gh_string" type_code="10">Boolean Toggle</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="7">
+                    <item name="Description" type_name="gh_string" type_code="10">Boolean (true/false) toggle</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">24263292-0198-4067-aee3-a2561f5b3a13</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Boolean Toggle</item>
+                    <item name="NickName" type_name="gh_string" type_code="10">Boolean Toggle</item>
+                    <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                    <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
+                    <item name="ToggleValue" type_name="gh_bool" type_code="1">true</item>
+                  </items>
+                  <chunks count="1">
+                    <chunk name="Attributes">
+                      <items count="1">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>1733</X>
+                          <Y>679</Y>
+                          <W>140</W>
+                          <H>22</H>
+                        </item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="52">
+              <items count="2">
+                <item name="GUID" type_name="gh_guid" type_code="9">c552a431-af5b-46a9-a8a4-0fcbc27ef596</item>
+                <item name="Name" type_name="gh_string" type_code="10">Group</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="9">
+                    <item name="Border" type_name="gh_int32" type_code="3">1</item>
+                    <item name="Colour" type_name="gh_drawing_color" type_code="36">
+                      <ARGB>150;170;135;225</ARGB>
+                    </item>
+                    <item name="Description" type_name="gh_string" type_code="10">A group of Grasshopper objects</item>
+                    <item name="ID" index="0" type_name="gh_guid" type_code="9">bd3b58da-f250-4a7d-958e-a392b3f54bb2</item>
+                    <item name="ID" index="1" type_name="gh_guid" type_code="9">2b1bb4e3-ad54-46ee-be61-1a96b24e78d1</item>
+                    <item name="ID_Count" type_name="gh_int32" type_code="3">2</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">fadef8cc-79ff-4741-9c7f-68848424cb06</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Group</item>
+                    <item name="NickName" type_name="gh_string" type_code="10"></item>
+                  </items>
+                  <chunks count="1">
+                    <chunk name="Attributes" />
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="53">
+              <items count="2">
+                <item name="GUID" type_name="gh_guid" type_code="9">b6236720-8d88-4289-93c3-ac4c99f9b97b</item>
+                <item name="Name" type_name="gh_string" type_code="10">Relay</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="8">
+                    <item name="Access" type_name="gh_int32" type_code="3">2</item>
+                    <item name="Description" type_name="gh_string" type_code="10">A wire relay object</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">f0118aeb-9458-4b96-ad36-65e554072c8f</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Relay</item>
+                    <item name="NickName" type_name="gh_string" type_code="10"></item>
+                    <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">f9e1e3d4-75fa-4cc5-9fee-3eb052053289</item>
+                    <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                  </items>
+                  <chunks count="1">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>1123</X>
+                          <Y>634</Y>
+                          <W>40</W>
+                          <H>16</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>1143</X>
+                          <Y>642</Y>
+                        </item>
+                      </items>
+                    </chunk>
+                  </chunks>
+                </chunk>
+              </chunks>
+            </chunk>
+            <chunk name="Object" index="54">
+              <items count="2">
+                <item name="GUID" type_name="gh_guid" type_code="9">b6236720-8d88-4289-93c3-ac4c99f9b97b</item>
+                <item name="Name" type_name="gh_string" type_code="10">Relay</item>
+              </items>
+              <chunks count="1">
+                <chunk name="Container">
+                  <items count="8">
+                    <item name="Access" type_name="gh_int32" type_code="3">2</item>
+                    <item name="Description" type_name="gh_string" type_code="10">A wire relay object</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">b3622af9-e9c8-4939-8e54-6b068ef7bd7a</item>
+                    <item name="Name" type_name="gh_string" type_code="10">Relay</item>
+                    <item name="NickName" type_name="gh_string" type_code="10"></item>
+                    <item name="Optional" type_name="gh_bool" type_code="1">false</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">c6e1a069-f9fc-4b15-814f-c74c3705432c</item>
+                    <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
+                  </items>
+                  <chunks count="1">
+                    <chunk name="Attributes">
+                      <items count="2">
+                        <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
+                          <X>1137</X>
+                          <Y>661</Y>
+                          <W>40</W>
+                          <H>16</H>
+                        </item>
+                        <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
+                          <X>1157</X>
+                          <Y>669</Y>
+                        </item>
                       </items>
                     </chunk>
                   </chunks>
@@ -5447,7 +5567,7 @@ Current output path: C:\Zac\GitHub\3d_printing_teamwork\skinPattern\csharp</item
     <chunk name="Thumbnail">
       <items count="1">
         <item name="Thumbnail" type_name="gh_drawing_bitmap" type_code="37">
-          <bitmap length="11314">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</bitmap>
+          <bitmap length="9937">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</bitmap>
         </item>
       </items>
     </chunk>
