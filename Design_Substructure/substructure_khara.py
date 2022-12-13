@@ -5,7 +5,6 @@ import ghpythonlib.treehelpers as th
 tolerance = 0.001
 
 
-
 #this class is focused on the properties and methods of each instance MAS (multi agent system)
 
 class Environment(object):
@@ -25,7 +24,7 @@ class Environment(object):
         for u, t_fac in zip(u_vals,target_factors) :
             self.agents.append(Agent(u, 0, 0, t_fac / self.v_div, self.surface)) 
 
-    def update_agents_pos (self, coherence_rad, coherence_fac):
+    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac):
         # generate the new position of each agent by calculating their new direction and velocity
         #for each agent apply all the functions on it given the required factors for each parameter
         #if the agent arrives we pop out this agent from the list and add it to the finished list 
@@ -33,9 +32,17 @@ class Environment(object):
         #list of all effects so as not to change the behaviour of the agents during update
         effects_list = []
         for agent in self.agents:
-            effects_vector = rg.Vector2d(0,0)
+            effects_vector = rg.Vector2d(0,0)  
+
             coherence_vector = agent.Coherence(coherence_rad, self.agents, self.u_div, self.v_div, coherence_fac)
             effects_vector += coherence_vector
+
+            alignment_vector = agent.Alignment(align_rad, self.agents, self.u_div, self.v_div, align_fac)
+            effects_vector += alignment_vector
+
+            separation_vector = agent.Separation(avoid_rad, self.agents, self.u_div, self.v_div, avoid_fac)
+            effects_vector += separation_vector
+
             #sum all of the vectors + the actual du and dv of the agent + unitize --> do nothing but add them to the effects_list
             agent.AddTotalEffect(self.u_div, self.v_div, effects_vector)
 
@@ -115,20 +122,25 @@ class Agent(object):
                     average_du += agent.du
                     average_dv += agent.dv
         
-        average_du /= num_neighbors
-        average_dv /= num_neighbors
+        if  num_neighbors > 0:
+            average_du /= num_neighbors
+            average_dv /= num_neighbors
 
-        align_unit_vect = rg.Vector2d(average_du, average_dv)
-        align_unit_vect = self.UnitizeEffect(u_div, v_div,align_unit_vect) * align_fac
+            align_unit_vect = rg.Vector2d(average_du, average_dv)
+            align_unit_vect = self.UnitizeEffect(u_div, v_div,align_unit_vect) * align_fac
+
+            return align_unit_vect
+
+        else:
+            return rg.Vector2d(0,0)
 
 
-    def Separation (self, radius, agents, u_div, v_div, coh_fac):
+    def Separation (self, radius, agents, u_div, v_div, avoid_fac):
         # fx for Separation
         """within the specified radius we need to iterate over each agent apart from ours and do the following:
         -> define how close two agents can be [min distance before collision]
         -> define a new direction [maybe reversed]
         """
-        seperation_distance = 10
 
 
         for agent in agents:
@@ -137,6 +149,8 @@ class Agent(object):
                 if dist<= radius:
                     self.du *= -1
 
+        separation_unit_vect = rg.Vector2d(average_du, average_dv)
+        separation_unit_vect = self.UnitizeEffect(u_div, v_div,separation_unit_vect) * avoid_fac
 
     # fx for Target reach
     """
@@ -199,6 +213,16 @@ class Agent(object):
 # afterwards, for each environment do some action till a certain time t
 # afterwards instantiate a bigger environment containing all agents and giving it a certain value for all parameters.
 
+
+#Swap UV directions of surface if needed
+corner_b= surface.PointAt(1,0)
+corner_d= surface.PointAt(0,1)
+
+if corner_b.Z > corner_d.Z:
+    surface.Transpose(True)
+
+
+
 initial_env_list = []
 u_lists = th.tree_to_list(u_lists)
 target_factors = th.tree_to_list(target_factors)
@@ -211,8 +235,14 @@ for u_list, t_factor in zip(u_lists, target_factors):
 #depending on the input timestep we update the agents
 for t in range(time_1):
     for env in initial_env_list:
-        env.update_agents_pos(coherence_rad, coherence_fac)
+        env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac)
 
 list_pts = []
+paths=[]
 for env in initial_env_list:
     list_pts.append([agent.pts for agent in env.agents])
+    path = surface.InterpolatedCurveOnSurface([agent.pts for agent in env.agents],tolerance)
+    paths.append(path)
+
+paths = th.list_to_tree(paths)
+list_pts = th.list_to_tree(list_pts)
