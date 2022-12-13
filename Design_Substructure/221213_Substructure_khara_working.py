@@ -2,6 +2,7 @@ import Rhino.Geometry as rg
 import ghpythonlib.treehelpers as th
 import math
 
+#hellooo
 tolerance = 0.001
 
 #this class is focused on the properties and methods of each instance MAS (multi agent system)
@@ -23,7 +24,7 @@ class Environment(object):
         for u, t_fac in zip(u_vals,target_factors) :
             self.agents.append(Agent(u, 0, 0, t_fac / self.v_div, self.surface)) 
 
-    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac):
+    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T):
         # generate the new position of each agent by calculating their new direction and velocity
         #for each agent apply all the functions on it given the required factors for each parameter
         #if the agent arrives we pop out this agent from the list and add it to the finished list 
@@ -34,14 +35,17 @@ class Environment(object):
             #always add a positive up vector in the beginning
             effects_vector = rg.Vector2d(0,agent.up_force)
 
-            coherence_vector = agent.Coherence(coherence_rad, self.agents, self.u_div, self.v_div, coherence_fac)
-            effects_vector += coherence_vector
+            if Coherence_T:
+                coherence_vector = agent.Coherence(coherence_rad, self.agents, self.u_div, self.v_div, coherence_fac)
+                effects_vector += coherence_vector
 
-            alignment_vector = agent.Alignment(align_rad, self.agents, self.u_div, self.v_div, align_fac)
-            effects_vector += alignment_vector
+            if Alignment_T:
+                alignment_vector = agent.Alignment(align_rad, self.agents, self.u_div, self.v_div, align_fac)
+                effects_vector += alignment_vector
 
-            separation_vector = agent.Separation(avoid_rad, self.agents, self.u_div, self.v_div, avoid_fac)
-            effects_vector += separation_vector
+            if Separation_T:
+                separation_vector = agent.Separation(avoid_rad, self.agents, self.u_div, self.v_div, avoid_fac)
+                effects_vector += separation_vector
 
             #sum all of the vectors + the actual du and dv of the agent + unitize --> do nothing but add them to the effects_list
             effects_list.append(agent.AddTotalEffect(self.u_div, self.v_div, effects_vector))
@@ -55,7 +59,7 @@ class Environment(object):
        
         for fin_agent in temp_removed_agents:
             self.finished_agents.append(fin_agent)
-            self.agents.pop(fin_agent)
+            self.agents.remove(fin_agent)
 
 
         #pending: function that ensures all agents have reached the final destination
@@ -157,7 +161,7 @@ class Agent(object):
         move_dU= 0
         move_dV= 0
 
-        min_dist = -math.inf
+        min_dist = -1
         closest_agent = self
 
         for agent in agents:
@@ -231,7 +235,7 @@ class Agent(object):
         #checks the agent compliance with boundary
         self.withinBounds()
 
-        self.pts.append(self.position)
+        self.pts.append(self.surface.PointAt(self.u, self.v))
 
 
 
@@ -263,14 +267,15 @@ for u_list, t_factor in zip(u_lists, target_factors):
 #depending on the input timestep we update the agents
 for t in range(time_1):
     for env in initial_env_list:
-        env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac)
+        env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T)
 
 list_pts = []
 paths=[]
 for env in initial_env_list:
     list_pts.append([agent.pts for agent in env.agents])
-    path = surface.InterpolatedCurveOnSurface([agent.pts for agent in env.agents],tolerance)
-    paths.append(path)
+    for agent in env.agents:
+        path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance)
+        paths.append(path)
     
 
 paths = th.list_to_tree(paths)
