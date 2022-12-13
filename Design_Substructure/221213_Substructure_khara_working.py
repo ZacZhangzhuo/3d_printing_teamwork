@@ -17,6 +17,7 @@ class Environment(object):
         self.finished_agents = []
         if len(agents_list) > 0:
             self.agents = agents_list
+        
 
     #this function takes the u values and transform them into agents
     def populate_agents(self, u_vals, target_factors):
@@ -24,7 +25,7 @@ class Environment(object):
         for u, t_fac in zip(u_vals,target_factors) :
             self.agents.append(Agent(u, 0, 0, t_fac / self.v_div, self.surface)) 
 
-    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T):
+    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T, Repulsion_T):
         # generate the new position of each agent by calculating their new direction and velocity
         #for each agent apply all the functions on it given the required factors for each parameter
         #if the agent arrives we pop out this agent from the list and add it to the finished list 
@@ -34,6 +35,11 @@ class Environment(object):
         for agent in self.agents:
             #always add a positive up vector in the beginning
             effects_vector = rg.Vector2d(0,agent.up_force)
+
+            #new part added to create repulsion:
+            # we need the bounds based on these bounds we calculate the percetage of the upforce
+            # if the upforce is greater than a threshold then do the repulsion function and neglect the rest
+            #cancelled for now !!
 
             if Coherence_T:
                 coherence_vector = agent.Coherence(coherence_rad, self.agents, self.u_div, self.v_div, coherence_fac)
@@ -157,11 +163,10 @@ class Agent(object):
         -> define how close two agents can be [min distance before collision]
         -> define a new direction [maybe reversed]
         """
-        num_neighbors = 0
         move_dU= 0
         move_dV= 0
 
-        min_dist = -1
+        min_dist = 1000000
         closest_agent = self
 
         for agent in agents:
@@ -182,6 +187,7 @@ class Agent(object):
         else:
             return rg.Vector2d(0,0)
     
+
     #checks the boundaries and for end of life of agent
     def withinBounds (self): 
         """
@@ -255,6 +261,8 @@ corner_d= surface.PointAt(0,1)
 if corner_b.Z > corner_d.Z:
     surface.Transpose(True)
 
+all_agents = []
+#strt with first phase (t1)
 initial_env_list = []
 u_lists = th.tree_to_list(u_lists)
 target_factors = th.tree_to_list(target_factors)
@@ -262,21 +270,32 @@ for u_list, t_factor in zip(u_lists, target_factors):
     #instantiate an instance of the environment:
     new_env = Environment(u_div, v_div, surface)
     new_env.populate_agents(u_list, t_factor)
+    #add all agents to the big list
+    all_agents.extend(new_env.agents)
     initial_env_list.append(new_env)
+
 
 #depending on the input timestep we update the agents
 for t in range(time_1):
     for env in initial_env_list:
         env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T)
 
+#Create a new env contaiing all agents 
+combined_env = Environment(u_div, v_div, surface, all_agents)
+for t in range(time_2):
+    combined_env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T)
+
 list_pts = []
 paths=[]
-for env in initial_env_list:
-    list_pts.append([agent.pts for agent in env.agents])
-    for agent in env.agents:
-        path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance)
-        paths.append(path)
-    
+#for env in initial_env_list:
+#   list_pts.append([agent.pts for agent in env.agents])
+#    for agent in env.agents:
+#        path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance)
+#       paths.append(path)
+# 
+for agent in all_agents:
+    path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
+    paths.append(path)  
 
 paths = th.list_to_tree(paths)
 list_pts = th.list_to_tree(list_pts)
