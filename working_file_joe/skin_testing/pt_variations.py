@@ -1,5 +1,6 @@
 import Rhino.Geometry as rg
 import random as r
+import ghpythonlib as ghc
 from ghpythonlib import treehelpers as th
 from copy import deepcopy
 
@@ -32,19 +33,13 @@ def get_pts(crv):
 def make_planes (pts):
 
     pts_planes = []
-
+    
     for pt in pts:
-        plane = rg.Plane(pt, rg.Vector3d.YAxis)
+        point, uv_pt, distance = ghc.components.SurfaceClosestPoint(pt,srf)
+        pnt, normal, u, v, f = ghc.components.EvaluateSurface(srf, uv_pt)
+        plane = rg.Plane(pt, rg.Vector3d(normal))
         pts_planes.append(plane)
-
-    
-    ####################################################################
-    
-    # for j in range(1, len(plns)-1):
-    #     plane = rg.Plane(plns[j], plns[j-1], plns[j+1])
-    #     new_plane = OrientPlane(plane, rg.Vector3d(1,0,0))
-    #     pts_planes.append(new_plane)
-    
+   
     return pts_planes
     
 
@@ -54,7 +49,7 @@ def move_planes(plns, plns_graph):
       
     for k, value in enumerate(plns_graph):
         origin = plns[k].Clone()
-        trans1 = rg.Transform.Translation(rg.Vector3d(0,plns_graph[k],0))
+        trans1 = rg.Transform.Translation(rg.Vector3d(plns[k].Normal*plns_graph[k]))
         origin.Transform(trans1)
         moved_plns.append(origin)
    
@@ -63,18 +58,16 @@ def move_planes(plns, plns_graph):
 def make_layered_planes (plns):
 
     layered_planes = [plns]
-    flip = True
-
+    
     for l in range(layer_nbr):
         temp = []
         for p in layered_planes[l]:
             layer_1 = deepcopy(p)
-            trans2 = rg.Transform.Translation(rg.Vector3d(0,layer_height,0))
+            trans2 = rg.Transform.Translation(rg.Vector3d(p.Normal*layer_height))
             layer_1.Transform(trans2)
             temp.append(layer_1)
-        if flip:
-            temp.reverse
-        flip = not flip
+        
+        temp.reverse()
         layered_planes.append(temp)
 
     return layered_planes
@@ -86,31 +79,4 @@ moved_planes = move_planes(pts_planes, plns_graph)
 layered_planes = th.list_to_tree(make_layered_planes (moved_planes))
 
 
-    # def get_crvs(self):
-    #     cls = []
-    #     for i in range(self.cnt):
-    #         origin = self.pt.Clone()
-    #         T = rg.Transform.Translation(0,0,i*5)
-    #         origin.Transform(T)
-    #         c = rg.Circle(origin,self.r*graph_map[i])
-    #         cls.append(c)
-    #     return cls
-
-
-
-    # def make_layered_planes (plns):
-
-    # layered_planes = []
-
-    # for list in range(layer_nbr):
-    #     temp = []
-        
-    #     for m in list:
-    #         layer_1 = deepcopy(plns[l])
-    #         trans2 = rg.Transform.Translation(rg.Vector3d(0,layer_height,0))
-    #         layer_1.Transform(trans2)
-    #         temp.append(layer_1)
-        
-    #     layered_planes.append(temp)
-
-    # return layered_planes
+    
