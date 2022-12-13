@@ -5,7 +5,6 @@ import ghpythonlib.treehelpers as th
 tolerance = 0.001
 
 
-
 #this class is focused on the properties and methods of each instance MAS (multi agent system)
 
 class Environment(object):
@@ -25,7 +24,7 @@ class Environment(object):
         for u, t_fac in zip(u_vals,target_factors) :
             self.agents.append(Agent(u, 0, 0, t_fac / self.v_div, self.surface)) 
 
-    def update_agents_pos (self, coherence_rad, coherence_fac):
+    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac):
         # generate the new position of each agent by calculating their new direction and velocity
         #for each agent apply all the functions on it given the required factors for each parameter
         #if the agent arrives we pop out this agent from the list and add it to the finished list 
@@ -33,9 +32,17 @@ class Environment(object):
         #list of all effects so as not to change the behaviour of the agents during update
         effects_list = []
         for agent in self.agents:
-            effects_vector = rg.Vector2d(0,0)
+            effects_vector = rg.Vector2d(0,0)  
+
             coherence_vector = agent.Coherence(coherence_rad, self.agents, self.u_div, self.v_div, coherence_fac)
             effects_vector += coherence_vector
+
+            alignment_vector = agent.Alignment(align_rad, self.agents, self.u_div, self.v_div, align_fac)
+            effects_vector += alignment_vector
+
+            separation_vector = agent.Separation(avoid_rad, self.agents, self.u_div, self.v_div, avoid_fac)
+            effects_vector += separation_vector
+
             #sum all of the vectors + the actual du and dv of the agent + unitize --> do nothing but add them to the effects_list
             agent.AddTotalEffect(self.u_div, self.v_div, effects_vector)
 
@@ -76,7 +83,7 @@ class Agent(object):
         num_neighbors = 0
         for agent in agents:
             if not agent == self:
-                dist = self.surface.ShortPath(self.position, agent.position, tolerance).GetLength()
+                dist = self.position.DistanceTo(agent.position)
                 if dist<= radius:
                     num_neighbors +=1
                     centerU += agent.u
@@ -96,7 +103,7 @@ class Agent(object):
         else:
             return rg.Vector2d(0,0)
 
-    def Alignment(self, radius, agents):
+    def Alignment(self, radius, agents, u_div, v_div, align_fac):
         # fx for Alignment (match velocity)
         """within the specified radius we need to iterate over each agent apart from ours and do the following:
         -> calculate the average velocity [adding all the velocities and dividing the result with the total number of neighbors]
@@ -107,37 +114,54 @@ class Agent(object):
         average_dv = 0
         num_neighbors = 0
 
-        for neighbor_agent in agents:
-            if not neighbor_agent == self:
-                dist = self.surface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
+        for agent in agents:
+            if not agent == self:
+                dist = self.position.DistanceTo(agent.position)
                 if dist <= radius:
                     num_neighbors +=1
-                    average_du += neighbor_agent.du
-                    average_dv += neighbor_agent.dv
+                    average_du += agent.du
+                    average_dv += agent.dv
         
-        average_du /= num_neighbors
-        average_dv /= num_neighbors
+        if  num_neighbors > 0:
+            average_du /= num_neighbors
+            average_dv /= num_neighbors
 
-        self.du += (average_du-self.u)*alignment_factor
-        self.dv += (average_du-self.v)*alignment_factor
+            align_unit_vect = rg.Vector2d(average_du, average_dv)
+            align_unit_vect = self.UnitizeEffect(u_div, v_div,align_unit_vect) * align_fac
+
+            return align_unit_vect
+
+        else:
+            return rg.Vector2d(0,0)
 
 
-    def Separation (self):
+    def Separation (self, radius, agents, u_div, v_div, avoid_fac):
         # fx for Separation
         """within the specified radius we need to iterate over each agent apart from ours and do the following:
         -> define how close two agents can be [min distance before collision]
         -> define a new direction [maybe reversed]
         """
-        seperation_distance = 10
+        num_neighbors =0
+        moveU=0
+        moveV=0
+        for agent in agents:
+            if not agent == self:
+                dist = self.position.DistanceTo(agent.position)
+                if dist<= radius:
+                    num_neighbors =-1
+                    moveU = self.u - agent.u
+                    moveY = self.v - agent.v
 
+        if  num_neighbors > 0:
 
-        for neighbor_agent in group_of_agents:
-            if not neighbor_agent == self:
-                dist = GivenSurface.ShortPath(self.position, neighbor_agent.position, tolerance).GetLength()
-                if dist<= seperation_distance:
-                    self.du *= -1
+            avoid_unit_vect = rg.Vector2d(moveU, moveV)
+            avoid_unit_vect = self.UnitizeEffect(u_div, v_div,avoid_unit_vect) * avoid_fac
 
+            return avoid_unit_vect
+        else
+            return rg.Vector2d(0,0)
 
+        
     # fx for Target reach
     """
     -> adds an upward vector to the velocity based on a certain criteria 
@@ -151,14 +175,19 @@ class Agent(object):
         ->
         """
         #to be cheked!!
-        if self.u <= 0 or self.u>=1:
+        if self.u <= 0:
+            self.u = 0
             self.du *= -1
+
+        elif self.u >=1:
+            self.u = 1
+            self.du *= -1
+
         #pending: we need to rethink this point and check again!!!  
 
         if self.v >=1:
+            self.v =1
             self.arrived =True
-
-
 
 
     # pending: fx for limiting speed?
@@ -199,6 +228,16 @@ class Agent(object):
 # afterwards, for each environment do some action till a certain time t
 # afterwards instantiate a bigger environment containing all agents and giving it a certain value for all parameters.
 
+
+#Swap UV directions of surface if needed
+corner_b= surface.PointAt(1,0)
+corner_d= surface.PointAt(0,1)
+
+if corner_b.Z > corner_d.Z:
+    surface.Transpose(True)
+
+
+
 initial_env_list = []
 u_lists = th.tree_to_list(u_lists)
 target_factors = th.tree_to_list(target_factors)
@@ -211,8 +250,14 @@ for u_list, t_factor in zip(u_lists, target_factors):
 #depending on the input timestep we update the agents
 for t in range(time_1):
     for env in initial_env_list:
-        env.update_agents_pos(coherence_rad, coherence_fac)
+        env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac)
 
 list_pts = []
+paths=[]
 for env in initial_env_list:
     list_pts.append([agent.pts for agent in env.agents])
+    path = surface.InterpolatedCurveOnSurface([agent.pts for agent in env.agents],tolerance)
+    paths.append(path)
+
+paths = th.list_to_tree(paths)
+list_pts = th.list_to_tree(list_pts)

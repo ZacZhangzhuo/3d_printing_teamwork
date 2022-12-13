@@ -43,6 +43,8 @@ radii  = json_load(r"PlaneFabrication\data\output\out_printpoints_radii.json")
 velocities = [10] *len(frames)
 toggles = [True]*(len(frames))
 acc = [30] *len(frames)
+
+
 # Go through JSON and copy data to lists
 # for item in data:
 # Read frame data

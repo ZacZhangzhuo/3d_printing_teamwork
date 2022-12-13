@@ -52,15 +52,19 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
   /// they will have a default value.
   /// </summary>
   #region Runscript
-  private void RunScript(List<Point3d> zPoints, bool zReset, double zRadius, Curve zEdge, int zMaxCounts, double FilletRatio, ref object zOutTemp)
+  private void RunScript(List<Point3d> zPoints, double zIteration, bool zReset, double zRadius, Curve zEdge, int zMaxCounts, double FilletRatio, ref object zOutPoints, ref object zOutTemp)
   {
 
-    if (zReset)
-    { zInteration = 0; }
-    zInteration++;
+    // if (zReset)
+    // { zIteration = 0; }
+    // zIteration++;
+
+
+
+
     List<Circle> circles = new List<Circle>();
-    List<Point3d> OutPoint = new List<Point3d>();
-    for (int iteration = 0; iteration < zInteration; iteration++)
+
+    for (int iteration = 0; iteration < zIteration; iteration++)
     {
       List<Vector3d> totalVector = new List<Vector3d>();
       List<double> counts = new List<double>();
@@ -114,27 +118,30 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
       }
     }
 
-    // foreach (Point3d point in zPoints)
-    // {
-    //     OutPoint.Add(point);
-    // }
-    // zOutPoints = OutPoint;
+    FilletRatio = FilletRatio /2;
+    List<NurbsCurve> curves = new List<NurbsCurve>();
+    for (int i = 1; i < zPoints.Count - 1;i++){
 
+      Point3d p0 = zPoints[i - 1];
+      Point3d p1 = zPoints[i];
+      Point3d p2 = zPoints[i + 1];
 
+      Point3d t0 = new Point3d(FilletRatio * p0 + p1 * (1-FilletRatio ));
 
-    for (int i = 1; i < zPoints.Count - 1; i++)
-    {
-            Point3d po = new Point3d(zPo)
+      Point3d t1 = new Point3d(FilletRatio * p2 + p1 * (1-FilletRatio ));
+      curves.Add(new Arc(t0, new Vector3d(p1 - t0), t1).ToNurbsCurve());
+
     }
 
 
+    zOutTemp = curves;
 
-
+    zOutPoints = zPoints;
 
   }
   #endregion
   #region Additional
 
-  int zInteration = 0;
+  int zIteration = 0;
   #endregion
 }
