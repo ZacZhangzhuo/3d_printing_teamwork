@@ -141,17 +141,27 @@ class Agent(object):
         -> define how close two agents can be [min distance before collision]
         -> define a new direction [maybe reversed]
         """
-
-
+        num_neighbors =0
+        moveU=0
+        moveV=0
         for agent in agents:
             if not agent == self:
                 dist = self.position.DistanceTo(agent.position)
                 if dist<= radius:
-                    self.du *= -1
+                    num_neighbors =-1
+                    moveU = self.u - agent.u
+                    moveY = self.v - agent.v
 
-        separation_unit_vect = rg.Vector2d(average_du, average_dv)
-        separation_unit_vect = self.UnitizeEffect(u_div, v_div,separation_unit_vect) * avoid_fac
+        if  num_neighbors > 0:
 
+            avoid_unit_vect = rg.Vector2d(moveU, moveV)
+            avoid_unit_vect = self.UnitizeEffect(u_div, v_div,avoid_unit_vect) * avoid_fac
+
+            return avoid_unit_vect
+        else
+            return rg.Vector2d(0,0)
+
+        
     # fx for Target reach
     """
     -> adds an upward vector to the velocity based on a certain criteria 
@@ -165,14 +175,19 @@ class Agent(object):
         ->
         """
         #to be cheked!!
-        if self.u <= 0 or self.u>=1:
+        if self.u <= 0:
+            self.u = 0
             self.du *= -1
+
+        elif self.u >=1:
+            self.u = 1
+            self.du *= -1
+
         #pending: we need to rethink this point and check again!!!  
 
         if self.v >=1:
+            self.v =1
             self.arrived =True
-
-
 
 
     # pending: fx for limiting speed?
