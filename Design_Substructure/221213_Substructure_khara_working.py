@@ -1,12 +1,11 @@
 import Rhino.Geometry as rg
 import ghpythonlib.treehelpers as th
+import math
 
-
+#hellooo
 tolerance = 0.001
 
-
 #this class is focused on the properties and methods of each instance MAS (multi agent system)
-
 class Environment(object):
     
     def __init__(self, u_div, v_div, surface, agents_list = []):
@@ -15,8 +14,10 @@ class Environment(object):
         self.v_div = v_div
         self.surface = surface
         self.agents = []
+        self.finished_agents = []
         if len(agents_list) > 0:
             self.agents = agents_list
+        
 
     #this function takes the u values and transform them into agents
     def populate_agents(self, u_vals, target_factors):
@@ -24,7 +25,7 @@ class Environment(object):
         for u, t_fac in zip(u_vals,target_factors) :
             self.agents.append(Agent(u, 0, 0, t_fac / self.v_div, self.surface)) 
 
-    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac):
+    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T):
         # generate the new position of each agent by calculating their new direction and velocity
         #for each agent apply all the functions on it given the required factors for each parameter
         #if the agent arrives we pop out this agent from the list and add it to the finished list 
@@ -32,24 +33,42 @@ class Environment(object):
         #list of all effects so as not to change the behaviour of the agents during update
         effects_list = []
         for agent in self.agents:
-            effects_vector = rg.Vector2d(0,0)  
+            #always add a positive up vector in the beginning
+            effects_vector = rg.Vector2d(0,agent.up_force)
 
-            coherence_vector = agent.Coherence(coherence_rad, self.agents, self.u_div, self.v_div, coherence_fac)
-            effects_vector += coherence_vector
+            #new part added to create repulsion:
+            # we need the bounds based on these bounds we calculate the percetage of the upforce
+            # if the upforce is greater than a threshold then do the repulsion function and neglect the rest
+            #cancelled for now !!
 
-            alignment_vector = agent.Alignment(align_rad, self.agents, self.u_div, self.v_div, align_fac)
-            effects_vector += alignment_vector
+            if Coherence_T:
+                coherence_vector = agent.Coherence(coherence_rad, self.agents, self.u_div, self.v_div, coherence_fac)
+                effects_vector += coherence_vector
 
-            separation_vector = agent.Separation(avoid_rad, self.agents, self.u_div, self.v_div, avoid_fac)
-            effects_vector += separation_vector
+            if Alignment_T:
+                alignment_vector = agent.Alignment(align_rad, self.agents, self.u_div, self.v_div, align_fac)
+                effects_vector += alignment_vector
+
+            if Separation_T:
+                separation_vector = agent.Separation(avoid_rad, self.agents, self.u_div, self.v_div, avoid_fac)
+                effects_vector += separation_vector
 
             #sum all of the vectors + the actual du and dv of the agent + unitize --> do nothing but add them to the effects_list
-            agent.AddTotalEffect(self.u_div, self.v_div, effects_vector)
+            effects_list.append(agent.AddTotalEffect(self.u_div, self.v_div, effects_vector))
 
+
+        temp_removed_agents = []
         for agent, effect in zip(self.agents, effects_list):
             agent.AgentStep(effect)
+            if agent.arrived:
+                temp_removed_agents.append(agent)
+       
+        for fin_agent in temp_removed_agents:
+            self.finished_agents.append(fin_agent)
+            self.agents.remove(fin_agent)
 
-    #function that ensures the agent has reached the final destination
+
+        #pending: function that ensures all agents have reached the final destination
 
 class Agent(object):
 
@@ -58,13 +77,15 @@ class Agent(object):
         self.u = u
         self.v = v
         self.surface = surface
-        pos_3d = self.surface.PointAt(self.u, self.v)
-        self.position = rg.Point2d(pos_3d.X, pos_3d.Y) ##for the surface
+        self.position = self.surface.PointAt(self.u, self.v) ##for the surface
+
+        #save the dv as the constant upward vector for the current agent
+        self.up_force = dv
 
         self.du = du
         self.dv = dv
         self.pts = []
-        self.pts.append(self.surface.PointAt(self.u, self.v))
+        self.pts.append(self.position)
         self.arrived = False
         
 
@@ -103,8 +124,9 @@ class Agent(object):
         else:
             return rg.Vector2d(0,0)
 
+    # fx for Alignment (match velocity)
     def Alignment(self, radius, agents, u_div, v_div, align_fac):
-        # fx for Alignment (match velocity)
+        
         """within the specified radius we need to iterate over each agent apart from ours and do the following:
         -> calculate the average velocity [adding all the velocities and dividing the result with the total number of neighbors]
         """
@@ -133,63 +155,62 @@ class Agent(object):
 
         else:
             return rg.Vector2d(0,0)
-
-
+    
+    #pending: trial
     def Separation (self, radius, agents, u_div, v_div, avoid_fac):
         # fx for Separation
         """within the specified radius we need to iterate over each agent apart from ours and do the following:
         -> define how close two agents can be [min distance before collision]
         -> define a new direction [maybe reversed]
         """
-        num_neighbors =0
-        moveU=0
-        moveV=0
+        move_dU= 0
+        move_dV= 0
+
+        min_dist = 1000000
+        closest_agent = self
+
         for agent in agents:
             if not agent == self:
                 dist = self.position.DistanceTo(agent.position)
                 if dist<= radius:
-                    num_neighbors =-1
-                    moveU = self.u - agent.u
-                    moveY = self.v - agent.v
+                    if dist < min_dist:
+                        min_dist = dist
+                        closest_agent = agent
+        if closest_agent != self:
+            move_dU += self.u - closest_agent.u
+            move_dV += self.v - closest_agent.v
 
-        if  num_neighbors > 0:
-
-            avoid_unit_vect = rg.Vector2d(moveU, moveV)
+            avoid_unit_vect = rg.Vector2d(move_dU, move_dV)
             avoid_unit_vect = self.UnitizeEffect(u_div, v_div,avoid_unit_vect) * avoid_fac
-
             return avoid_unit_vect
-        else
+
+        else:
             return rg.Vector2d(0,0)
+    
 
-        
-    # fx for Target reach
-    """
-    -> adds an upward vector to the velocity based on a certain criteria 
-    """
-
-    def withinBounds (self):
-        # fx to keep within Bounds
+    #checks the boundaries and for end of life of agent
+    def withinBounds (self): 
         """
         ->check if (0<=u,v<=1)
         ->if not mirror u (*-1)
         ->
         """
-        #to be cheked!!
-        if self.u <= 0:
-            self.u = 0
+        if abs(0.5 - self.u) >= 0.5 :       
+            if self.u < 0:
+                self.u = 0
+
+            elif self.u > 1:
+                self.u = 1
+
             self.du *= -1
+            
+        #we check if it has arrived (finished)  
+        if self.v >= 1:
+            self.v = 1
+            self.arrived = True
 
-        elif self.u >=1:
-            self.u = 1
-            self.du *= -1
-
-        #pending: we need to rethink this point and check again!!!  
-
-        if self.v >=1:
-            self.v =1
-            self.arrived =True
-
-
+    
+    
     # pending: fx for limiting speed?
 
     # helper fxs:7
@@ -210,14 +231,19 @@ class Agent(object):
         effects_vector += rg.Vector2d(self.du, self.dv)
         return self.UnitizeEffect(u_div, v_div, effects_vector)
 
-    # update the agent's params and move it one step forward
+    # update the agent's params and move it one step forward while checking its elgibility for movement
     def AgentStep(self, effects_vector):
-        self.du = effects_vector.x
-        self.dv = effects_vector.y
+
+        self.du = effects_vector.X
+        self.dv = effects_vector.Y
         self.u += self.du
         self.v += self.dv
+        #checks the agent compliance with boundary
+        self.withinBounds()
+
         self.pts.append(self.surface.PointAt(self.u, self.v))
-       
+
+
 
     #hello Eleniiiii
     #hello Ahmed
@@ -228,7 +254,6 @@ class Agent(object):
 # afterwards, for each environment do some action till a certain time t
 # afterwards instantiate a bigger environment containing all agents and giving it a certain value for all parameters.
 
-
 #Swap UV directions of surface if needed
 corner_b= surface.PointAt(1,0)
 corner_d= surface.PointAt(0,1)
@@ -236,8 +261,8 @@ corner_d= surface.PointAt(0,1)
 if corner_b.Z > corner_d.Z:
     surface.Transpose(True)
 
-
-
+all_agents = []
+#strt with first phase (t1)
 initial_env_list = []
 u_lists = th.tree_to_list(u_lists)
 target_factors = th.tree_to_list(target_factors)
@@ -245,19 +270,32 @@ for u_list, t_factor in zip(u_lists, target_factors):
     #instantiate an instance of the environment:
     new_env = Environment(u_div, v_div, surface)
     new_env.populate_agents(u_list, t_factor)
+    #add all agents to the big list
+    all_agents.extend(new_env.agents)
     initial_env_list.append(new_env)
+
 
 #depending on the input timestep we update the agents
 for t in range(time_1):
     for env in initial_env_list:
-        env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac)
+        env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T)
+
+#Create a new env contaiing all agents 
+combined_env = Environment(u_div, v_div, surface, all_agents)
+for t in range(time_2):
+    combined_env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T)
 
 list_pts = []
 paths=[]
-for env in initial_env_list:
-    list_pts.append([agent.pts for agent in env.agents])
-    path = surface.InterpolatedCurveOnSurface([agent.pts for agent in env.agents],tolerance)
-    paths.append(path)
+#for env in initial_env_list:
+#   list_pts.append([agent.pts for agent in env.agents])
+#    for agent in env.agents:
+#        path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance)
+#       paths.append(path)
+# 
+for agent in all_agents:
+    path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
+    paths.append(path)  
 
 paths = th.list_to_tree(paths)
 list_pts = th.list_to_tree(list_pts)

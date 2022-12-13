@@ -48,7 +48,7 @@ class Agent(object):
         self.v = v
         self.surface = surface
         pos_3d = self.surface.PointAt(self.u, self.v)
-        self.position = rg.Point2d(pos_3d.X, pos_3d.Y) ##for the surface
+        self.position = rg.Point2d(self.u, self.v) ##for the surface
 
         self.du = du
         self.dv = dv
@@ -147,3 +147,5 @@ for t in range(time_1):
 list_pts = []
 for env in initial_env_list:
     list_pts.append([agent.pts for agent in env.agents])
+    
+
