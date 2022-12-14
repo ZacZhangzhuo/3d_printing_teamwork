@@ -1,8 +1,11 @@
 import Rhino.Geometry as rg
 import ghpythonlib.treehelpers as th
+import random
 import math
+from copy import deepcopy
 
 #hellooo
+random.seed(seeed)
 tolerance = 0.001
 
 #this class is focused on the properties and methods of each instance MAS (multi agent system)
@@ -14,6 +17,8 @@ class Environment(object):
         self.v_div = v_div
         self.surface = surface
         self.agents = []
+
+        
 
         self.finished_agents = []
         if len(agents_list) > 0:
@@ -28,7 +33,46 @@ class Environment(object):
         for u, t_fac in zip(u_vals,target_factors) :
             self.agents.append(Agent(u, 0, 0, t_fac / self.v_div,t_fac, self.surface)) 
 
-    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T, repulsion_rad = 0, repulsion_fac = 0, Repulsion_T = False):
+    #generates new agents in the env 
+    def populate_sub_agents(self, prev_envs, num_new_agents, shift_factor, sub_goal_fac):
+        #rememeber to add to the full list of agents
+        sub_agents = []
+        goals=[]
+        all_v = []
+        for env in prev_envs:
+            boundary = env.CalculateBoundaryRegion()
+            all_v.append(boundary[-1])
+            for i in range(num_new_agents):
+                u = Remap(random.random(),0,1, boundary[0], boundary[1])
+                v = Remap(random.random(),0,1, boundary[2], boundary[3])
+                sub_agents.append(Agent(u,v,0,0,0,self.surface)) #pending !!
+
+        #populate each point separately 
+        #get the highest value of v 
+        print (all_v)
+        all_v.sort()
+        lower_bound_v = all_v[-1]
+        lower_bound_v *= (1 + shift_factor) 
+        for sub_agent in sub_agents:
+            sub_agent.isSubAgent = True
+            sub_agent.sub_goal_u = random.random()
+            sub_agent.sub_goal_v = Remap(random.random(), 0, 1, lower_bound_v, 1)
+            goals.append(self.surface.PointAt( sub_agent.sub_goal_u, sub_agent.sub_goal_v))
+            raw_du = sub_agent.sub_goal_u - sub_agent.u
+            raw_dv = sub_agent.sub_goal_v - sub_agent.v
+            vector = rg.Vector2d(raw_du, raw_dv)
+            unit_vect = sub_agent.UnitizeEffect(self.u_div, self.v_div, vector)
+            sub_agent.du = sub_goal_fac * unit_vect.X
+            sub_agent.dv = sub_goal_fac * unit_vect.Y
+            self.agents.append(sub_agent)
+
+        return goals, [agent.pts for agent in sub_agents]
+        
+    
+
+
+
+    def update_agents_pos (self, coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T, sub_goal_rad = 0, sub_goal_fac = 0):
         # generate the new position of each agent by calculating their new direction and velocity
         #for each agent apply all the functions on it given the required factors for each parameter
         #if the agent arrives we pop out this agent from the list and add it to the finished list 
@@ -37,7 +81,9 @@ class Environment(object):
         effects_list = []
         for agent in self.agents:
             #always add a positive up vector in the beginning
-            effects_vector = rg.Vector2d(0,agent.up_force)            
+            if agent.isSubAgent:
+                agent.UpdateSubAgentProgress(sub_goal_rad, sub_goal_fac, self.u_div, self.v_div)
+            effects_vector = rg.Vector2d(agent.right_force,agent.up_force)            
 
             if Coherence_T:
                 coherence_vector = agent.Coherence(coherence_rad, self.agents, self.u_div, self.v_div, coherence_fac)
@@ -75,7 +121,18 @@ class Environment(object):
                 strong_Agents_list.append(agent)
         return strong_Agents_list
 
+    #from an environment detects the minimum and maximum boundary
+    def CalculateBoundaryRegion(self):
+        all_u = [agent.u for agent in self.agents]
+        all_u.sort()
 
+        all_v = [agent.v for agent in self.agents]
+        all_v.sort()
+
+        return [all_u[0], all_u[-1],all_v[0], all_v[-1]]
+    
+
+            
 class Agent(object):
 
 #the main parameters are poisiton on the surface, velocity in both directions 
@@ -87,14 +144,19 @@ class Agent(object):
 
         #save the dv as the constant upward vector for the current agent
         self.up_force = dv
+
+        self.right_force = 0
         self.unitized_upForce = unit_dv #unitized value of the up vector
-        print (self.unitized_upForce)
+        #print (self.unitized_upForce)
         self.du = du
         self.dv = dv
         self.pts = []
         self.pts.append(self.position)
         self.arrived = False
-        
+
+        self.isSubAgent = False
+        self.sub_goal_u = 0
+        self.sub_goal_v = 0
 
     def Coherence(self, radius, agents, u_div, v_div, coh_fac):
         # agents : list of agents in the environment
@@ -208,15 +270,39 @@ class Agent(object):
 
             elif self.u > 1:
                 self.u = 1
-
-            self.du *= -1
+            self.du*=-1
+            #self.right_force *=-1
+            #self.arrived=True
             
         #we check if it has arrived (finished)  
         if self.v >= 1:
             self.v = 1
             self.arrived = True
 
-    
+    #update the distance to goal until reaching the radius and then change direction and disable the agent 
+    def UpdateSubAgentProgress(self, radius,factor, u_div, v_div):
+        #calculate distance to the goal point at certain instant
+        raw_du = self.sub_goal_u - self.u
+        raw_dv = self.sub_goal_v - self.v
+        vector = rg.Vector2d(raw_du, raw_dv)
+        distance = vector.Length
+
+        #update the direction unit towards the goal
+        unitized_vector = self.UnitizeEffect(u_div, v_div, vector)
+        self.right_force = unitized_vector.X * factor
+        self.up_force = unitized_vector.Y * factor
+
+        #if the goal was reached, flip the du and right_force (the latter will be contant till the end of the game)
+        if distance <= radius:
+            self.du *= -1  
+            #disable subagent  
+            self.isSubAgent = False 
+            self.right_force *= -1    
+            
+
+        
+
+
     
     # pending: fx for limiting speed?
 
@@ -243,6 +329,9 @@ class Agent(object):
 
         self.du = effects_vector.X
         self.dv = effects_vector.Y
+        
+        if self.dv< 0:
+            self.dv *=-10
         self.u += self.du
         self.v += self.dv
         #checks the agent compliance with boundary
@@ -250,7 +339,13 @@ class Agent(object):
 
         self.pts.append(self.surface.PointAt(self.u, self.v))
 
+class SubGoal(object):
 
+    def __init__(self):
+        self.u = 0
+        self.v = 0
+        self.buffer_Zone = 0
+         
 
     #hello Eleniiiii
     #hello Ahmed
@@ -260,6 +355,12 @@ class Agent(object):
 # a for loop iterating over the lists, instantiating each agent in the list then instantaiting an environment given all these agents
 # afterwards, for each environment do some action till a certain time t
 # afterwards instantiate a bigger environment containing all agents and giving it a certain value for all parameters.
+#helpful functions:
+def Remap(value, min, max, new_min, new_max):
+    old_range = max - min
+    new_range = new_max - new_min
+    return (((value - min)* new_range)/ old_range) + new_min
+
 
 #Swap UV directions of surface if needed
 corner_b= surface.PointAt(1,0)
@@ -269,7 +370,7 @@ if corner_b.Z > corner_d.Z:
     surface.Transpose(True)
 
 all_agents = []
-#strt with first phase (t1)
+################################strt with first phase (t1)###############################
 initial_env_list = []
 u_lists = th.tree_to_list(u_lists)
 target_factors = th.tree_to_list(target_factors)
@@ -281,28 +382,40 @@ for u_list, t_factor in zip(u_lists, target_factors):
     all_agents.extend(new_env.agents)
     initial_env_list.append(new_env)
 
-
+pts_list = []
 #depending on the input timestep we update the agents
 for t in range(time_1):
     for env in initial_env_list:
         env.update_agents_pos(coherence_rad, coherence_fac, align_rad, align_fac, avoid_rad, avoid_fac, Coherence_T, Alignment_T, Separation_T)
 
-#Create a new env contaiing all agents
+###############################second phase (t2)#########################################
+#Create a new env containing all agents
 combined_env = Environment(u_div, v_div, surface, all_agents)
+#add the new sub_agents
+
+goals, sub_agents = combined_env.populate_sub_agents(initial_env_list, num_new_agents, shift_factor, sub_goal_fac)
+
 for t in range(time_2):
-    combined_env.update_agents_pos(coherence_rad2, coherence_fac2, align_rad2, align_fac2, avoid_rad2, avoid_fac2, Coherence_T2, Alignment_T2, Separation_T2)
+    combined_env.update_agents_pos(coherence_rad2, coherence_fac2, align_rad2, align_fac2, avoid_rad2, avoid_fac2, Coherence_T2, Alignment_T2, Separation_T2, sub_goal_rad, sub_goal_fac)
 
 list_pts = []
-paths=[]
-#for env in initial_env_list:
-#   list_pts.append([agent.pts for agent in env.agents])
-#    for agent in env.agents:
-#        path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance)
-#       paths.append(path)
-# 
-for agent in all_agents:
-    path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
-    paths.append(path)  
+main_paths=[]
+sec_paths = []
+main_agents = deepcopy(all_agents)
+main_agents.extend(combined_env.finished_agents)
+for agent in main_agents:
+    if not agent.isSubAgent:
+        path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
+        if Rebuild_T:
+            path= path.Rebuild(rebuild_points, rebuild_degree, True)
+        main_paths.append(path)  
+    else:
+        path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
+        if Rebuild_T:
+            path= path.Rebuild(rebuild_points, rebuild_degree, True)
+        sec_paths.append(path)
 
-paths = th.list_to_tree(paths)
+#sub_agents = th.list_to_tree(sub_agents)
+main_paths = th.list_to_tree(main_paths)
+sec_paths = th.list_to_tree(sec_paths)
 list_pts = th.list_to_tree(list_pts)
