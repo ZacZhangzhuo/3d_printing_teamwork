@@ -27,9 +27,8 @@ def get_pts(crv):
 
     crv = curve.ToNurbsCurve(curve.Domain)
     # params = crv.DivideByCount(divide_number, True)
+    params = crv.DivideByCount(2, True)
 
-    params = crv.DivideByCount(divide_number, False)
-    print(len(params))
 
     for i in params:
         pt = crv.PointAt(i)
@@ -42,17 +41,13 @@ def make_planes(pts):
 
     pts_planes = []
 
-    for k, pt in enumerate(pts):
+    for pt in pts:
         point, uv_pt, distance = ghc.components.SurfaceClosestPoint(pt, srf)
         pnt, normal, u, v, f = ghc.components.EvaluateSurface(srf, uv_pt)
         plane = rg.Plane(pt, rg.Vector3d(u), rg.Vector3d(v))
         rg.Plane.Rotate(plane, math.radians(-90), plane.ZAxis, plane.Origin)
-
-        # halfLength = len(pts)/2
-        # rotation2 = rg.Transform.Rotation((((abs(halfLength-k))/halfLength)*-math.pi*0.5), plane.Normal, plane.Origin)
-        # rotation2 = rg.Transform.Rotation(((len(pts)-k)*math.pi/len(pts) + -math.pi*0.5), plane.Normal, plane.Origin)
-        # plane.Transform(rotation2)
         pts_planes.append(plane)
+
     return pts_planes
 
 
@@ -70,7 +65,7 @@ def make_planes(pts):
 #     return moved_plns
 
 
-def make_layered_planes(plns):
+def make_layered_planes(plns, new_layer_height):
 
     
     if flip_vect:
@@ -87,19 +82,18 @@ def make_layered_planes(plns):
         for i, p in enumerate(layered_planes[l]):
             layer_1 = deepcopy(p)
             trans2 = rg.Transform.Translation(
-                rg.Vector3d(p.Normal*plns_graph[i]))
+                rg.Vector3d(p.Normal*new_layer_height*plns_graph[i]))
             layer_1.Transform(trans2)
             temp.append(layer_1)
 
         temp.reverse()
-        plns_graph.reverse()
         layered_planes.append(temp)
 
     return layered_planes
 
-# print(layer_height)
+print(layer_height)
 pts_divisions = (get_pts(curve))
 pts_planes = make_planes(pts_divisions)
-# print (pts_planes)
+print (pts_planes)
 # moved_planes = move_planes(pts_planes, plns_graph)
-layered_planes = th.list_to_tree(make_layered_planes(pts_planes))
+layered_planes = th.list_to_tree(make_layered_planes(pts_planes, layer_height))
