@@ -52,109 +52,99 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
   /// they will have a default value.
   /// </summary>
   #region Runscript
-  private void RunScript(List<Point3d> Points, double Iteration, double MaxRadius, double MinRadius, Point3d AttractPoint, Curve Edge, int MaxCount, double FilletRatio, ref object OutPoints, ref object Radiuses, ref object OutTemp)
+  private void RunScript(List<Point3d> zPoints, double zIteration, bool zReset, double zRadius, Curve zEdge, int zMaxCounts, double FilletRatio, ref object zOutPoints, ref object zOutTemp)
   {
-    // !Initialization
+
     List<Circle> circles = new List<Circle>();
-    List<double> radiuses = new List<double>();
 
-
-    for (int i = 0; i < Points.Count; i++)
+    for (int iteration = 0; iteration < zIteration; iteration++)
     {
-      radiuses.Add(Remap(Points[i].DistanceTo(AttractPoint), 20, 0, MinRadius, MaxRadius));
-    }
-
-    //!Iteration
-    for (int iteration = 0; iteration < Iteration; iteration++)
-    {
-
       List<Vector3d> totalVector = new List<Vector3d>();
       List<double> counts = new List<double>();
-      for (int i = 0; i < Points.Count; i++)
+      for (int i = 0; i < zPoints.Count; i++)
       {
         totalVector.Add(new Vector3d(0, 0, 0));
         counts.Add(0);
       }
-
-      for (int i = 0; i < Points.Count; i++)
-        for (int j = i + 1; j < Points.Count; j++)
+      for (int i = 0; i < zPoints.Count; i++)
+        for (int j = i + 1; j < zPoints.Count; j++)
         {
-          double distance = Points[i].DistanceTo(Points[j]);
-          if (radiuses[i] + radiuses[j] > distance)
+          double distance = zPoints[i].DistanceTo(zPoints[j]);
+          if (2 * zRadius < distance) continue;
+          else
           {
 
-            Vector3d subVector = Points[i] - Points[j];
+            Vector3d subVector = zPoints[i] - zPoints[j];
             subVector.Unitize();
-            subVector *= 1 * (radiuses[i] + radiuses[j] - distance);
-            // subVector *= 0.5 / distance;
-            // subVector *= 
+            subVector *= 0.5 * (2 * zRadius - distance);
             totalVector[i] += subVector;
             totalVector[j] -= subVector;
             counts[i] += 1;
             counts[j] += 1;
 
           }
-
-
         }
-
-
-      for (int k = 0; k < Points.Count; k++)
+      for (int k = 0; k < zPoints.Count; k++)
         if (counts[k] != 0)
         {
-          if (Edge.Contains(Points[k], Plane.WorldXY, 0.01) == PointContainment.Inside)
+          if (zEdge.Contains(zPoints[k], Plane.WorldXY, 0.01) == PointContainment.Inside)
           {
             Vector3d move = totalVector[k] / counts[k];
-            // Vector3d move = totalVector[k] ;
-            Points[k] += move;
+            zPoints[k] += move;
           }
 
         }
-
-      //! Add points
-      if (Points.Count < MaxCount)
+      if (zPoints.Count < zMaxCounts)
       {
         List<int> Indices = new List<int>();
 
-        for (int i = 0; i < Points.Count - 1; i++)
+        for (int i = 0; i < zPoints.Count - 1; i++)
         {
-          if (Points[i].DistanceTo(Points[i + 1]) > radiuses[i] + radiuses[i + 1])
+          if (zPoints[i].DistanceTo(zPoints[i + 1]) > zRadius)
           { Indices.Add(i + 1 + Indices.Count); }
         }
         foreach (int Index in Indices)
         {
-          if (Points.Count < MaxCount)
-          {
-            Point3d addPoint = 0.5 * (Points[Index - 1] + Points[Index]);
-            Points.Insert(Index, addPoint);
-          }
+          Point3d addPoint = 0.5 * (zPoints[Index - 1] + zPoints[Index]);
+          zPoints.Insert(Index, addPoint);
         }
       }
-
-
-      // ! Generate the radius
-      radiuses = new List<double>();
-      for (int i = 0; i < Points.Count; i++)
-      {
-        radiuses.Add(Remap(Points[i].DistanceTo(AttractPoint), 20, 0, MinRadius, MaxRadius));
-      }
-
-      // Print(totalVector[54].Length.ToString());
     }
 
 
-    //! Make curve
+    //! ArcCurve
+    //Curve Section
+    FilletRatio = FilletRatio / 2;
+    List<NurbsCurve> curves = new List<NurbsCurve>();
+    for (int i = 1; i < zPoints.Count - 1; i++)
+    {
+
+      Point3d p0 = zPoints[i - 1];
+      Point3d p1 = zPoints[i];
+      Point3d p2 = zPoints[i + 1];
+
+      Point3d t0 = new Point3d(FilletRatio * p0 + p1 * (1 - FilletRatio));
+      Point3d t1 = new Point3d(FilletRatio * p2 + p1 * (1 - FilletRatio));
+
+      NurbsCurve arcCurve = new Arc(t0, new Vector3d(p1 - t0), t1).ToNurbsCurve();
+
+      if (arcCurve == null) { arcCurve = new PolylineCurve(new List<Point3d> { t0, p1, t1 }).ToNurbsCurve(); }
+      curves.Add(arcCurve);
+
+    }
+    // Line Section
+    for (int i = 1; i < curves.Count; i++)
+    {
+      if (! curves[i].PointAtStart.Equals(curves[i - 1].PointAtEnd)) { curves.Insert(i, new Line(curves[i - 1].PointAtEnd, curves[i].PointAtStart).ToNurbsCurve()); }
+    }
 
 
 
 
-    //!Info
-    Print("Points.Count =" + Points.Count.ToString());
-    // ! Output
-    // zOutTemp = curves;
-    OutPoints = Points;
-    Radiuses = radiuses;
 
+    //! Output
+    zOutTemp = curves;
+    zOutPoints = zPoints;
   }
   #endregion
   #region Additional
@@ -165,20 +155,11 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
 
     Vector3d v1 = new Vector3d(p1 - p0);
     Vector3d v2 = new Vector3d(p2 - p1);
-    
 
     double x = v1.X / v2.X;
 
     if (v1.Y / v2.Y == x && v1.Z / v2.Z == x) { return true; }
     else return false;
-  }
-  double Remap(double x, double t1, double t2, double s1, double s2)
-  {
-    double mapped = (s2 - s1) / (t2 - t1) * (x - t1) + s1;
-    if (mapped < s1) mapped = s1;
-    if (mapped > s2) mapped = s2;
-    return mapped;
-    // return (x - t1) / (t2 - t1) * (s2 - s1) + s1;
   }
   #endregion
 }
