@@ -71,13 +71,35 @@ public abstract class Script_Instance_bd3b5 : GH_ScriptInstance
     //! Dir
     bool initial = false;//! true: clockwise, false: anti-clockwise
     dir.Add(initial);
-    for (int i = 0; i < Points.Count - 1; i++)
+    dir.Add(initial);
+    for (int i = 2; i < Points.Count - 1; i++)
     {
-      initial = !initial;
-      if (Points[i].DistanceTo(Points[i + 1]) < Radius[i] + Radius[i + 1]) { initial = !initial; }
+      // if
+
+      // if (PointSideOfLine(Points[i - 1], Points[i + 1], Points[i]) != PointSideOfLine(Points[i - 2], Points[i], Points[i - 1])) initial = !initial;
+
+      initial = ! PointSideOfLine(Points[i - 1], Points[i + 1], Points[i]);
+
+
+      if (Points[i].DistanceTo(Points[i - 1]) < Radius[i] + Radius[i - 1] && initial != dir[i - 1]) initial = !initial;
       dir.Add(initial);
+      // bool flip = false;
+
+
+
+      // if (Points[i].DistanceTo(Points[i + 1]) < Radius[i] + Radius[i + 1]) { flip = true; }
+      // if (i > 1)
+      // {
+      // if (new Vector3d(Points[i ] - Points[i-1]) * new Vector3d(Points[i - 2] - Points[i - 1]) > 0) { flip = true; }
+      // }
+      // if (!flip) initial = !initial;
+      // dir.Add(initial);
+
+
+      // Print(flip.ToString());
 
     }
+    dir.Add(initial);
 
     //! Curve
     for (int i = 0; i < Points.Count - 1; i++)
@@ -85,23 +107,43 @@ public abstract class Script_Instance_bd3b5 : GH_ScriptInstance
 
       NurbsCurve l0 = new NurbsCurve(0, 0);
       NurbsCurve l1 = new NurbsCurve(0, 0);
+      double radius = Points[i].DistanceTo(Points[i + 1])*2;
 
-      if (dir[i] != dir[i + 1]) //* Tangent line
-      {
-        getTangentLineCurves(Points[i], Radius[i], Points[i + 1], Radius[i + 1], out l0, out l1);
-        if (dir[i]) tangents.Add(l0);
-        else tangents.Add(l1);
-      }
+      // maxTangentArcRadius * (random.NextDouble() + minTangentArcRadius);
 
-      else//* Tangent Arc
-      {
-        double radius = maxTangentArcRadius * (random.NextDouble() + minTangentArcRadius);
-        // Print(radius.ToString());
-        // radius = 0.3;
-        getTangentArcs(Points[i], Radius[i], Points[i + 1], Radius[i + 1], radius, out l0, out l1);
-      }
+      if (dir[i] != dir[i + 1]) getTangentLineCurves(Points[i], Radius[i], Points[i + 1], Radius[i + 1], out l0, out l1);//* Tangent line
+
+      else getTangentArcs(Points[i], Radius[i], Points[i + 1], Radius[i + 1], radius, out l0, out l1);//* Tangent Arc
+
+      //!Add
       if (dir[i]) tangents.Add(l0);
       else tangents.Add(l1);
+
+      //! Solve intersection
+      // if (i > 0)
+      // {
+      //   if (IsLineLineIntersect(tangents[i - 1].PointAtStart, tangents[i - 1].PointAtEnd, tangents[i].PointAtStart, tangents[i].PointAtEnd))
+      //   {
+      //     getTangentArcs(Points[i - 1], Radius[i - 1], Points[i], Radius[i], radius, out l0, out l1);
+
+      //     if (dir[i - 1]) tangents[i - 1] = l1;
+      //     else tangents[i - 1] = l0;
+
+      //     dir[i - 1] = !dir[i - 1];
+      //     // flag = !flag;
+
+      //     if (dir[i] != dir[i + 1]) getTangentLineCurves(Points[i], Radius[i], Points[i + 1], Radius[i + 1], out l0, out l1);//* Tangent line
+      //     else getTangentArcs(Points[i], Radius[i], Points[i + 1], Radius[i + 1], radius, out l0, out l1);//* Tangent Arc
+      //     if (dir[i]) tangents[i] = l1;
+      //     else tangents[i] = l0;
+      //     for (int k = i; i<dir.Count; k++){
+      //       dir[k] = !dir[k];
+      //     }
+
+      //   }
+      // }
+
+
     }
 
 
@@ -173,7 +215,6 @@ public abstract class Script_Instance_bd3b5 : GH_ScriptInstance
     }
     else
     {
-      radius = Radius;
       Vector3d v = new Vector3d(p1 - p0);
       v.Unitize();
 
@@ -280,9 +321,77 @@ public abstract class Script_Instance_bd3b5 : GH_ScriptInstance
     return new Point3d(newX, newY, 0);
   }
 
+  //! Line Line intersection by ChatGPT
+  // Check if two lines intersect
+  // The lines are defined by the points (x1, y1), (x2, y2)
+  // and (x3, y3), (x4, y4) respectively
+  // Returns true if the lines intersect, and false otherwise
+  public static bool IsLineLineIntersect(Point3d p0, Point3d p1, Point3d p2, Point3d p3)
+  {
+    double x1 = p0.X;
+    double y1 = p0.Y;
+    double x2 = p1.X;
+    double y2 = p1.Y;
+    double x3 = p2.X;
+    double y3 = p2.Y;
+    double x4 = p3.X;
+    double y4 = p3.Y;
+
+    // Calculate the coefficients of the equations of the lines
+    double a1 = y2 - y1;
+    double b1 = x1 - x2;
+    double c1 = a1 * x1 + b1 * y1;
+
+    double a2 = y4 - y3;
+    double b2 = x3 - x4;
+    double c2 = a2 * x3 + b2 * y3;
+
+    // Calculate the point of intersection
+    double det = a1 * b2 - a2 * b1;
+    if (det == 0)
+    {
+      // The lines are parallel
+      return false;
+    }
+    else
+    {
+      double x = (b2 * c1 - b1 * c2) / det;
+      double y = (a1 * c2 - a2 * c1) / det;
+
+      // Check if the point of intersection is on both lines
+      if ((x1 <= x && x <= x2 || x2 <= x && x <= x1) &&
+          (x3 <= x && x <= x4 || x4 <= x && x <= x3) &&
+          (y1 <= y && y <= y2 || y2 <= y && y <= y1) &&
+          (y3 <= y && y <= y4 || y4 <= y && y <= y3))
+      {
+        // The lines intersect
+        return true;
+      }
+      else
+      {
+        // The lines do not intersect
+        return false;
+      }
+    }
+  }
 
 
+  //! Line side by ChatGPT
+  public bool PointSideOfLine(Point3d p1, Point3d p2, Point3d p)
+  {
+    // Calculate the cross product of the two vectors determined by the three points.
+    double crossProduct = (p2.X - p1.X) * (p.Y - p1.Y) - (p.X - p1.X) * (p2.Y - p1.Y);
 
-
+    // If the cross product is positive, the point is on the left side of the line.
+    if (crossProduct > 0)
+    {
+      return false; //left
+    }
+    // If the cross product is negative, the point is on the right side of the line.
+    else
+    {
+      return true; //"right";
+    }
+  }
   #endregion
 }

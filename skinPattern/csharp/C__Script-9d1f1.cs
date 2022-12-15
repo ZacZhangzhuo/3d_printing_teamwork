@@ -52,7 +52,7 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
   /// they will have a default value.
   /// </summary>
   #region Runscript
-  private void RunScript(List<Point3d> Points, double Iteration, double MaxRadius, double MinRadius, Point3d AttractPoint, Curve Edge, int MaxCount, double FilletRatio, ref object OutPoints, ref object Radiuses, ref object OutTemp)
+  private void RunScript(List<Point3d> Points, double Iteration, double MaxRadius, double MinRadius, Point3d AttractPoint, Curve Edge, int MaxCount, ref object OutPoints, ref object Radiuses, ref object OutTemp)
   {
     // !Initialization
     List<Circle> circles = new List<Circle>();
@@ -99,14 +99,22 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
         }
 
 
-      for (int k = 0; k < Points.Count; k++)
+      for (int k = 0; k < Points.Count ; k++)
         if (counts[k] != 0)
         {
           if (Edge.Contains(Points[k], Plane.WorldXY, 0.01) == PointContainment.Inside)
           {
             Vector3d move = totalVector[k] / counts[k];
             // Vector3d move = totalVector[k] ;
-            Points[k] += move;
+            // Vector3d v0 = new Vector3d(Points[k] - Points[k - 1]);
+            // Vector3d v1 = new Vector3d(Points[k + 1] - Points[k]);
+            // double cos = (v0 * v1) / (v0.Length * v1.Length);
+            // double t = Vector3d.VectorAngle(v0, v1);
+
+            // if (t > Math.PI) t = t - Math.PI;
+            // Print(t.ToString());
+            // t = 1 - (t / Math.PI);
+            Points[k] += move ;
           }
 
         }
@@ -165,7 +173,7 @@ public abstract class Script_Instance_9d1f1 : GH_ScriptInstance
 
     Vector3d v1 = new Vector3d(p1 - p0);
     Vector3d v2 = new Vector3d(p2 - p1);
-    
+
 
     double x = v1.X / v2.X;
 
