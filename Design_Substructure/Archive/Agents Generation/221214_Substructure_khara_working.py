@@ -17,13 +17,13 @@ class Environment(object):
         self.v_div = v_div
         self.surface = surface
         self.agents = []
-
+        self.all_agents = []
         
 
         self.finished_agents = []
         if len(agents_list) > 0:
             self.agents = agents_list
-       
+            self.all_agents = deepcopy(agents_list)
         self.repulsion_thresh = repulsion_thresh
         self.strong_agents = self.GenerateStrongAgentsList()
 
@@ -34,7 +34,7 @@ class Environment(object):
             self.agents.append(Agent(u, 0, 0, t_fac / self.v_div,t_fac, self.surface)) 
 
     #generates new agents in the env 
-    def populate_sub_agents(self, prev_envs, num_new_agents, shift_factor, sub_goal_fac):
+    def populate_sub_agents(self, prev_envs, num_new_agents, shift_up_factor,shift_down_factor, sub_goal_fac):
         #rememeber to add to the full list of agents
         sub_agents = []
         goals=[]
@@ -52,11 +52,12 @@ class Environment(object):
         print (all_v)
         all_v.sort()
         lower_bound_v = all_v[-1]
-        lower_bound_v *= (1 + shift_factor) 
+        lower_bound_v += shift_up_factor 
+        upper_bound_v = 1 - shift_down_factor
         for sub_agent in sub_agents:
             sub_agent.isSubAgent = True
             sub_agent.sub_goal_u = random.random()
-            sub_agent.sub_goal_v = Remap(random.random(), 0, 1, lower_bound_v, 1)
+            sub_agent.sub_goal_v = Remap(random.random(), 0, 1, lower_bound_v, upper_bound_v)
             goals.append(self.surface.PointAt( sub_agent.sub_goal_u, sub_agent.sub_goal_v))
             raw_du = sub_agent.sub_goal_u - sub_agent.u
             raw_dv = sub_agent.sub_goal_v - sub_agent.v
@@ -65,7 +66,7 @@ class Environment(object):
             sub_agent.du = sub_goal_fac * unit_vect.X
             sub_agent.dv = sub_goal_fac * unit_vect.Y
             self.agents.append(sub_agent)
-
+            self.all_agents.append(sub_agent)
         return goals, [agent.pts for agent in sub_agents]
         
     
@@ -393,7 +394,7 @@ for t in range(time_1):
 combined_env = Environment(u_div, v_div, surface, all_agents)
 #add the new sub_agents
 
-goals, sub_agents = combined_env.populate_sub_agents(initial_env_list, num_new_agents, shift_factor, sub_goal_fac)
+goals, sub_agents = combined_env.populate_sub_agents(initial_env_list, num_new_agents, shift_up_factor, shift_down_factor, sub_goal_fac)
 
 for t in range(time_2):
     combined_env.update_agents_pos(coherence_rad2, coherence_fac2, align_rad2, align_fac2, avoid_rad2, avoid_fac2, Coherence_T2, Alignment_T2, Separation_T2, sub_goal_rad, sub_goal_fac)
@@ -401,10 +402,9 @@ for t in range(time_2):
 list_pts = []
 main_paths=[]
 sec_paths = []
-main_agents = deepcopy(all_agents)
-main_agents.extend(combined_env.finished_agents)
+main_agents = deepcopy(combined_env.all_agents)
 for agent in main_agents:
-    if not agent.isSubAgent:
+    if agent.right_force != 0:
         path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
         if Rebuild_T:
             path= path.Rebuild(rebuild_points, rebuild_degree, True)
