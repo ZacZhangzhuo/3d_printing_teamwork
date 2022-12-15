@@ -402,6 +402,7 @@ for t in range(time_2):
 list_pts = []
 main_paths = []
 sec_paths = []
+up_factors = []
 
 for agent in combined_env.main_agents:
     #if agent.right_force != 0:
@@ -410,6 +411,7 @@ for agent in combined_env.main_agents:
         path= path.Rebuild(rebuild_points, rebuild_degree, True)
         path.Domain = rg.Interval(0.0, 1.0)
         main_paths.append(path)  
+        up_factors.append(agent.unitized_upForce)
 for agent in combined_env.sub_agents:
     path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
     if Rebuild_T:
@@ -420,4 +422,5 @@ for agent in combined_env.sub_agents:
 #sub_agents = th.list_to_tree(sub_agents)
 main_paths = th.list_to_tree(main_paths)
 sec_paths = th.list_to_tree(sec_paths)
+up_factors = th.list_to_tree(up_factors)
 list_pts = th.list_to_tree(list_pts)
