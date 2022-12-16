@@ -20,21 +20,27 @@ def OrientPlane(plane, guide):
         plane.Origin, -rg.Vector3d.CrossProduct(zAxis, yAxis), yAxis)
     return outPlane
 
-def Remap(value, min, max, new_min, new_max):
-    
-    old_range = max - min
-    new_range = new_max - new_min
-    
-    return (((value - min)* new_range)/ old_range) + new_min
 
-def get_pts(crv):
+def Remap(old_value, old_min, old_max, new_min, new_max):
+    # print('x')
+    # print (old_value)
+    new_value = (old_value - old_min) * (new_max - new_min) / \
+        (old_max - old_min) + new_min
+    # else
+    # print('y')
+    # print (new_value)
+    return new_value
 
+
+def get_pts(crvs):
+
+    #Make into loop for list of curves
     all_pts = []
 
     crv = curve.ToNurbsCurve(curve.Domain)
     # params = crv.DivideByCount(divide_number, True)
 
-    params = crv.DivideByCount(6, True)
+    params = crv.DivideByCount(10, True)
     # print(len(params))
 
     for i in params:
@@ -47,6 +53,8 @@ def get_pts(crv):
 def make_planes(pts):
 
     pts_planes = []
+    
+    #Make into loop for list of curves
 
     for k, pt in enumerate(pts):
         point, uv_pt, distance = ghc.components.SurfaceClosestPoint(pt, srf)
@@ -61,23 +69,45 @@ def make_planes(pts):
         pts_planes.append(plane)
     return pts_planes
 
+#TODO  
 
 def move_planes(plns, pt, min_layer_height, max_layer_height):
 
-    # for pln in plns:
-    #     if pt.DistanceTo(pln.Origin) <= min_dist:
-    #         min_dist = new_min_dist
-        
-    #     if pt.DistanceTo(pln.origin) <= max_dist:
-    #         max_dist = new_max_dist
-        
-    
-    heights = []
-    
+    min_dist = 1000000
+    max_dist = 0
+
     for pln in plns:
-        
-        heights.append(Remap(pt.DistanceTo(pln.Origin), min_dist, max_dist, max_layer_height, min_layer_height))
-    
+        if pt.DistanceTo(pln.Origin) < min_dist:
+            min_dist = pt.DistanceTo(pln.Origin)
+        if pt.DistanceTo(pln.Origin) > max_dist:
+            max_dist = pt.DistanceTo(pln.Origin)
+
+    heights = []
+
+    for pln in plns:
+        print(pt.DistanceTo(pln.Origin))
+        temp = Remap(pt.DistanceTo(pln.Origin), max_dist,
+                     min_dist, min_layer_height, max_layer_height)
+        heights.append(temp)
+
+    print(max_dist)
+
+    moved_plns = []
+
+    for k, value in enumerate(heights):
+        origin = plns[k].Clone()
+        trans1 = rg.Transform.Translation(
+            rg.Vector3d(plns[k].Normal*heights[k]))
+        origin.Transform(trans1)
+        moved_plns.append(origin)
+
+    # print (max_layer_height)
+
+    return moved_plns
+
+
+def make_layered_planes(plns):
+
     if flip_vect:
         for i in range(len(plns)):
             plns[i] = rg.Plane(
@@ -85,47 +115,30 @@ def move_planes(plns, pt, min_layer_height, max_layer_height):
         # print (new_layer_height)
         # new_layer_height = -new_layer_height
         # print (new_layer_height)
-    
-    moved_plns = [plns]
-    
-    print(moved_plns)
+    layered_planes = [plns]
 
     for l in range(layer_nbr):
         temp = []
-        for i, p in enumerate(moved_plns[l]):
-            origin = deepcopy(p)
-            trans1 = rg.Transform.Translation(
-                rg.Vector3d(p.ZAxis*heights[i]))
-            origin.Transform(trans1)
-            moved_plns.append(origin)
+        for i, p in enumerate(layered_planes[l]):
+            layer_1 = deepcopy(p)
+            trans2 = rg.Transform.Translation(
+                rg.Vector3d(p.Normal*layer_height))
+            layer_1.Transform(trans2)
+            temp.append(layer_1)
+
         temp.reverse()
-        
-        moved_plns.append(temp)
+        layered_planes.append(temp)
 
-    return moved_plns 
+    return layered_planes
 
-
-# def make_layered_planes(plns, plns_heights):
-
-    
- 
-
-#     for l in range(layer_nbr):
-#         temp = []
-#         for i, p in enumerate(layered_planes[l]):
-#             layer_1 = deepcopy(p)
-#             trans2 = rg.Transform.Translation(
-#                 rg.Vector3d(p.Normal*plns_heights[i]))
-#             layer_1.Transform(trans2)
-#             temp.append(layer_1)
-
-
-
-#     return layered_planes
 
 # print(layer_height)
 pts_divisions = (get_pts(curve))
+
+
+# ////////////////////////////////////////
 pts_planes = make_planes(pts_divisions)
 # print (pts_planes)
-moved_planes =th.list_to_tree(move_planes(pts_planes, plns_move_pt, max_layer_height, min_layer_height))
-# layered_planes = (make_layered_planes(moved_planes, heights))
+moved_planes = move_planes(pts_planes, plns_move_pt,
+                           min_layer_height, max_layer_height)
+# layered_planes = th.list_to_tree(make_layered_planes(pts_planes))
