@@ -17,13 +17,13 @@ class Environment(object):
         self.v_div = v_div
         self.surface = surface
         self.agents = []
-        self.all_agents = []
-        
+        self.main_agents = []
+        self.sub_agents = []
 
         self.finished_agents = []
         if len(agents_list) > 0:
             self.agents = agents_list
-            self.all_agents = deepcopy(agents_list)
+            self.main_agents = [agent for agent in agents_list]
         self.repulsion_thresh = repulsion_thresh
         self.strong_agents = self.GenerateStrongAgentsList()
 
@@ -66,7 +66,7 @@ class Environment(object):
             sub_agent.du = sub_goal_fac * unit_vect.X
             sub_agent.dv = sub_goal_fac * unit_vect.Y
             self.agents.append(sub_agent)
-            self.all_agents.append(sub_agent)
+            self.sub_agents.append(sub_agent)
         return goals, [agent.pts for agent in sub_agents]
         
     
@@ -400,22 +400,27 @@ for t in range(time_2):
     combined_env.update_agents_pos(coherence_rad2, coherence_fac2, align_rad2, align_fac2, avoid_rad2, avoid_fac2, Coherence_T2, Alignment_T2, Separation_T2, sub_goal_rad, sub_goal_fac)
 
 list_pts = []
-main_paths=[]
+main_paths = []
 sec_paths = []
-main_agents = deepcopy(combined_env.all_agents)
-for agent in main_agents:
-    if agent.right_force != 0:
-        path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
-        if Rebuild_T:
-            path= path.Rebuild(rebuild_points, rebuild_degree, True)
+up_factors = []
+
+for agent in combined_env.main_agents:
+    #if agent.right_force != 0:
+    path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
+    if Rebuild_T:
+        path= path.Rebuild(rebuild_points, rebuild_degree, True)
+        path.Domain = rg.Interval(0.0, 1.0)
         main_paths.append(path)  
-    else:
-        path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
-        if Rebuild_T:
-            path= path.Rebuild(rebuild_points, rebuild_degree, True)
+        up_factors.append(agent.unitized_upForce)
+for agent in combined_env.sub_agents:
+    path = surface.InterpolatedCurveOnSurface(agent.pts,tolerance) 
+    if Rebuild_T:
+        path= path.Rebuild(rebuild_points, rebuild_degree, True)
+        path.Domain = rg.Interval(0.0, 1.0)
         sec_paths.append(path)
 
 #sub_agents = th.list_to_tree(sub_agents)
 main_paths = th.list_to_tree(main_paths)
 sec_paths = th.list_to_tree(sec_paths)
+up_factors = th.list_to_tree(up_factors)
 list_pts = th.list_to_tree(list_pts)
