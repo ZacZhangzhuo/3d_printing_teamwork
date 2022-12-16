@@ -301,6 +301,9 @@ class Agent(object):
             self.right_force *= -1    
             
 
+        
+
+
     
     # pending: fx for limiting speed?
 
@@ -337,6 +340,12 @@ class Agent(object):
 
         self.pts.append(self.surface.PointAt(self.u, self.v))
 
+class SubGoal(object):
+
+    def __init__(self):
+        self.u = 0
+        self.v = 0
+        self.buffer_Zone = 0
          
 
     #hello Eleniiiii
