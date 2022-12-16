@@ -6,19 +6,19 @@ from copy import deepcopy
 import math
 
 
-def OrientPlane(plane, guide):
-    yPt = plane.Origin + rg.Vector3d(0, 0, 1)
-    project = rg.Transform.ProjectAlong(plane, plane.ZAxis)
-    yPt.Transform(project)
-    yAxis = rg.Vector3d(yPt-plane.Origin)
+#  def OrientPlane(plane, guide):
+#     yPt = plane.Origin + rg.Vector3d(0, 0, 1)
+#     project = rg.Transform.ProjectAlong(plane, plane.ZAxis)
+#     yPt.Transform(project)
+#     yAxis = rg.Vector3d(yPt-plane.Origin)
 
-    zAxis = plane.ZAxis
-    if zAxis*guide < 0:
-        zAxis = -zAxis
+#     zAxis = plane.ZAxis
+#     if zAxis*guide < 0:
+#         zAxis = -zAxis
 
-    outPlane = rg.Plane(
-        plane.Origin, -rg.Vector3d.CrossProduct(zAxis, yAxis), yAxis)
-    return outPlane
+#     outPlane = rg.Plane(
+#         plane.Origin, -rg.Vector3d.CrossProduct(zAxis, yAxis), yAxis)
+#     return outPlane
 
 
 def Remap(old_value, old_min, old_max, new_min, new_max):
@@ -32,22 +32,22 @@ def Remap(old_value, old_min, old_max, new_min, new_max):
     return new_value
 
 
-def get_pts(crvs):
+# def get_pts(crvs):
 
-    #Make into loop for list of curves
-    all_pts = []
+#     #Make into loop for list of curves
+#     all_pts = []
 
-    crv = curve.ToNurbsCurve(curve.Domain)
-    # params = crv.DivideByCount(divide_number, True)
+#     crv = curve.ToNurbsCurve(curve.Domain)
+#     # params = crv.DivideByCount(divide_number, True)
 
-    params = crv.DivideByCount(divide_number, True)
-    # print(len(params))
+#     params = crv.DivideByCount(divide_number, True)
+#     # print(len(params))
 
-    for i in params:
-        pt = crv.PointAt(i)
-        all_pts.append(pt)
+#     for i in params:
+#         pt = crv.PointAt(i)
+#         all_pts.append(pt)
 
-    return all_pts
+#     return all_pts
 
 
 def make_planes(pts):
@@ -105,7 +105,7 @@ def move_planes(plns, pt, min_layer_height, max_layer_height, layer_nbr):
     return moved_plns
 
 
-def make_layered_planes(plns):
+# def make_layered_planes(plns):
 
     if flip_vect:
         for i in range(len(plns)):
@@ -133,11 +133,11 @@ def make_layered_planes(plns):
 nested_list_pts = th.tree_to_list(nested_list_pts)
 # print(layer_height)
 #pts_divisions = (get_pts(curve))
-for pts in nested_list_pts:
+for pts in (nested_list_pts):
     pts_planes = make_planes(nested_list_pts)
 # print (pts_planes)
-for pts in nested_list_pts:
-    moved_planes = move_planes(pts_planes, plns_move_pt,
-                           min_layer_height, max_layer_height, pts)
+for i in range(len(pts_planes)):
+    moved_planes = th.list_to_tree(move_planes(pts_planes, plns_move_pt,
+                           min_layer_height, max_layer_height, pts))
     
 # layered_planes = th.list_to_tree(make_layered_planes(pts_planes))
