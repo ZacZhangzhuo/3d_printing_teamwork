@@ -71,7 +71,7 @@ def make_planes(pts):
     return pts_planes
 
 
-def move_planes(plns, height_pt,dir_pt, min_layer_height, max_layer_height, layer_number):
+def move_planes(plns, height_pt, dir_pt, min_layer_height, max_layer_height, layer_number):
 
     min_dist = 1000000
     max_dist = 0
@@ -95,7 +95,11 @@ def move_planes(plns, height_pt,dir_pt, min_layer_height, max_layer_height, laye
 
     moved_plns = []
 
+
     for i in range(layer_number):
+
+
+        temp = []
         for k, value in enumerate(heights):
             origin = plns[k].Clone()
 
@@ -105,11 +109,15 @@ def move_planes(plns, height_pt,dir_pt, min_layer_height, max_layer_height, laye
             # Trans1.1
             dir = rg.Vector3d(plns[k].Origin - dir_pt)
             dir.Unitize()
-            trans1 = rg.Transform.Translation((dir * heights[k] * i * graphMapper[k]))
+            index = (int) (math.floor(Remap(heights[k], min_dist, max_dist, 0, len(plns))))
+
+            trans1 = rg.Transform.Translation((dir * heights[k] * i * graphMapper[index]))
 
             origin.Transform(trans1)
-            moved_plns.append(origin)
+            temp.append(origin)
 
+        if i%2 ==0: temp.reverse()
+        moved_plns.extend(temp)
         # print (max_layer_height)
 
     return moved_plns
@@ -147,6 +155,13 @@ def move_planes(plns, height_pt,dir_pt, min_layer_height, max_layer_height, laye
 pts_planes = make_planes(list_pts)
 # print (pts_planes)
 
-moved_planes = move_planes(pts_planes, plns_height_pt, plns_dir_pt,min_layer_height, max_layer_height, layer_nbr)
+moved_planes = move_planes(
+    pts_planes,
+    height_pt=plns_height_pt,
+    dir_pt=plns_dir_pt,
+    min_layer_height=min_layer_height,
+    max_layer_height=max_layer_height,
+    layer_number=layer_nbr,
+)
 
 # layered_planes = th.list_to_tree(make_layered_planes(pts_planes))
