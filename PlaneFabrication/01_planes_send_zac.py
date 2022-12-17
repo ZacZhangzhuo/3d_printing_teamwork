@@ -40,7 +40,7 @@ radii  = json_load(r"PlaneFabrication\data\output\out_printpoints_radii.json")
 # radii = [2] * len(frames)
 
 #! MoveP
-velocities = [10] *len(frames)
+velocities = [8] *len(frames)
 toggles = [True]*(len(frames))
 acc = [10] *len(frames)
 
