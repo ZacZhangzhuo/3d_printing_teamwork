@@ -40,9 +40,11 @@ radii  = json_load(r"PlaneFabrication\data\output\out_printpoints_radii.json")
 # radii = [2] * len(frames)
 
 #! MoveP
-velocities = [8] *len(frames)
+velocities = [6] *len(frames)
+# toggles = [False]*(len(frames))
 toggles = [True]*(len(frames))
-acc = [10] *len(frames)
+acc = [1] *len(frames)
+
 
 
 # Go through JSON and copy data to lists
@@ -80,7 +82,9 @@ if __name__ == "__main__":
 
     # IP_ADDRESS = "127.0.0.1"
     # Send all points using send_printpath function implemented in the RTDE Wrapper
+    print('Start sending data')
     rtde.send_printpath(frames, velocities, acc, radii, toggles, ip=IP_ADDRESS)
+    print('Stop sending data')
 
 # ur_c = RTDEControl(IP_ADDRESS)
 
