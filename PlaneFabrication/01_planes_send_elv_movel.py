@@ -34,7 +34,7 @@ print("Print data loaded :", os.path.join(DATA_OUTPUT_FOLDER, PRINT_FILE_NAME))
 
 ####################################################################
 # Define print data containers as empty lists
-frames = json_load(r"PlaneFabrication\data\output\out_printpoints_final_surface_scaled.json")
+frames = json_load(r"PlaneFabrication\data\output\out_printpoints.json")
 # radii  = json_load(r"PlaneFabrication\data\output\out_printpoints_radii.json")
 # velocities = [15] *len(frames)
 radii = [2] * len(frames)
