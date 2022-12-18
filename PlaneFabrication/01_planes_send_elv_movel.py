@@ -25,7 +25,7 @@ IP_ADDRESS = data["ip"]  # string with IP Address
 # Define location of print data
 # change .json file path and name as required   
 DATA_OUTPUT_FOLDER = os.path.join(os.path.dirname(__file__), "data", "output")
-PRINT_FILE_NAME = "out_printpoints_final_surface.json"
+PRINT_FILE_NAME = "out_printpoints_final_surface_scaled.json"
 
 # Open print data
 with open(os.path.join(DATA_OUTPUT_FOLDER, PRINT_FILE_NAME), "r") as file:
@@ -34,7 +34,7 @@ print("Print data loaded :", os.path.join(DATA_OUTPUT_FOLDER, PRINT_FILE_NAME))
 
 ####################################################################
 # Define print data containers as empty lists
-frames = json_load(r"PlaneFabrication\data\output\out_printpoints_final_surface.json")
+frames = json_load(r"PlaneFabrication\data\output\out_printpoints_final_surface_scaled.json")
 # radii  = json_load(r"PlaneFabrication\data\output\out_printpoints_radii.json")
 # velocities = [15] *len(frames)
 radii = [2] * len(frames)
