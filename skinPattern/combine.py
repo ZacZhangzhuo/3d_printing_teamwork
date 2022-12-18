@@ -105,8 +105,10 @@ def move_planes(plns, height_pt,dir_pt, min_layer_height, max_layer_height, laye
 
             # Trans1.1
             dir = rg.Vector3d(plns[k].Origin - dir_pt)
+            xyz = rg.Vector3d(1,1,1)
+            xyz.Unitize()
             dir.Unitize()
-            trans1 = rg.Transform.Translation((dir * heights[k] * i * graphMapper[int(Remap(heights[k] , min_dist,max_dist,0,len(heights)))]))
+            trans1 = rg.Transform.Translation(((ratio * dir+ (1-ratio) * xyz) * heights[k] * i * graphMapper[int(Remap(heights[k] , min_dist,max_dist,0,len(heights)))]))
 
             origin.Transform(trans1)
             temp.append(origin)
